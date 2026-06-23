@@ -1,0 +1,60 @@
+name: "文本编辑器重新载入被其他应用修改的根源文件"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 通过文本编辑器打开一个文档A
+  2. 再通过另一个应用（例如kwrite）打开同样的这个文档A ，并对内容进行修改编辑后完成保存
+  3. 点击文本编辑器窗口，触发对话框“磁盘中的原文件已被修改，是否重新载入？”
+  3-1：选择“重新载入”
+  3-2:  选择关闭按钮
+  
+  预期结果:
+  1. 文本编辑器窗口显示文档A
+  2. 另一个应用对更新后的文档A成功保存
+  3. 3-1.”重新载入“后文本编辑器窗口显示的是步骤2中另一应用修改后的内容，继续点击文档A的标签页中的关闭按钮可以直接关闭
+  3-2.“关闭”后弹框消失，当前标签页文件名前无*出现，此时继续点击当前标签页关闭时可以直接关闭
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "文件操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "116"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/reload_test.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "等待文件被外部修改"
+    action: wait
+    wait: 2.0
+  - name: "点击重新载入按钮"
+    action: element_action
+    ref: reload_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "重新载入"

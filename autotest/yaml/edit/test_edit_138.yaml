@@ -1,0 +1,50 @@
+name: "切换大小写&撤销的交互"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在文本内容中选中某段文字进行大小写切换
+  2. 撤销
+  
+  预期结果:
+  1. 大小写切换成功，文本内容被修改（文件名前显示*）
+  2. 可用通过“撤销”恢复上级操作
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "138"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "test text here"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键转换大写"
+    action: context_menu_comb
+    ref: ctx_upper_case
+    wait: 0.3
+  - name: "Ctrl+Z撤销"
+    action: keyboard_hot_key
+    keys: "ctrl,z"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

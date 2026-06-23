@@ -1,0 +1,50 @@
+name: "只读模式_全选复制"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 非空文档中，开启只读模式后，右键菜单点击“全选”
+  2. 继续右键菜单中点击“复制”
+  
+  预期结果:
+  1. 文中所有字符都被选中
+  2. 可以把选中的内容粘帖到其他可编辑区
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "只读模式"
+tags:
+  - L2
+vars:
+  xlsx_id: "139"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "只读复制测试"
+    wait: 0.3
+  - name: "右键开启只读"
+    action: context_menu_comb
+    ref: ctx_enable_readonly
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "Ctrl+C复制"
+    action: keyboard_hot_key
+    keys: "ctrl,c"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

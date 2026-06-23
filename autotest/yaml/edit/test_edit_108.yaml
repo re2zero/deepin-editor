@@ -1,0 +1,42 @@
+name: "支持换行符：linux、Windows、Mac OS"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在文本编辑器窗口中输入内容后保存,在触发保存对话框点击"换行符"
+  2. 选择"Linux"进行保存,再次打开做行号的检查
+  3. 选择"Windows"进行保存
+  4. 选择"Mac Os"进行保存
+  
+  预期结果:
+  1. 子菜单列表"Linux ,Windows,Mac Os"
+  2. 行数自动加1
+  3. 保存成功
+  4. 保存成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "108"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入带换行符文本"
+    action: keyboard_type
+    text: "line1\nline2\nline3"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

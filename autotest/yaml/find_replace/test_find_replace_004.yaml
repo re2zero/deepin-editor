@@ -1,0 +1,57 @@
+name: "查找替换-替换按钮切换后与Ctrl+H触发功能一致性验证"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档）
+  
+  测试步骤:
+  1. 使用快捷键Ctrl+F触发查找功能，点击'替换'按钮切换至替换弹窗
+  2. 关闭当前替换弹窗，使用快捷键Ctrl+H直接触发替换功能
+  3. 对比步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本
+  
+  预期结果:
+  1. 成功切换至替换弹窗
+  2. 弹出替换弹窗
+  3. 步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本完全一致
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "查找替换"
+tags:
+  - L2
+vars:
+  xlsx_id: "004"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "Ctrl+F打开查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "点击替换按钮切换"
+    action: element_action
+    ref: switch_to_replace_button
+    do: "click"
+    wait: 0.5
+  - name: "关闭替换弹窗"
+    action: keyboard_press
+    keys: "Escape"
+    wait: 0.3
+  - name: "Ctrl+H直接打开替换"
+    action: keyboard_hot_key
+    keys: "ctrl,h"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "替换"

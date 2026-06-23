@@ -1,0 +1,49 @@
+name: "未保存时关闭标签"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 编辑器任意打开一个文档，然后添加一些文字，关闭标签（或窗口）
+  2. 选中对话框中的”取消“
+  3. 选中对话框中的”不保存“
+  4. 选中对话框中的”保存“
+  5. 按ESC键
+  
+  预期结果:
+  1. 软件会弹出保存提示对话框“您是否要保存此文件？）
+  （1040后新增加自动保存现场的需求，故1040后关闭窗口不会提示对话框）
+  2. 保存提示对话框消失
+  3. 此文档不保存关闭
+  4. 保存后关闭
+  5. 保存提示对话框消失
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "标签栏"
+tags:
+  - L2
+vars:
+  xlsx_id: "115"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入未保存文本"
+    action: keyboard_type
+    text: "未保存内容"
+    wait: 0.3
+  - name: "Ctrl+W关闭标签"
+    action: keyboard_hot_key
+    keys: "ctrl,w"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: ocr_exist
+        text: "保存"

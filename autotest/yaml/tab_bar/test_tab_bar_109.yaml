@@ -1,0 +1,50 @@
+name: "标签管理_异常保存_切换编码"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 文本文件被修改后，点击右下角的切换编码
+  2. 文本文件被修改后，关闭应用后重新打开，点击右下角的切换编码
+  
+  预期结果:
+  1. “取消” 后弹框消失；
+  2. “保存”则会把修改的内容先保存，再展示保存后的内容以及新编码下的内容，同时标签页的*消失， 点击标签页进行关闭时，可直接关闭 。
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "标签栏"
+tags:
+  - L1
+vars:
+  xlsx_id: "109"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/encode_test.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "切换编码方式"
+    action: keyboard_hot_key
+    keys: "ctrl,shift+c"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

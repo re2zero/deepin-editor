@@ -1,0 +1,52 @@
+name: "上一个书签/下一个书签"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 文档上未设置任何书签，鼠标右键，查看右键菜单
+  2. 光标定位在已设置书签的行，右键菜单“上一个书签”
+  3. 光标定位在已设置书签的行，右键菜单“下一个书签”
+  
+  预期结果:
+  1. 右键菜单“上一个书签/下一个书签”置灰
+  2. 光标切换到上一个书签的位置
+  3. 光标切换到下一个书签的位置
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "书签/颜色标记"
+tags:
+  - L2
+vars:
+  xlsx_id: "131"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "书签1\n书签2\n书签3"
+    wait: 0.3
+  - name: "右键添加书签"
+    action: context_menu_comb
+    ref: ctx_add_bookmark
+    wait: 0.3
+  - name: "右键下一个书签"
+    action: context_menu_comb
+    ref: ctx_next_bookmark
+    wait: 0.3
+  - name: "右键上一个书签"
+    action: context_menu_comb
+    ref: ctx_prev_bookmark
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

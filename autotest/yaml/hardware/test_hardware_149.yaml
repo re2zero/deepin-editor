@@ -1,0 +1,50 @@
+name: "高分屏_拖拽标签页"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  连接高分屏 ，切换缩放比 &gt; 1.25
+  
+  测试步骤:
+  1. 打开文本编辑器，默认新开一个空白标签页（窗口1）
+  2. 再开新窗口（窗口2），打开文档A进行编辑 ，打开文档B
+  3. 将窗口1中的唯一的一个标签页拖拽合并到窗口2中
+  4. 再将窗口2中的任意标签页拖拽出来，生成新窗口
+  
+  预期结果:
+  1. 
+  2. 
+  3. 每个缩放比下，拖拽过程中表现正常，合并成功
+  4. 每个缩放比下，拖拽过程中表现正常，拆分成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/硬件交互"
+feature: "硬件交互"
+tags:
+  - L3
+vars:
+  xlsx_id: "149"
+  case_type: "兼容性测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "点击新建标签"
+    action: element_action
+    ref: add_tab_button
+    do: "click"
+    wait: 0.3
+  - name: "拖拽标签页"
+    action: mouse_drag
+    ref: tab_bar
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,50 @@
+name: "全选"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+  2. 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+  3. 打开一个有字符的文档，点击右键，查看右键菜单
+  4. 在有字符的文档中点击右键--全选按钮，查看软件显示
+  
+  预期结果:
+  1. 右键菜单中没有全选按钮
+  2. 右键菜单会显示出全选按钮
+  3. 右键菜单会显示全选按钮
+  4. 当前文档中所有的内容都会被选中，选中的文字可以进行复制或剪切
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "120"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "全选测试文本"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "Ctrl+C复制"
+    action: keyboard_hot_key
+    keys: "ctrl,c"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

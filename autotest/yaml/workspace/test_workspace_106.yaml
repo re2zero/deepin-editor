@@ -1,0 +1,51 @@
+name: "大文件加载过程中“编码方式”和“文本类型”按钮"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  Step2 适用于1040阶段
+  
+  测试步骤:
+  1. 打开一个大文件
+  2. 加载的过程中查看底栏
+  3. 加载完成后查看底栏
+  
+  预期结果:
+  1. 
+  2. “编码方式”和“文本类型”按钮置灰，无法点击
+  3. “编码方式”和“文本类型”按钮恢复正常，可以被点击
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L2
+vars:
+  xlsx_id: "106"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开大文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 2.0
+  - name: "输入大文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/large.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 2.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

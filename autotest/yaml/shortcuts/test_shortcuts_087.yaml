@@ -1,0 +1,58 @@
+name: "跳转到行【快捷键】"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 任意打开一个TXT文件，然后按Ctrl+G键，查看软件显示
+  2. 弹出跳转菜单后，按ESC键，查看软件显示
+  3. 弹出跳转行菜单后，输入任意字符，查看软件显示
+  4. 打开TXT文件后，在跳转行中输入大于当前文本的行数，查看软件显示
+  5. 打开TXT文件后，假如当前文本只有100行，在跳转行中输入50回车，查看软件显示
+  6. 在跳转行中输入连续跳转多次其他的行，查看软件显示
+  
+  预期结果:
+  1. 软件会自动打开跳转行菜单
+  2. 跳转行菜单会自动退出
+  3. 输入框只能输入数字，无法输入其他字符
+  4. 无法输入超过当前文本的行数
+  5. 软件会自动跳转到当前文件的第50行
+  6. 可以正常跳转
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "快捷键"
+tags:
+  - L2
+vars:
+  xlsx_id: "087"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "l1\nl2\nl3\nl4\nl5"
+    wait: 0.3
+  - name: "Ctrl+G跳到行"
+    action: keyboard_hot_key
+    keys: "ctrl,g"
+    wait: 0.5
+  - name: "输入行号"
+    action: keyboard_type
+    text: "3"
+    wait: 0.3
+  - name: "回车确认"
+    action: keyboard_press
+    keys: "Return"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

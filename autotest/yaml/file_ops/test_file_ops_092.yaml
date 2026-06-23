@@ -1,0 +1,50 @@
+name: "打开文件"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在主菜单中点击打开文件按钮，查看软件显示
+  2. 在文件选择对话框中任意选中一个TXT文件
+  3. 在文件选择对话框中任意选中一个TXT文件，txt文件较大有50M
+  4. 在文件选择对话框中任意选中一个json文件
+  
+  预期结果:
+  1. 软件会自动弹出文件选择对话框
+  2. 可以正常打开TXT文件
+  3. 软件可以正常打开该文件，打开速度显示正常
+  4. 软件可以正常打开json文件
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "文件操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "092"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/test.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

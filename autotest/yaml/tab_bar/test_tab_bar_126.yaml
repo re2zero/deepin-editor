@@ -1,0 +1,43 @@
+name: "标签栏的右键菜单"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 软件打开多个标签后，任意选中一个标签，点击右键
+  2. 在右键菜单中点击关闭标签，查看软件显示
+  3. 在右键菜单中点击关闭其他标签，查看软件显示
+  4. 假如当前只有一个标签，查看右键菜单显示
+  
+  预期结果:
+  1. 软件自动弹出右键菜单显示
+  2. 软件会自动关闭当前标签页
+  3. 软件会只留当前标签，关闭其他标签
+  4. “关闭其他标签” & ”更多关闭方式“置灰
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "标签栏"
+tags:
+  - L2
+vars:
+  xlsx_id: "126"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "右键标签页"
+    action: context_menu_comb
+    ref: ctx_close_tab
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "关闭标签页"

@@ -1,0 +1,40 @@
+name: "语音听写"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 点击右键菜单，查看软件显示
+  2. 点击“语音听写”菜单，用户通过麦克风语音输入
+  3. 在设置中关闭语音听写功能，在编辑器中右击，查看右键菜单
+  
+  预期结果:
+  1. 右键菜单中有语音听写功能
+  2. 语音转译文字被编辑在文档中
+  3. 语音听写功能无法使用，并置灰
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "语音功能"
+tags:
+  - L2
+vars:
+  xlsx_id: "119"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "右键点击语音听写"
+    action: context_menu_comb
+    ref: ctx_dictation
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

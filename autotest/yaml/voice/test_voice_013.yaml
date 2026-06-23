@@ -1,0 +1,64 @@
+name: "重复选择语音朗读"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.已打开文本编辑器，且存在文本内容
+  2.已接入麦克风设备
+  
+  测试步骤:
+  1. 选择一段文字，鼠标右键，点击语音朗读
+  2. 朗读过程中，重新选择一段文字，鼠标右键，点击语音朗读
+  3. 重复步骤2多次
+  
+  预期结果:
+  1. 开始朗读选择的文字
+  2. 开始朗读重新选择的这段文字
+  3. 每次都朗读重新选择的文字
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "语音功能"
+tags:
+  - L1
+vars:
+  xlsx_id: "013"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入第一段文本"
+    action: keyboard_type
+    text: "第一段测试文本"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键语音朗读"
+    action: context_menu_comb
+    ref: ctx_voice_read
+    wait: 1.0
+  - name: "输入第二段文本"
+    action: keyboard_type
+    text: "第二段测试文本"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "再次右键语音朗读"
+    action: context_menu_comb
+    ref: ctx_voice_read
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

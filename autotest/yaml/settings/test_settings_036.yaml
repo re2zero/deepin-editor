@@ -1,0 +1,52 @@
+name: "取消勾选“允许鼠标中键执行粘贴操作”"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  默认勾选“允许鼠标中键执行粘贴操作”
+  
+  测试步骤:
+  1. 进入设置 - 高级设置，取消勾选“允许鼠标中键执行粘贴操作”
+  2. 复制若干文字如abcd，通过按压鼠标中键进行粘贴
+  3. 进入设置 - 高级设置，勾选“允许鼠标中键执行粘贴操作”，通过按压鼠标中键进行粘贴
+  
+  预期结果:
+  1. 可以取消勾选
+  2. 无法粘贴成功
+  3. 可以粘贴成功 (同step2中的复制内容abcd)
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L1
+vars:
+  xlsx_id: "036"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "取消鼠标中键粘贴"
+    action: keyboard_press
+    keys: "Tab"
+    wait: 0.3
+  - name: "空格取消勾选"
+    action: keyboard_press
+    keys: "space"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

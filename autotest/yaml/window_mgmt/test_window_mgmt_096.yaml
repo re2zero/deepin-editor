@@ -1,0 +1,40 @@
+name: "切换主题"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开编辑器后，点击主菜单--主题按钮，查看软件显示
+  2. 在主题列表中任意点击其他主题，查看软件显示
+  3. 在主题列表中来回切换，查看主题显示
+  
+  预期结果:
+  1. 软件会自动弹出侧边栏，显示主题列表
+  2. 当前软件会随着主题的切换变化而变化
+  3. 可以来回切换主题，主题切换正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "096"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单切换主题"
+    action: main_menu_comb
+    ref: menu_theme
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

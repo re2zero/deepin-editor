@@ -1,0 +1,60 @@
+name: "查找_按压enter键"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 编辑器打开TXT文档，主菜单中打开查找
+  2. 输入字符后完成后，用户按“enter” 键后
+  3. 查找结果高亮显示，点击“上一个”、“下一个”按钮
+  4. 点击查找输入框中的“X”
+  5. 点击查找框的“X”按钮
+  6. 查找框、替换框不可移动 （新增需求）
+  
+  预期结果:
+  1. 打开查找框，页面显示应保持不变
+  2. 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+  3. 定位至上一个或下一个结果处
+  4. 清除当前输入文本时，不清除查找结果，当前页面保持不变
+  5. 关闭查找框，当前页面保持不变
+  6. （查找框、替换框弹出时，滚动条位置上移2行；例如：原来1屏幕可以显示30行，第30行的位置会有滚动条；查找框出来后，会覆盖2行；那么在28行的位置需要有滚动条；）即页面存在滚动条，不会妨碍用户查看文档内容
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "快捷键"
+tags:
+  - L2
+vars:
+  xlsx_id: "089"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "enter键查找测试test"
+    wait: 0.3
+  - name: "Ctrl+F查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "输入查找词"
+    action: element_set_value
+    ref: find_input
+    text: "test"
+    wait: 0.3
+  - name: "按Enter键"
+    action: keyboard_press
+    keys: "Return"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "查找"

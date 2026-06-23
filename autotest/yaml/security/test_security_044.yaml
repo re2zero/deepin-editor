@@ -1,0 +1,42 @@
+name: "验证使用文本编辑器，无内存泄漏"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 通过文本编辑器打开一个大文件（如100M.txt）后关闭大文件的标签页
+  2. 多次打开和关闭文本编辑器
+  
+  预期结果:
+  1. 无内存泄漏 （系统监视器中内容跟随打开关闭而相应地上升回落）
+  2. 无内存泄漏
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/安全性"
+feature: "安全性"
+tags:
+  - L3
+vars:
+  xlsx_id: "044"
+  case_type: "安全性测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "切换标签页"
+    action: keyboard_hot_key
+    keys: "ctrl+Tab"
+    wait: 0.3
+  - name: "输入文本"
+    action: keyboard_type
+    text: "内存泄漏测试"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

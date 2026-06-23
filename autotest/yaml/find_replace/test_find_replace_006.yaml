@@ -1,0 +1,49 @@
+name: "查找替换-点击替换按钮切换至替换弹窗（未选中文本）"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  
+  测试步骤:
+  1. 使用快捷键Ctrl+F触发查找功能
+  2. 点击查找弹窗中的'替换'按钮
+  3. 观察当前弹窗标题及布局
+  
+  预期结果:
+  1. 查找弹窗正常显示
+  2. 替换弹窗正常显示
+  3. 弹窗标题显示为'替换'，输入框位置、替换、跳过、剩余替换、全部替换按钮与使用快捷键Ctrl+H触发的替换弹窗完全一致
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "查找替换"
+tags:
+  - L1
+vars:
+  xlsx_id: "006"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "Ctrl+F打开查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "点击替换按钮切换"
+    action: element_action
+    ref: switch_to_replace_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "替换"

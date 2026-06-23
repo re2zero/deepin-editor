@@ -1,0 +1,37 @@
+name: "休眠、待机、锁屏不需要阻止框"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开编辑器，新建TXT文档，输入任意字符，不保存的情况下进入休眠、待机、锁屏
+  2. 打开电脑，查看软件显示
+  
+  预期结果:
+  1. 不弹出阻止框，直接进入休眠、待机、锁屏模式
+  2. 软件保留原有状态
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/安装/卸载/启动/关机"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "113"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "验证休眠待机无阻止框"
+    action: wait
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

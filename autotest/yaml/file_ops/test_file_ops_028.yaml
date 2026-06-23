@@ -1,0 +1,58 @@
+name: "保存编码文件场景补充"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 编写任意代码，然后保存
+  #include <stdio.h>
+  
+  int main() {
+  printf("hello world");
+  return 0;
+  }
+  2. 关闭文本编辑器窗口
+  3. 再次打开文本编辑器
+  
+  预期结果:
+  1. 保存为对应编码格式文档，如：test.h
+  2. 窗口可正常关闭
+  3. 文本编辑器中的代码关键字高亮显示，如：include、int、hello world
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "文件操作"
+tags:
+  - L3
+vars:
+  xlsx_id: "028"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入编码文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/encoding_test.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "Ctrl+S保存"
+    action: keyboard_hot_key
+    keys: "ctrl,s"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

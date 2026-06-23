@@ -1,0 +1,48 @@
+name: "空白字符/制表符"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  文本中含有空白字符和制表符
+  
+  测试步骤:
+  1. 进入基础设置，查看“空白字符/制表符”的默认设置
+  2. 勾选“空白字符/制表符”
+  3. 勾选“空白字符/制表符”，删除空格或制表字符时
+  
+  预期结果:
+  1. 默认不勾选， 且文本中不会显示空白字符和制表符
+  2. 显示文本中的空白字符和制表符
+  3. 空白字符和制表符正确显示
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L1
+vars:
+  xlsx_id: "078"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "切换空白字符显示"
+    action: keyboard_press
+    keys: "space"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

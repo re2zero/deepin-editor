@@ -1,0 +1,43 @@
+name: "“关于”弹窗"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开文本编辑器，主菜单中选择“关于”
+  2. 用鼠标移动“关于”弹窗
+  3. “关于”弹窗出现时，按ESC键
+  4. 点击“关于”窗口外区域使焦点移出“关于”弹窗后， 点击任务栏上的文本编辑器图标观察
+  
+  预期结果:
+  1. 弹出“关于”弹窗
+  2. “关于”弹窗跟随鼠标移动
+  3. “关于”弹窗会自动关闭
+  4. 文本编辑器窗口和“关于”弹窗同时隐藏和显示
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "098"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单关于"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          role: "dialog"

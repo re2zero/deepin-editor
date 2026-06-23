@@ -1,0 +1,54 @@
+name: "转换小写"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+  2. 打开TXT文档，点击右键，查看右键菜单显示
+  3. 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+  4. 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+  5. 假如选中的都是汉字，点击右键菜单--切换小写，查看软件显示
+  6. 假如选中的含有英文字符，点击右键菜单--切换小写，查看软件显示
+  
+  预期结果:
+  1. 右键菜单中没有切换小写按钮
+  2. 右键菜单没有切换小写按钮
+  3. 选中字符后，右键菜单会有切换小写按钮显示
+  4. 右键菜单会有切换小写按钮显示
+  5. 汉字内容没有任何变化显示
+  6. 软件会自动将选中的英文字符切换成小写
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "124"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入大写文本"
+    action: keyboard_type
+    text: "HELLO WORLD TEST"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键转换小写"
+    action: context_menu_comb
+    ref: ctx_lower_case
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,46 @@
+name: "二指滚动"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在文档视图界面，“自然滚动”选项关闭，二指向上移动
+  2. “自然滚动”选项打开，二指向上移动
+  3. “自然滚动”选项关闭，二指向下移动
+  4. “自然滚动”选项打开，二指向下移动
+  
+  预期结果:
+  1. “自然滚动”选项关闭，二指向上移动对应的操作是“屏幕向上滚动”
+  2. “自然滚动”选项打开，二指向上移动对应的事件就是“屏幕向下滚动”
+  3. “自然滚动”选项关闭，二指向下移动对应的操作是“屏幕向下滚动”
+  4. “自然滚动”选项打开，二指向下移动对应的事件就是“屏幕向上滚动”
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/硬件交互"
+feature: "硬件交互"
+tags:
+  - L1
+vars:
+  xlsx_id: "144"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "滚动测试1\n2\n3\n4\n5\n6\n7\n8\n9\n10"
+    wait: 0.3
+  - name: "鼠标滚动"
+    action: mouse_scroll
+    value: 5
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

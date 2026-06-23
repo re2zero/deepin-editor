@@ -1,0 +1,52 @@
+name: "列编辑操作 (SP3)"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 选中多列后，输入任意字符，查看软件显示
+  2. 选中多列后，删除任意字符，查看软件显示
+  3. 选中多列后，复制任意字符，查看软件显示
+  4. 选中多列后，粘贴任意字符，查看软件显示
+  5. 选中多列后，剪切任意字符，查看软件显示
+  
+  预期结果:
+  1. 选中的多列都可以进行输入字符
+  2. 选中的多列都可以进行删除字符
+  3. 选中的多列都可以进行复制字符,在文中进行粘贴的内容应保留源格式，保持换行显示
+  4. 选中的多列都需要进行粘贴字符
+  5. 选中的多列都可以剪切输入字符,在文中进行粘贴的内容应保留源格式，保持换行显示
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "133"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "aaa\nbbb\nccc"
+    wait: 0.3
+  - name: "Alt+Shift+Down列编辑"
+    action: keyboard_press
+    keys: "alt+shift+Down"
+    wait: 0.3
+  - name: "输入列内容"
+    action: keyboard_type
+    text: "X"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

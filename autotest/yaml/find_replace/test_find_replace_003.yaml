@@ -1,0 +1,65 @@
+name: "查找替换-替换弹窗填充选中内容及状态保留"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器正文存在多个文本“武汉”
+  
+  测试步骤:
+  1. 打开文本编辑器，正文鼠标右键，点击查找
+  2. 在查找输入框输入文本“武汉”，点击下一个
+  3. 在查找弹窗中，点击右上角的“替换”按钮
+  4. 观察文本编辑区域的高亮选中状态
+  
+  预期结果:
+  1. 下方显示查找窗口
+  2. 第一个“武汉”文本被高亮选中
+  3. 替换弹窗的'替换为'输入框自动填充内容与原文本区域高亮选中文本一致
+  4. 原文本区域中第二个'武汉'文本保持高亮选中状态
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "查找替换"
+tags:
+  - L1
+vars:
+  xlsx_id: "003"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "武汉武汉武汉"
+    wait: 0.3
+  - name: "右键打开查找"
+    action: context_menu_comb
+    ref: ctx_find
+    wait: 0.5
+  - name: "输入查找词"
+    action: element_set_value
+    ref: find_input
+    text: "武汉"
+    wait: 0.3
+  - name: "点击查找下一个"
+    action: element_action
+    ref: find_next_button
+    do: "click"
+    wait: 0.3
+  - name: "点击替换按钮切换"
+    action: element_action
+    ref: switch_to_replace_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "替换"

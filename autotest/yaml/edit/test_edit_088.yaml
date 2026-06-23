@@ -1,0 +1,72 @@
+name: "全选复制粘贴回车交互【快捷键】"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开TXT文档，按Ctrl+A，按Ctrl+C键，然后按Ctrl+V多次（3~5次）
+  2. 按回车
+  3. 继续按Ctrl+V
+  
+  预期结果:
+  1. 可以一直粘贴复制的文本
+  2. 新建换行
+  3. 可以粘贴成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "088"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "测试文本"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "Ctrl+C复制"
+    action: keyboard_hot_key
+    keys: "ctrl,c"
+    wait: 0.3
+  - name: "Ctrl+V粘贴多次"
+    action: keyboard_hot_key
+    keys: "ctrl,v"
+    wait: 0.1
+  - name: "Ctrl+V粘贴"
+    action: keyboard_hot_key
+    keys: "ctrl,v"
+    wait: 0.1
+  - name: "Ctrl+V粘贴"
+    action: keyboard_hot_key
+    keys: "ctrl,v"
+    wait: 0.1
+  - name: "Ctrl+V粘贴"
+    action: keyboard_hot_key
+    keys: "ctrl,v"
+    wait: 0.1
+  - name: "按回车"
+    action: keyboard_press
+    keys: "Return"
+    wait: 0.3
+  - name: "继续Ctrl+V粘贴"
+    action: keyboard_hot_key
+    keys: "ctrl,v"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

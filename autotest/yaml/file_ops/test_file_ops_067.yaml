@@ -1,0 +1,44 @@
+name: "打开编码方式为BIG5格式文件"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 使用文本编辑器打开BIG5编码类型文件
+  
+  预期结果:
+  1. 可以正常打开
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "文件操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "067"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开BIG5文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/big5.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

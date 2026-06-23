@@ -1,0 +1,41 @@
+name: "【玲珑】【文本编辑器】玲珑应用，基本功能测试"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1. 已经运行玲珑应用
+  
+  测试步骤:
+  1. 【文本编辑器】应用，进行文字输入，删减
+  2. 进行查找、替换
+  3. 复制、剪切、粘贴
+  4. 编辑完成后，保存/另存为文件
+  
+  预期结果:
+  1. 功能正常
+  2. 功能正常
+  3. 功能正常
+  4. 功能正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "跳过"
+tags:
+  - L2
+vars:
+  xlsx_id: "020"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-玲珑环境不支持自动化
+skip: "skip-玲珑环境不支持自动化"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 【玲珑】【文本编辑器】玲珑应用，基本功能测试"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

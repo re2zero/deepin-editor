@@ -1,0 +1,49 @@
+name: "【bug转用例】使用Shift+Tab缩进文本场景验证"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  https://pms.uniontech.com/bug-view-351091.html
+  
+  文本编辑器中存在多行文本
+  
+  测试步骤:
+  1. 选中多行文本进行Shift+Tab缩进操作
+  
+  预期结果:
+  1. 多行文本可以同时进行缩进
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "编辑操作"
+tags:
+  - L3
+vars:
+  xlsx_id: "000"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "line1\nline2\nline3\nline4\nline5"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "Shift+Tab缩进"
+    action: keyboard_press
+    keys: "shift+Tab"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,42 @@
+name: "最大最小关闭"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开软件后，点击右上角的最小化，查看软件显示
+  2. 软件最小化后，在dock上点击深度编辑器，查看软件显示
+  3. 打开软件，点击最大化按钮，查看软件显示
+  4. 软件最大化后，再点击顶部按钮向下拖拽，查看软件显示
+  5. 手动修改对话框的大小，然后重启软件，查看软件窗口大小
+  6. 打开软件，点击右上角的关闭按钮，查看软件显示
+  
+  预期结果:
+  1. 当前窗口会自动最小化
+  2. 软件会自动还原窗口
+  3. 当前窗口会自动最大化显示
+  4. 软件会自动还原到原来窗口大小
+  5. 新打开的窗口是上次修改的窗口大小
+  6. 软件会自动关闭当前窗口
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "跳过"
+tags:
+  - L1
+vars:
+  xlsx_id: "100"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-重启类场景需要letmego支持
+skip: "skip-重启类场景需要letmego支持"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 最大最小关闭"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

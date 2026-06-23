@@ -1,0 +1,32 @@
+name: "关机、重启、注销弹出阻止框"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开编辑器，新建TXT文档，输入任意字符，不保存的情况下直接关机、重启、注销
+  
+  预期结果:
+  1. 弹出阻止框，阻止关机、重启、注销
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/安装/卸载/启动/关机"
+feature: "跳过"
+tags:
+  - L1
+vars:
+  xlsx_id: "114"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-重启类场景需要letmego支持
+skip: "skip-重启类场景需要letmego支持"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 关机、重启、注销弹出阻止框"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

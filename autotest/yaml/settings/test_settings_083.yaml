@@ -1,0 +1,59 @@
+name: "快捷键编辑"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开文本编辑器，点击设置->快捷键->选择任意快捷键映射模式->窗口/编辑
+  2. 点击任意快捷键输入框
+  3. 键入符合规则的按键
+  4. 输入的单个按键（1~10）， 如数字1
+  5. 输入的单个按键（a~z），如字母a
+  6. 输入的单个符号按键，如逗号
+  7. 键入的按键和已存在的相同
+  8. 键入4个按键（如Ctrl+Alt+Shift+K）
+  
+  预期结果:
+  1. 
+  2. 快捷键为空状态，显示文案“请输入新的快捷键”
+  3. 直接显示为新的快捷键
+  4. 弹出设置无效的对话框，文案提示“[Num+1]为无效快捷键，请重新设置”。“确认”后弹框消失。
+  5. 弹出设置无效的对话框，文案提示“[A]为无效快捷键，请重新设置”。“确认”后弹框消失。
+  6. 弹出设置无效的对话框，文案提示“[,]为无效快捷键，请重新设置”。“确认”后弹框消失。
+  7. 弹出快捷键设置冲突的对话框，取消/替换 按钮功能正常
+  8. 支持最多设置4个按键做为快捷键
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L3
+vars:
+  xlsx_id: "083"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "编辑快捷键"
+    action: keyboard_press
+    keys: "Tab"
+    wait: 0.3
+  - name: "输入新快捷键"
+    action: keyboard_type
+    text: "Ctrl+Shift+F"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

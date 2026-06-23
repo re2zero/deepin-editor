@@ -1,0 +1,41 @@
+name: "最小化后从桌面再次打开应用"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开软件后，点击右上角的最小化，查看软件显示
+  2. 软件最小化后，从桌面上双击新文件 或新文件右键菜单通过文本编辑器打开
+  3. 软件最小化后，从桌面上双击已打开文件 或 文件右键菜单通过文本编辑器打开
+  
+  预期结果:
+  1. 当前窗口会自动最小化
+  2. 软件会自动还原窗口并展示新文件窗口
+  3. 软件会自动还原窗口
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/安装/卸载/启动/关机"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "058"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "最小化窗口"
+    action: element_action
+    ref: minimize_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

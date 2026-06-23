@@ -1,0 +1,54 @@
+name: "跳到行"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+  2. 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+  3. 打开一个有字符的文档，点击右键，查看右键菜单
+  4. 在有字符的文档中点击右键--跳到行按钮，查看软件显示
+  
+  预期结果:
+  1. 右键菜单中没有跳到行按钮
+  2. 右键菜单会显示出跳到行按钮
+  3. 右键菜单会显示跳到行按钮
+  4. 软件会自动弹出跳到行菜单，可以正确的进行行跳转
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "121"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "l1\nl2\nl3\nl4\nl5"
+    wait: 0.3
+  - name: "Ctrl+G跳到行"
+    action: keyboard_hot_key
+    keys: "ctrl,g"
+    wait: 0.5
+  - name: "输入行号"
+    action: keyboard_type
+    text: "3"
+    wait: 0.3
+  - name: "回车确认"
+    action: keyboard_press
+    keys: "Return"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,52 @@
+name: "颜色标记的&quot;标记所有”后继续“添加标记”"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 通过文本编辑器打开一个文档
+  2. 当光标在任意行，右键菜单栏选择“颜色标记”的“标记所有”->  后继续对某些文字进行“添加标记”
+  3. 当选择一段文字，右键菜单栏选择“颜色标记”的“标记所有”->  继续从上个查找标记的结果中选择部分文字->进行“添加标记”
+  
+  预期结果:
+  1. 
+  2. 后操作的颜色会覆盖在之前的操作之上
+  3. 后操作的颜色会覆盖在之前的操作之上
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "书签/颜色标记"
+tags:
+  - L2
+vars:
+  xlsx_id: "140"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "标记测试1\n标记测试2\n标记测试3"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键标记所有"
+    action: context_menu_comb
+    ref: ctx_mark_all
+    wait: 0.3
+  - name: "右键继续添加标记"
+    action: context_menu_comb
+    ref: ctx_mark_current
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,40 @@
+name: "帮助"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在设置下拉列表中点击帮助按钮，查看软件显示
+  2. 打开深度编辑器，按F1,查看软件显示
+  3. 核对中、英文下，文本编辑器帮助手册的文案
+  
+  预期结果:
+  1. 软件会自动弹出该软件的帮助文档
+  2. 软件会自动弹出该软件的帮助文档
+  3. 正常显示文本编辑器相关功能介绍和对应截图无异常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L1
+vars:
+  xlsx_id: "097"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "F1帮助"
+    action: keyboard_press
+    keys: "F1"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: ocr_exist
+        text: "帮助"

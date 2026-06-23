@@ -1,0 +1,49 @@
+name: "“保存”一个有存储权限的网络文件"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  共享文件夹A的权限设置为读写
+  
+  测试步骤:
+  1. 使用文本编辑器打开smb文件夹中A的文件进行编辑
+  2. 主菜单中保存/快捷键（Ctrl+S)
+  
+  预期结果:
+  1. 文本编辑器窗口中实时显示修改的内容
+  2. toast保存成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "文件操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "117"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开网络文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入网络文件路径"
+    action: keyboard_type
+    text: "smb://server/share/test.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 2.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

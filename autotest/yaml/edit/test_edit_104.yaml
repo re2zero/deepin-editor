@@ -1,0 +1,55 @@
+name: "语法高亮"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  超多一页显示的代码文档
+  
+  测试步骤:
+  1. 支持下列编程语言预设易分辨的色彩文本：Bat，C#，C++，CSS，HTML，Ini，Java，JavaScript，JSP，Markdown，Pascal (Delphi)，Perl，PerlScript，PHP，Python，Ruby，SQL，TeX (LaTeX)，VBScript，WindowsScript，x86 Assembler，XML等
+  2. 根据代码语法自动根据主题配色展示：ASP 标记 (<% ... %>) 以及标准脚本标记的文本会根据其脚本语言所指定的语言属性(JavaScript，VBScript 或 PerlScript)来格式；
+  3. 滚动查看文本中的代码
+  4. 放大缩小全屏切换的过程中查看代码高亮的显示
+  5. 将代码文件的tab页拖拽窗口生成的新窗口中查看代码高亮度显示
+  6. 将代码文件的tab页拖拽窗口合并窗口中查看代码高亮度显示
+  7. 从大窗口下拖拽出来生成的新窗口中查看代码高亮度显示
+  
+  预期结果:
+  1. 各编码预言的代码文本内容中显示正确的高亮颜色
+  2. 不同主题下，高亮的代码显示正常
+  3. 语法高亮的显示正常
+  4. 代码高亮显示正常
+  5. 代码高亮显示正常
+  6. 代码高亮显示正常
+  7. 代码高亮显示正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "104"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入代码文本"
+    action: keyboard_type
+    text: "def hello():\n    print('hello')\n    return True"
+    wait: 0.3
+  - name: "Ctrl+S保存"
+    action: keyboard_hot_key
+    keys: "ctrl,s"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

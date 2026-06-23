@@ -1,0 +1,44 @@
+name: "设置中缩放字号_缩放比例显示"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  已开文本编辑器窗口
+  
+  测试步骤:
+  1. 通过文本编辑器主菜单进入设置页面，调整字号大小(8~50)
+  
+  预期结果:
+  1. 底栏中缩放比例跟随字号增加展示正常，缩放范围为10%~500%
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L1
+vars:
+  xlsx_id: "035"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "修改字号"
+    action: keyboard_type
+    text: "16"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

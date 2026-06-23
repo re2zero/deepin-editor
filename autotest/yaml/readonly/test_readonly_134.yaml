@@ -1,0 +1,48 @@
+name: "只读模式_切换文件属性"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 使用文本编辑器打开一文件
+  2. 右击文件属性切换为只读模式
+  3. 继续右击文件属性切换为读写模式
+  
+  预期结果:
+  1. 应用窗口底栏显示“插入”
+  2. 应用窗口底栏显示“只读”，当前的右键菜单list显示正常，各种输入法下均无法输入文字
+  3. 应用窗口底栏显示“插入”，当前的右键菜单list恢复正常，各种输入法下均可以输入文字
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "只读模式"
+tags:
+  - L2
+vars:
+  xlsx_id: "134"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "只读模式测试"
+    wait: 0.3
+  - name: "右键开启只读模式"
+    action: context_menu_comb
+    ref: ctx_enable_readonly
+    wait: 0.3
+  - name: "尝试输入文本"
+    action: keyboard_type
+    text: "不可编辑"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: ocr_exist
+        text: "只读"

@@ -1,0 +1,45 @@
+name: "展开所有层次"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  有多层函数嵌套
+  
+  测试步骤:
+  1. 文本编辑器新建/打开含有可折叠的函数的源代码文档
+  2. 移动光标位于多层函数的节点“+”所在行区域，右键菜单中选择“展开所有层次”
+  
+  预期结果:
+  1. 
+  2. 将所有层次进行展开
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "书签/颜色标记"
+tags:
+  - L2
+vars:
+  xlsx_id: "129"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入折叠文本"
+    action: keyboard_type
+    text: "def foo():\n    x = 1\n    y = 2\n    return x+y"
+    wait: 0.3
+  - name: "右键展开所有层次"
+    action: context_menu_comb
+    ref: ctx_unfold_all
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

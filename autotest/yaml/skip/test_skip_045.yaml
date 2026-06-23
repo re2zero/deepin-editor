@@ -1,0 +1,32 @@
+name: "性能测试_冷热启动"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 应用冷、热启动
+  
+  预期结果:
+  1. 不超过1S
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "跳过"
+tags:
+  - L2
+vars:
+  xlsx_id: "045"
+  case_type: "性能测试"
+
+# NON-AUTOMATABLE: skip-性能压测类不支持自动化
+skip: "skip-性能压测类不支持自动化"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 性能测试_冷热启动"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

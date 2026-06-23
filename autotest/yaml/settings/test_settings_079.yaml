@@ -1,0 +1,54 @@
+name: "窗口设置_新窗口路径"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  默认正常窗口
+  
+  测试步骤:
+  1. 使用文本编辑器打开一个文件，进入设置中改变窗口为最大化/全屏
+  2. 从启动器中点击“文本编辑器”
+  3. 从任务栏中右击文本编辑器的图标-》文本编辑器
+  4. 从桌面上点击“文本编辑器”的快捷图标
+  5. 从主菜单的“新窗口”
+  6. 使用新窗口的快捷键Ctrl+N
+  
+  预期结果:
+  1. 正常窗口
+  2. 新窗口的属性跟随设置显示大小
+  3. 新窗口的属性跟随设置显示大小
+  4. 新窗口的属性跟随设置显示大小
+  5. 新窗口的属性跟随设置显示大小
+  6. 新窗口的属性跟随设置显示大小
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L2
+vars:
+  xlsx_id: "079"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "修改新窗口路径"
+    action: keyboard_type
+    text: "${PROJECT_ROOT}"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

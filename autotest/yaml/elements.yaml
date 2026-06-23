@@ -1,0 +1,381 @@
+# Element aliases for deepin-editor
+# All UI elements referenced by test cases must be registered here.
+# Captured from live AT-SPI tree + source code analysis (dtextedit.cpp, window.cpp, tabbar.cpp)
+app: deepin-editor
+
+vars:
+  BUILD_DIR: "${PROJECT_ROOT}/build"
+  APP_PATH: "${BUILD_DIR}/src/deepin-editor"
+  TEST_FILES_DIR: "${PROJECT_ROOT}/test_files"
+
+elements:
+  # ===== Main window =====
+  main_frame:
+    name: "DMainWindow"
+    role: "frame"
+
+  # ===== Titlebar =====
+  menu_button:
+    name: "DTitlebarDWindowOptionButton"
+    role: "push button"
+
+  close_button:
+    name: "DTitlebarDWindowCloseButton"
+    role: "push button"
+
+  minimize_button:
+    name: "DTitlebarDWindowMinButton"
+    role: "push button"
+
+  maximize_button:
+    name: "DTitlebarDWindowMaxButton"
+    role: "push button"
+
+  # ===== Tab bar =====
+  tab_bar:
+    role: "page tab list"
+
+  add_tab_button:
+    name: "DTabBarAddButton"
+    role: "push button"
+
+  # ===== Edit area (text editor) =====
+  edit_area:
+    role: "text"
+
+  # Center of edit area for right-click context menus
+  edit_center:
+    x: 500
+    y: 350
+
+  # ===== Status bar =====
+  status_row_col:
+    name: "行"
+    role: "label"
+
+  status_char_count:
+    name: "字数"
+    role: "label"
+
+  status_zoom:
+    role: "label"
+
+  status_insert:
+    name: "插入"
+    role: "label"
+
+  status_overwrite:
+    name: "覆盖"
+    role: "label"
+
+  # ===== Reload / Save As buttons (shown in modified tabs) =====
+  reload_button:
+    name: "重新载入"
+    role: "push button"
+
+  save_as_button:
+    name: "另存为"
+    role: "push button"
+
+  # ===== Main menu items (via DTitlebarDWindowOptionButton) =====
+  # Use main_menu_comb with these refs
+  menu_new_window:
+    menu: ["新窗口"]
+
+  menu_new_tab:
+    menu: ["新标签页"]
+
+  menu_open_file:
+    menu: ["打开文件"]
+
+  menu_save:
+    menu: ["保存"]
+
+  menu_save_as:
+    menu: ["另存为"]
+
+  menu_print:
+    menu: ["打印"]
+
+  menu_theme:
+    menu: ["切换主题"]
+
+  menu_settings:
+    menu: ["设置"]
+
+  # ===== Context menu items (right-click in edit area) =====
+  # Use context_menu_comb with these refs (all use edit_center coords)
+  ctx_undo:
+    x: 500
+    y: 350
+    menu: ["撤销"]
+
+  ctx_redo:
+    x: 500
+    y: 350
+    menu: ["重做"]
+
+  ctx_cut:
+    x: 500
+    y: 350
+    menu: ["剪切"]
+
+  ctx_copy:
+    x: 500
+    y: 350
+    menu: ["复制"]
+
+  ctx_paste:
+    x: 500
+    y: 350
+    menu: ["粘贴"]
+
+  ctx_delete:
+    x: 500
+    y: 350
+    menu: ["删除"]
+
+  ctx_select_all:
+    x: 500
+    y: 350
+    menu: ["全选"]
+
+  ctx_find:
+    x: 500
+    y: 350
+    menu: ["查找"]
+
+  ctx_replace:
+    x: 500
+    y: 350
+    menu: ["替换"]
+
+  ctx_jump_line:
+    x: 500
+    y: 350
+    menu: ["跳到行"]
+
+  ctx_enable_readonly:
+    x: 500
+    y: 350
+    menu: ["开启只读模式"]
+
+  ctx_disable_readonly:
+    x: 500
+    y: 350
+    menu: ["关闭只读模式"]
+
+  ctx_fullscreen:
+    x: 500
+    y: 350
+    menu: ["全屏"]
+
+  ctx_exit_fullscreen:
+    x: 500
+    y: 350
+    menu: ["退出全屏"]
+
+  ctx_open_in_filemanager:
+    x: 500
+    y: 350
+    menu: ["在文件管理器中显示"]
+
+  ctx_add_comment:
+    x: 500
+    y: 350
+    menu: ["添加注释"]
+
+  ctx_remove_comment:
+    x: 500
+    y: 350
+    menu: ["取消注释"]
+
+  ctx_voice_read:
+    x: 500
+    y: 350
+    menu: ["语音朗读"]
+
+  ctx_dictation:
+    x: 500
+    y: 350
+    menu: ["语音听写"]
+
+  ctx_translate:
+    x: 500
+    y: 350
+    menu: ["文本翻译"]
+
+  ctx_column_mode:
+    x: 500
+    y: 350
+    menu: ["列编辑模式"]
+
+  # Bookmarks
+  ctx_add_bookmark:
+    x: 500
+    y: 350
+    menu: ["添加书签"]
+
+  ctx_remove_bookmark:
+    x: 500
+    y: 350
+    menu: ["清除书签"]
+
+  ctx_prev_bookmark:
+    x: 500
+    y: 350
+    menu: ["上一个书签"]
+
+  ctx_next_bookmark:
+    x: 500
+    y: 350
+    menu: ["下一个书签"]
+
+  ctx_clear_all_bookmarks:
+    x: 500
+    y: 350
+    menu: ["清除所有书签"]
+
+  # Fold / Unfold
+  ctx_fold_all:
+    x: 500
+    y: 350
+    menu: ["折叠所有层次"]
+
+  ctx_fold_current:
+    x: 500
+    y: 350
+    menu: ["折叠当前层次"]
+
+  ctx_unfold_all:
+    x: 500
+    y: 350
+    menu: ["展开所有层次"]
+
+  ctx_unfold_current:
+    x: 500
+    y: 350
+    menu: ["展开当前层次"]
+
+  # Color Mark submenu
+  ctx_color_mark:
+    x: 500
+    y: 350
+    menu: ["颜色标记"]
+
+  ctx_mark_current:
+    x: 500
+    y: 350
+    menu: ["颜色标记", "添加标记"]
+
+  ctx_mark_all:
+    x: 500
+    y: 350
+    menu: ["颜色标记", "标记所有"]
+
+  ctx_clear_last_mark:
+    x: 500
+    y: 350
+    menu: ["颜色标记", "清除上次标记"]
+
+  ctx_clear_all_marks:
+    x: 500
+    y: 350
+    menu: ["颜色标记", "清除所有标记"]
+
+  # Change Case submenu
+  ctx_upper_case:
+    x: 500
+    y: 350
+    menu: ["切换大小写", "大写"]
+
+  ctx_lower_case:
+    x: 500
+    y: 350
+    menu: ["切换大小写", "小写"]
+
+  ctx_capitalize:
+    x: 500
+    y: 350
+    menu: ["切换大小写", "首字母大写"]
+
+  # ===== Tab bar context menu (right-click on tab) =====
+  tab_center:
+    x: 200
+    y: 45
+
+  ctx_close_tab:
+    x: 200
+    y: 45
+    menu: ["关闭标签页"]
+
+  ctx_close_other_tabs:
+    x: 200
+    y: 45
+    menu: ["关闭其他标签页"]
+
+  ctx_close_left_tabs:
+    x: 200
+    y: 45
+    menu: ["更多关闭方式", "关闭左侧所有标签页"]
+
+  ctx_close_right_tabs:
+    x: 200
+    y: 45
+    menu: ["更多关闭方式", "关闭右侧所有标签页"]
+
+  ctx_close_unmodified_tabs:
+    x: 200
+    y: 45
+    menu: ["更多关闭方式", "关闭所有未修改标签页"]
+
+  # ===== Find / Replace dialog elements =====
+  find_input:
+    name: "查找内容"
+    role: "text"
+
+  replace_input:
+    name: "替换为"
+    role: "text"
+
+  find_next_button:
+    name: "查找下一个"
+    role: "push button"
+
+  replace_button:
+    name: "替换"
+    role: "push button"
+
+  replace_all_button:
+    name: "全部替换"
+    role: "push button"
+
+  skip_button:
+    name: "跳过"
+    role: "push button"
+
+  replace_remaining_button:
+    name: "剩余替换"
+    role: "push button"
+
+  close_find_button:
+    name: "关闭"
+    role: "push button"
+
+  # Switch from find to replace mode
+  switch_to_replace_button:
+    name: "替换"
+    role: "push button"
+
+  # ===== Jump to line bar =====
+  jump_line_input:
+    name: "跳到行"
+    role: "text"
+
+  # ===== Settings dialog =====
+  settings_dialog:
+    role: "dialog"
+
+  # ===== About dialog =====
+  about_dialog:
+    role: "dialog"

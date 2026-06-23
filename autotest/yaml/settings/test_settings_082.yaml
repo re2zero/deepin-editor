@@ -1,0 +1,46 @@
+name: "字体类型设置"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  代码文档包含折叠标志和书签显示
+  
+  测试步骤:
+  1. 通过文本编辑器打开一个代码文档，进入设置窗口后，选中“字体样式”
+  2. 切换不同的字体后检查文档窗口UI显示
+  
+  预期结果:
+  1. 字体列表正常滑动查看
+  2. 左侧栏中（行号，书签，代码折叠标志）和正文内容均显示正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L3
+vars:
+  xlsx_id: "082"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "修改字体"
+    action: keyboard_type
+    text: "Monospace"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

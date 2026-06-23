@@ -1,0 +1,45 @@
+name: "快捷键编辑_小键盘"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开文本编辑器，点击设置->快捷键->选择任意快捷键映射模式->窗口/编辑，编辑任意快捷键输入框
+  2. （NUMLOCK键 亮）打开小键盘时，Ctrl/Alt +小键盘上的按键组合
+  3. （NUMLOCK键 灯灭）关闭小键盘时，Ctrl/Alt +小键盘上的按键组合
+  
+  预期结果:
+  1. 快捷键输入框提示“请输入新的快捷键”
+  2. 文本编辑器中可设置，可使用（同系统中快捷键的设置）
+  3. 文本编辑器中可设置，可使用（同系统中快捷键的设置）
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L3
+vars:
+  xlsx_id: "084"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "编辑小键盘快捷键"
+    action: keyboard_press
+    keys: "Tab"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

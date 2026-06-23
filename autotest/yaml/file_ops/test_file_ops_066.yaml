@@ -1,0 +1,46 @@
+name: "打开.md文本类型格式文件"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 使用文本编辑器打开markdown文本类型文件(.md)
+  2. 使用附件中的文件，搜索查看“搜索日程”
+  
+  预期结果:
+  1. 可以正常打开
+  2. 显示正常无乱码
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "文件操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "066"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开md文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/test.md"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

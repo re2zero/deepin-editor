@@ -1,0 +1,39 @@
+name: "软件安装"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 手动下载软件包成功后，通过终端dpkg -i deepin-editor 进行软件安装
+  2. 安装成功后查看软件是否显示正常，软件图标是否显示正常
+  3. 软件安装成功后，再次用终端进行安装，查看软件是否依然能够安装成功
+  
+  预期结果:
+  1. 可以安装成功
+  2. 软件显示正常，图标显示正常
+  3. 软件再次进行安装，依然可以安装成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/安装/卸载/启动/关机"
+feature: "窗口管理"
+tags:
+  - L1
+vars:
+  xlsx_id: "054"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "验证软件已安装"
+    action: wait
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

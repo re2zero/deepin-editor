@@ -1,0 +1,56 @@
+name: "切换编码_数据错误"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  适用于103x之前（包括103x）阶段，文本编辑器用的是Qt原生的编码识别/编码转换的库
+  
+  测试步骤:
+  1. 拖拽一个文件到编辑器，点击右下角的切换编码，会导致数据错误时
+  2. 点击取消
+  3. 点击继续，强制使用此编码
+  
+  预期结果:
+  1. 会出现如下提示：
+  使用此编码加载文件出错，如果强制使用，可能会导致文件内容发生改变。
+  2. 提示弹框消失，不进行编码的切换
+  3. 编码显示为切换的编码方式，可能会导致文件内容发生改变。
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "标签栏"
+tags:
+  - L1
+vars:
+  xlsx_id: "110"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入编码文件"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/bad_encode.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "切换编码"
+    action: keyboard_hot_key
+    keys: "ctrl,shift+c"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

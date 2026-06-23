@@ -1,0 +1,57 @@
+name: "查找替换-已选中文本时点击替换按钮切换至替换弹窗（代入选中文本）"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器已打开，打开包含文本内容&#039;示例文本测试替换&#039;的文档，使用鼠标左键拖动选中文本区域中的&#039;测试&#039;二字（保持选中状态）
+  
+  测试步骤:
+  1. 使用快捷键Ctrl+F触发查找功能
+  2. 点击查找弹窗中的'替换'按钮
+  3. 观察替换弹窗的'查找内容'输入框内容及文本区域选中状态
+  
+  预期结果:
+  1. 查找弹窗正常显示
+  2. 替换弹窗正常显示
+  3. 替换弹窗的'查找内容'输入框自动填充选中文本'测试'；文本区域中'测试'二字保持选中状态
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "查找替换"
+tags:
+  - L1
+vars:
+  xlsx_id: "005"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "示例文本测试替换"
+    wait: 0.3
+  - name: "选中测试二字"
+    action: keyboard_hot_key
+    keys: "shift+Left"
+    wait: 0.3
+  - name: "Ctrl+F打开查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "点击替换按钮切换"
+    action: element_action
+    ref: switch_to_replace_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "替换"

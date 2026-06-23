@@ -1,0 +1,52 @@
+name: "不保留现场_关闭应用（子标签页已保存+未保存）"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+  2.仅存在一个文本编辑器窗口
+  
+  测试步骤:
+  1. 文本编辑器单窗口中标签页均含有已保存又含有未保存
+  2. 关闭应用（点击X/主菜单“退出”/Alt+F4）
+  3. 点击【不保存】
+  4. 点击【保存】
+  5. 再次打开文本编辑器
+  
+  预期结果:
+  1. 所有标签页标题栏中均包含* （例如，文本a ;*文本b;*文本c）
+  2. 从左往右开始检测各标签页是否需要保存：最左边的标签页文本a为已存在文件，且无改动，直接关闭。 焦点顺移至*文本b标签页，并弹出提示框“您是否要保存此文件？” 取消/不保存/保存
+  3. 不保存当前的*文本b标签页中的修改内容，关闭该标签页。焦点顺移至*文本c标签页，并弹出提示框“您是否要保存此文件？” 取消/不保存/保存
+  4. 需弹出保存窗口，引导用户输入文件名、编码方式进行保存。保存完毕后，关闭窗口。
+  5. 新开一个空白文档tab标签页
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L1
+vars:
+  xlsx_id: "029"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "不保留现场测试"
+    wait: 0.3
+  - name: "关闭窗口"
+    action: keyboard_hot_key
+    keys: "ctrl,q"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_not_running
+        app: "deepin-editor"

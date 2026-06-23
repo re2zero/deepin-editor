@@ -1,0 +1,57 @@
+name: "颜色标记_清除所有标记"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  非空文档
+  
+  测试步骤:
+  1. 打开编辑器，新建或打开txt文档
+  2. 选中未有颜色标记的文字区域，右键查看菜单栏
+  3. 选中右键菜单项中的“添加标记”
+  4. 继续选中右键菜单项中的“清除所有标记”
+  
+  预期结果:
+  1. 
+  2. 添加标记、清除标记、标记所有
+  3. 颜色标记成功
+  4. 当前所有颜色标记均被清除
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "书签/颜色标记"
+tags:
+  - L2
+vars:
+  xlsx_id: "128"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "颜色标记测试\n标记1\n标记2"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键颜色标记所有"
+    action: context_menu_comb
+    ref: ctx_mark_all
+    wait: 0.3
+  - name: "右键清除所有标记"
+    action: context_menu_comb
+    ref: ctx_clear_all_marks
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

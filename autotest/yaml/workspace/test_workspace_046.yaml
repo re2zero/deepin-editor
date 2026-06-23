@@ -1,0 +1,57 @@
+name: "打开大文件加载过程中的交互测试_查找"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 使用文本编辑器打开大文件
+  2. 打开大文件加载过程中，按Ctrl+F/点击查找菜单
+  3. 在查找输入框输入字符进行查找操作
+  
+  预期结果:
+  1. 
+  2. 
+  3. 文件加载过程中，可以正常进行查找操作
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L2
+vars:
+  xlsx_id: "046"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开大文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 2.0
+  - name: "输入大文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/large.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "Ctrl+F查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "输入查找词"
+    action: element_set_value
+    ref: find_input
+    text: "test"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

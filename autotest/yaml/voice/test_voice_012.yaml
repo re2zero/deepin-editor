@@ -1,0 +1,40 @@
+name: "语音听写-音频设备缺失"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.已打开文本编辑器
+  2.没有接入音频设备
+  
+  测试步骤:
+  1. 编辑器鼠标右键，点击语音听写
+  
+  预期结果:
+  1. 提示未检测到音频输入设备，请检查后重试
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "语音功能"
+tags:
+  - L1
+vars:
+  xlsx_id: "012"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "右键点击语音听写"
+    action: context_menu_comb
+    ref: ctx_dictation
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: ocr_exist
+        text: "音频"

@@ -1,0 +1,50 @@
+name: "只读模式_关闭应用后切换文件属性"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 通过文本编辑器打开一个文档A
+  2. 点击文本编辑器窗口右上角的X按钮关闭应用
+  3. 右击文件属性，权限管理切换“所有者”为只读
+  4. 再次打开此文档A，观察底栏
+  
+  预期结果:
+  1. 文档A在文本编辑器窗口显示正常，底栏中显示为“插入”
+  2. 正常关闭应用
+  3. 文件图标上有上锁的图标
+  4. 底栏中显示为“只读”
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "只读模式"
+tags:
+  - L2
+vars:
+  xlsx_id: "136"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "只读关闭测试"
+    wait: 0.3
+  - name: "右键开启只读"
+    action: context_menu_comb
+    ref: ctx_enable_readonly
+    wait: 0.3
+  - name: "右键关闭只读"
+    action: context_menu_comb
+    ref: ctx_disable_readonly
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

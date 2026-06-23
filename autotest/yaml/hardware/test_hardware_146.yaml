@@ -1,0 +1,40 @@
+name: "左右滑动"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 文档主视图界面，左右滑动屏幕（出现滚动条）
+  
+  预期结果:
+  1. 内容可以滚动查看文档内容
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/硬件交互"
+feature: "硬件交互"
+tags:
+  - L1
+vars:
+  xlsx_id: "146"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入宽行文本"
+    action: keyboard_type
+    text: "左右滑动测试AAAAAAAABBBBBBBBCCCCCCCC"
+    wait: 0.3
+  - name: "鼠标横向滚动"
+    action: mouse_scroll
+    value: 3
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

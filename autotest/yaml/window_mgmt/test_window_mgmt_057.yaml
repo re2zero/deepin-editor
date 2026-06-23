@@ -1,0 +1,49 @@
+name: "dock右键菜单"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在启动器中将软件图标发送到dock上，在dock上右键软件图标查看系统显示
+  2. 软件弹出右键菜单后，选中打开按钮，查看软件显示
+  3. 软件弹出右键菜单后，选中移除驻留按，查看软件显示
+  4. 在dock上显示软件窗口后，点击鼠标右键，查看系统显示
+  5. 在系统弹出窗口后，点击关闭所有窗口，查看软件显示
+  6. 在系统弹出窗口后，点击所有窗口，查看软件显示
+  7. 在系统弹出窗口后，点击驻留按钮，查看系统显示
+  
+  预期结果:
+  1. 系统会自动弹出右键菜单显示：打开、移除驻留
+  2. 软件会自动运行
+  3. 软件会自动在dock上移除图标
+  4. 系统会自动弹出右键菜单，显示：编辑器、强制退出、所有窗口、移除驻留、关闭所有
+  5. 系统会自动关闭当前所有打开的深度编辑器窗口
+  6. 软件会列出当前所有已经打开的窗口
+  7. 系统会自动将当前软件图标驻留在dock上
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/安装/卸载/启动/关机"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "057"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "最小化窗口"
+    action: element_action
+    ref: minimize_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

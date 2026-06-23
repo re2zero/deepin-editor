@@ -1,0 +1,67 @@
+name: "替换_查询结果包含大小写"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  测试文档 含有英文的大小写字符A，a
+  
+  测试步骤:
+  1. 通过文本编辑器打开一个文档，右键菜单中选择替换框
+  2. 查找输入框中输入一个文中存在的查找词 A， “替换为”对话框中任意输入
+  3. 点击替换（根据查询结果做多次替换）
+  4. 点击剩余替换
+  5. 点击全部替换
+  
+  预期结果:
+  1. 替换框出现
+  2. 
+  3. 替换操作会根据查找词进去替换（区分大小写）
+  4. 替换当前光标所处文本后剩余查找结果（区分大小写）
+  5. 替换全部查找结果（区分大小写）
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "查找替换"
+tags:
+  - L2
+vars:
+  xlsx_id: "141"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "TestTESTtestTEST"
+    wait: 0.3
+  - name: "Ctrl+H打开替换"
+    action: keyboard_hot_key
+    keys: "ctrl,h"
+    wait: 0.5
+  - name: "输入查找内容(区分大小写)"
+    action: element_set_value
+    ref: find_input
+    text: "TEST"
+    wait: 0.3
+  - name: "输入替换内容"
+    action: element_set_value
+    ref: replace_input
+    text: "替换"
+    wait: 0.3
+  - name: "点击全部替换"
+    action: element_action
+    ref: replace_all_button
+    do: "click"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "替换"

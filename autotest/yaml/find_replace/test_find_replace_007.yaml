@@ -1,0 +1,42 @@
+name: "查找替换-查找弹窗中替换按钮可见性验证（未选中文本）"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  
+  测试步骤:
+  1. 使用快捷键Ctrl+F触发查找功能
+  2. 观察查找弹窗底部按钮区域
+  
+  预期结果:
+  1. 弹出查找弹窗
+  2. 查找弹窗中显示'替换'按钮，按钮无遮挡且未禁用（光标悬停时显示可点击状态）
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "查找替换"
+tags:
+  - L1
+vars:
+  xlsx_id: "007"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "Ctrl+F打开查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "替换"

@@ -1,0 +1,43 @@
+name: "自动换行"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开编辑器设置栏
+  2. 取消勾选
+  
+  预期结果:
+  1. 支持勾选自动换行；（默认为勾选状态）
+  2. 文字不会自动换行
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L2
+vars:
+  xlsx_id: "073"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "切换自动换行"
+    action: keyboard_press
+    keys: "space"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

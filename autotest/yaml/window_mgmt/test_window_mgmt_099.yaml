@@ -1,0 +1,38 @@
+name: "退出"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 点击右上角的设置－退出按钮，查看软件显示
+  2. 打开软件后，按Alt+F4键，查看软件显示
+  
+  预期结果:
+  1. 软件会自动退出
+  2. 软件会自动退出当前窗口
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "099"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单退出"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_not_running
+        app: "deepin-editor"

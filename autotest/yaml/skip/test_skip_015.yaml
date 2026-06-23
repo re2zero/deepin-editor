@@ -1,0 +1,37 @@
+name: "【玲珑】【文本编辑器】卸载玲珑应用"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1. 已经安装玲珑应用
+  
+  测试步骤:
+  1. 在终端执行命令：ll-cli uninstall org.deepin.editor
+  2. 在终端执行命令：ll-cli info org.deepin.editor
+  
+  预期结果:
+  1. 【文本编辑器】玲珑应用卸载成功
+  2. 没有玲珑应用【文本编辑器】的应用信息
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "跳过"
+tags:
+  - L2
+vars:
+  xlsx_id: "015"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-玲珑环境不支持自动化
+skip: "skip-玲珑环境不支持自动化"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 【玲珑】【文本编辑器】卸载玲珑应用"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

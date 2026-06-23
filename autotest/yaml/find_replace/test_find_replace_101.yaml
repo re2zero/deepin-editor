@@ -1,0 +1,93 @@
+name: "替换"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 编辑器打开一个txt文档，主菜单中选择“替换”
+  2. 输入字符后完成后，点击替换
+  3. 点击跳过
+  4. 剩余替换
+  5. 全部替换
+  6. 点击输入框中的“X”
+  7. 点击替换框的“X”按钮，
+  8. 替换框（新增需求）
+  
+  预期结果:
+  1. 弹出替换框
+  2. 仅替换当前第一条，且替换结果不再高亮显示；
+  3. 显示下一条替换结果；
+  4. 替换当前光标所处文本后剩余查找结果；
+  5. 替换全部查找结果；
+  6. 清除当前输入文本；
+  7. 关闭替换框；
+  8. 不可以在整个屏幕内移动。
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "查找替换"
+tags:
+  - L2
+vars:
+  xlsx_id: "101"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "测试测试测试"
+    wait: 0.3
+  - name: "主菜单打开替换"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "输入查找内容"
+    action: element_set_value
+    ref: find_input
+    text: "测试"
+    wait: 0.3
+  - name: "输入替换内容"
+    action: element_set_value
+    ref: replace_input
+    text: "替换"
+    wait: 0.3
+  - name: "点击替换"
+    action: element_action
+    ref: replace_button
+    do: "click"
+    wait: 0.3
+  - name: "点击跳过"
+    action: element_action
+    ref: skip_button
+    do: "click"
+    wait: 0.3
+  - name: "点击剩余替换"
+    action: element_action
+    ref: replace_remaining_button
+    do: "click"
+    wait: 0.3
+  - name: "点击全部替换"
+    action: element_action
+    ref: replace_all_button
+    do: "click"
+    wait: 0.3
+  - name: "清除查找输入"
+    action: keyboard_press
+    keys: "ctrl+a"
+    wait: 0.1
+  - name: "按Delete清除"
+    action: keyboard_press
+    keys: "Delete"
+    wait: 0.3
+  - name: "按ESC关闭"
+    action: keyboard_press
+    keys: "Escape"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3

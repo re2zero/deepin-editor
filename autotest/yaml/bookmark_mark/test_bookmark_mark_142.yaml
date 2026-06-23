@@ -1,0 +1,49 @@
+name: "列编辑交互颜色标记"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  通过文本编辑器打开多行内容的文档
+  
+  测试步骤:
+  1. 在任意行用ALT+鼠标点选多行切换列编辑模式，右键'“颜色标记”进行“添加标记”
+  2. 清除颜色标记后，再次进去列编辑模式，通过快捷键Ctrl+F6进行颜色标记
+  
+  预期结果:
+  1. 列编辑中的内容均可被标记
+  2. 列编辑中的内容均可被标记
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "书签/颜色标记"
+tags:
+  - L3
+vars:
+  xlsx_id: "142"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "列编辑颜色标记1\n列编辑颜色标记2\n列编辑颜色标记3"
+    wait: 0.3
+  - name: "Alt+Shift+Down列编辑"
+    action: keyboard_press
+    keys: "alt+shift+Down"
+    wait: 0.3
+  - name: "右键颜色标记"
+    action: context_menu_comb
+    ref: ctx_mark_current
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

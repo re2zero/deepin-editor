@@ -1,0 +1,54 @@
+name: "文件内容_Insert覆盖输入"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 通过文本编辑器打开一个文档
+  2. 按压键盘上的Insert按键
+  3. 按压键盘输入内容（覆盖小键盘区）
+  4. 再次按压键盘的Insert按键
+  
+  预期结果:
+  1. 底栏上默认“插入”模式
+  2. 底栏上切换为“覆盖”模式， 光标也切换为覆盖模式
+  3. 光标上的内容被覆盖
+  4. 切回“插入”模式
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "112"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "Insert模式测试"
+    wait: 0.3
+  - name: "Home键回到行首"
+    action: keyboard_press
+    keys: "Home"
+    wait: 0.3
+  - name: "按Insert切换覆盖模式"
+    action: keyboard_press
+    keys: "Insert"
+    wait: 0.3
+  - name: "输入覆盖文本"
+    action: keyboard_type
+    text: "OVERWRITE"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: ocr_exist
+        text: "覆盖"

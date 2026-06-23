@@ -1,0 +1,47 @@
+name: "文本编辑器应用强制退出后再次打开"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器应用已打开
+  2.文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+  
+  测试步骤:
+  1. 系统监视器中对文本编辑器应用“结束进程”后再次打开应用
+  2. 任务栏中对文本编辑器应用“强制退出”后再次打开应用
+  3. 应用崩溃后关闭窗口后再次打开应用
+  
+  预期结果:
+  1. 新开一个空白文档tab标签页
+  2. 新开一个空白文档tab标签页
+  3. 新开一个空白文档tab标签页
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "031"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "强制退出"
+    action: keyboard_hot_key
+    keys: "ctrl,q"
+    wait: 1.0
+  - name: "重新启动"
+    action: session_start
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

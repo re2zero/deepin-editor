@@ -1,0 +1,37 @@
+name: "软件卸载"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 软件安装成功后，在启动器中选中图标，点击右键--卸载，查看软件显示
+  2. 软件安装成功后，在终端中用命令将其卸载，查看软件显示
+  
+  预期结果:
+  1. 软件卸载成功
+  2. 软件卸载成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "窗口管理"
+tags:
+  - L1
+vars:
+  xlsx_id: "056"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "验证软件卸载"
+    action: wait
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

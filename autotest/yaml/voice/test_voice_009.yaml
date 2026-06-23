@@ -1,0 +1,47 @@
+name: "语音朗读-全选文字"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.打开文本编辑器，且存在文字内容
+  
+  测试步骤:
+  1. 编辑区鼠标右键全选/快捷键ctrl+a，再次鼠标右键，点击语音朗读
+  
+  预期结果:
+  1. 开始朗读所有内容
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "语音功能"
+tags:
+  - L1
+vars:
+  xlsx_id: "009"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "这是一段测试文本用于语音朗读"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键点击语音朗读"
+    action: context_menu_comb
+    ref: ctx_voice_read
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

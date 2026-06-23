@@ -1,0 +1,50 @@
+name: "新建窗口"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 点击主菜单按钮，查看软件显示
+  2. 在下拉菜单中点击新建窗口，查看软件显示
+  3. 连续点击新建窗口按钮，查看软件显示
+  4. 连续打开多个窗口后，关闭新建窗口，查看软件显示
+  5. 在新建窗口中输入任意字符，查看窗口显示
+  6. 非1040--在新窗口中输入字符后，再关闭窗口，查看软件显示
+  7. 1040阶段--在新窗口中输入字符后，再关闭窗口，查看软件显示
+  
+  预期结果:
+  1. 软件会自动弹出下拉菜单
+  2. 软件会自动弹出一个新的窗口
+  3. 软件会自动打开多个软件窗口
+  4. 自动关闭新开的窗口
+  5. 可以输入任意字符
+  6. 弹出提示保存对话框
+  7. 软件直接关闭，输入的内容会被保存，下次打开编辑器时内容会还原
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "090"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单新建窗口"
+    action: main_menu_comb
+    ref: menu_new_window
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_numbers
+        selector:
+          role: "frame"
+        number: 2

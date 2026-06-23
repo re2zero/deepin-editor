@@ -1,0 +1,50 @@
+name: "窗口设置_关闭应用保留现场"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  默认正常窗口
+  
+  测试步骤:
+  1. 打开文本编辑器应用
+  2. 最大化/全屏 窗口
+  3. 关闭应用
+  4. 再次打开文本编辑器
+  
+  预期结果:
+  1. 正常窗口
+  2. 当前窗口最大化/全屏
+  3. 应用被关闭
+  4. 窗口的状态跟随设置里窗口状态的参数设置
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L3
+vars:
+  xlsx_id: "081"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "切换保留现场"
+    action: keyboard_press
+    keys: "space"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

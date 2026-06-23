@@ -1,0 +1,52 @@
+name: "新建标签"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在主菜单中点击新建标签，查看软件显示
+  2. 连续点击新建标签按钮，查看软件显示
+  3. 打开多个标签后，点击标签的关闭按钮，查看软件显示
+  4. 打开新建标签后，在标签中输入任意字符，查看软件显示
+  5. 输入字符成功后，点击关闭标签按钮，查看软件显示
+  6. 点击放弃更改并退出按钮，查看软件显示
+  7. 点击取消按钮，查看软件显示
+  8. 点击另存为按钮，查看软件显示
+  
+  预期结果:
+  1. 软件会自动在当前窗口打开新标签
+  2. 软件会连续打开多个标签
+  3. 软件无任何提示，直接关闭标签
+  4. 可以输入任意字符
+  5. 软件会弹出提示信息，放弃更改并退出，取消，另存为
+  6. 软件不进行任何保存，直接关闭当前标签
+  7. 当前提示对话框自动取消
+  8. 软件会自动弹出文件保存对话框，可以另存文件
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "标签栏"
+tags:
+  - L2
+vars:
+  xlsx_id: "091"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单新建标签"
+    action: main_menu_comb
+    ref: menu_new_tab
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_numbers
+        selector:
+          role: "page tab"
+        number: 2

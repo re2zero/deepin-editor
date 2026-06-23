@@ -1,0 +1,49 @@
+name: "文件加载进度条_新开大文件"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  准备一个50M大文件
+  
+  测试步骤:
+  1. 使用文本编辑器打开一个新文档，查看窗口底栏
+  2. 加载完成
+  
+  预期结果:
+  1. 当文件未加载完时底栏最左侧展示加载进度条： 文案【文本加载中】+ 进度展示，其他控件同步展示在加载进度条控件的右侧
+  2. 进度条同步消失，原右侧的控件向左补位显示
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L1
+vars:
+  xlsx_id: "032"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开大文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 3.0
+  - name: "输入大文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/large.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 3.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,56 @@
+name: "查找_不按压enter键"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1040适用
+  
+  测试步骤:
+  1. 编辑器打开TXT文档，主菜单中打开查找
+  2. 输入字符后，直接点击“上一个”、"下一个"按钮
+  
+  预期结果:
+  1. 打开查找框，页面显示应保持不变
+  2. 不会全文高亮匹配字符，仅仅跳转到当前光标后第一个匹配处
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "查找替换"
+tags:
+  - L2
+vars:
+  xlsx_id: "102"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "测试文本test"
+    wait: 0.3
+  - name: "Ctrl+F打开查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "输入查找词不按enter"
+    action: element_set_value
+    ref: find_input
+    text: "test"
+    wait: 0.3
+  - name: "点击下一个"
+    action: element_action
+    ref: find_next_button
+    do: "click"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "查找"

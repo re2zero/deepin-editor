@@ -1,0 +1,42 @@
+name: "编码方式菜单调整_高分屏"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 高分屏下，切换屏幕缩放比率
+  2. 查看各个缩放比率下，编码及其二级菜单
+  
+  预期结果:
+  1. 
+  2. 各个缩放比率下，编码及其二级菜单显示正常
+  （注：中文、英文、繁体中文下均关注测试）
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/硬件交互"
+feature: "硬件交互"
+tags:
+  - L3
+vars:
+  xlsx_id: "148"
+  case_type: "兼容性测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "打开编辑器"
+    action: wait
+    wait: 0.3
+  - name: "检查编码方式菜单"
+    action: keyboard_hot_key
+    keys: "ctrl,shift+c"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

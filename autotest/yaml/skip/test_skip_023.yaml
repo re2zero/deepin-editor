@@ -1,0 +1,32 @@
+name: "【玲珑】【文本编辑器】安装玲珑应用指定版本"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在终端执行命令：ll-cli install org.deepin.editor/XXX指定版本
+  
+  预期结果:
+  1. 可正常安装成功
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "跳过"
+tags:
+  - L3
+vars:
+  xlsx_id: "023"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-玲珑环境不支持自动化
+skip: "skip-玲珑环境不支持自动化"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 【玲珑】【文本编辑器】安装玲珑应用指定版本"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

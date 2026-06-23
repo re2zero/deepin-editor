@@ -1,0 +1,38 @@
+name: "窗口设置"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在设置中查看软件窗口显示
+  2. 将窗口设置为最大化，重启软件，查看软件显示
+  3. 将窗口设置为全屏，重启软件，查看软件显示
+  4. 将窗口设置为正常窗口，重启软件，查看软件显示
+  
+  预期结果:
+  1. 默认显示为正常窗口
+  2. 软件启动后自动最大化显示
+  3. 软件启动后自动全屏显示
+  4. 软件启动后自动以正常窗口显示
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "跳过"
+tags:
+  - L2
+vars:
+  xlsx_id: "072"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-重启类场景需要letmego支持
+skip: "skip-重启类场景需要letmego支持"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 窗口设置"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

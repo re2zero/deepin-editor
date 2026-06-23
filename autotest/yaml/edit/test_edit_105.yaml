@@ -1,0 +1,48 @@
+name: "输入内容"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开用文本编辑器
+  2. 英文下通过键盘键入
+  3. 中文下通过键盘键入
+  
+  预期结果:
+  1. 默认新开一空白文档
+  2. 键入英文字符正常
+  3. 若支持输入预览则输入预览中的文字显示正常，中文输入正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L1
+vars:
+  xlsx_id: "105"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入英文"
+    action: keyboard_type
+    text: "Hello World"
+    wait: 0.3
+  - name: "输入中文"
+    action: keyboard_type
+    text: "你好世界"
+    wait: 0.3
+  - name: "输入数字"
+    action: keyboard_type
+    text: "12345"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,33 @@
+name: "【玲珑】【文本编辑器】查看玲珑应用信息"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在终端执行命令：ll-cli info org.deepin.editor
+  
+  预期结果:
+  1. 展示玲珑应用(文本编辑器)的应用信息；
+  PS: 没有安装则不展示应用信息
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/冒烟测试"
+feature: "跳过"
+tags:
+  - L2
+vars:
+  xlsx_id: "026"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-玲珑环境不支持自动化
+skip: "skip-玲珑环境不支持自动化"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 【玲珑】【文本编辑器】查看玲珑应用信息"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

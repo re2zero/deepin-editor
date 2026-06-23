@@ -1,0 +1,52 @@
+name: "另存为"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开TXT文档，然后点击主菜单--另存为按钮，查看软件显示
+  2. 假如另行保存的文件和其他文件重名，查看软件显示
+  3. 新打开一个文件或一个标签，点击主菜单--另存为按钮，查看软件显示
+  
+  预期结果:
+  1. 软件会自动文件保存对话框，文件可以进行另行保存
+  2. 软件会弹出重名提示对话框
+  3. 软件会弹出自动保存对话框
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "文件操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "094"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "另存为测试"
+    wait: 0.3
+  - name: "主菜单另存为"
+    action: main_menu_comb
+    ref: menu_save_as
+    wait: 1.0
+  - name: "输入新文件名"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/saved_as.txt"
+    wait: 0.3
+  - name: "回车确认"
+    action: keyboard_press
+    keys: "Return"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

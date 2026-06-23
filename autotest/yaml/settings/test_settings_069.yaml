@@ -1,0 +1,43 @@
+name: "设置按钮"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在主菜单下拉列表中点击设置按钮，查看软件显示
+  2. 弹出设置对话框后，按ESC键，查看软件显示
+  3. 弹出设置对话框后，点击右上角的×按钮，查看软件显示
+  4. 上下滑动查看设置页面
+  
+  预期结果:
+  1. 软件会自动弹出设置对话框
+  2. 设置对话框会自动消失
+  3. 设置对话框会自动消失
+  4. 滑块功能正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L1
+vars:
+  xlsx_id: "069"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

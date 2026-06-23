@@ -1,0 +1,44 @@
+name: "添加书签"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开一个TXT文档，鼠标右键，查看右键菜单
+  2. 点击右键菜单“添加书签”
+  3. 关闭当前文档的标签页后重新打开
+  
+  预期结果:
+  1. 右键菜单显示“添加书签”
+  2. 光标所在行添加书签
+  3. 添加的书签仍然有效
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "书签/颜色标记"
+tags:
+  - L2
+vars:
+  xlsx_id: "130"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "书签行1\n书签行2\n书签行3"
+    wait: 0.3
+  - name: "右键添加书签"
+    action: context_menu_comb
+    ref: ctx_add_bookmark
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

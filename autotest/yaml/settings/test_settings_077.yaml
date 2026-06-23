@@ -1,0 +1,43 @@
+name: "Tab 字符宽度"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开编辑器设置栏查看高级设置中的”编辑“设置参数
+  2. 调节tab字符宽度
+  
+  预期结果:
+  1. Tab 字符宽度默认为4
+  2. 1~24的范围设置成功，且正文中tab字符的宽度相适应
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L2
+vars:
+  xlsx_id: "077"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "修改Tab宽度"
+    action: keyboard_type
+    text: "4"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

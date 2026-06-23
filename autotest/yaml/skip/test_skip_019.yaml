@@ -1,0 +1,37 @@
+name: "【玲珑】【文本编辑器】更新玲珑应用"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1. 已经安装过旧版本的玲珑应用
+  
+  测试步骤:
+  1. 在终端执行命令：ll-cli upgrade org.deepin.editor
+  2. 在终端执行命令：ll-cli run org.deepin.editor
+  
+  预期结果:
+  1. 【文本编辑器】升级成功，默认升级到最新版本，可以使用命令查看信息：ll-cli info org.deepin.editor
+  2. 【文本编辑器】打开运行成功，版本为升级后的版本
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器"
+feature: "跳过"
+tags:
+  - L2
+vars:
+  xlsx_id: "019"
+  case_type: "功能测试"
+
+# NON-AUTOMATABLE: skip-玲珑环境不支持自动化
+skip: "skip-玲珑环境不支持自动化"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+steps:
+  - name: "跳过 - 【玲珑】【文本编辑器】更新玲珑应用"
+    action: wait
+    wait: 0.1
+
+teardown:
+  - action: session_stop

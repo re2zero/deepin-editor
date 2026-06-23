@@ -1,0 +1,55 @@
+name: "不同源代码文件注释"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  文件名的后缀为代码格式
+  
+  测试步骤:
+  1. 打开C、C++、java源文件，光标定位在任意一行，右键“添加注释”
+  2. 打开C、C++、java源文件，选中一段字符，右键“添加注释”
+  3. 打开Python源文件，光标定位在任意一行，右键“添加注释”
+  
+  预期结果:
+  1. 对光标所在行使用“//”注释
+  2. 对选中文字使用“/* */”注释
+  3. 对光标所在行使用“#”注释（Python不支持对一段字符进行注释）
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "132"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入Python代码"
+    action: keyboard_type
+    text: "# comment\ndef foo():\n    pass"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键添加注释"
+    action: context_menu_comb
+    ref: ctx_add_comment
+    wait: 0.3
+  - name: "右键取消注释"
+    action: context_menu_comb
+    ref: ctx_remove_comment
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

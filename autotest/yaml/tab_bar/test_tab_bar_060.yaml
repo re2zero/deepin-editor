@@ -1,0 +1,47 @@
+name: "+标签"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开编辑器后点击顶部工具栏的+号，查看软件显示
+  2. 连续点击顶部工具栏的+号，查看软件显示
+  3. 新建多个标签后，使用鼠标滚轮在标签上滚动
+  4. 将编辑器最大化显示，然后添加满标签，再将编辑器还原，查看标签显示
+  5. 在新建标签成功后，查看软件显示
+  
+  预期结果:
+  1. 软件会自动新建一个标签
+  2. 可以连续新建多个标签
+  3. 滚动鼠标滚轮会自动切换标签显示
+  4. 标签正常显示，前面会自动出现<，>
+  5. 新建标签成功后，软件会将焦点自动切换到新标签上，且能正常看见
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "标签栏"
+tags:
+  - L1
+vars:
+  xlsx_id: "060"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "点击新建标签按钮"
+    action: element_action
+    ref: add_tab_button
+    do: "click"
+    wait: 0.5
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_numbers
+        selector:
+          role: "page tab"
+        number: 2

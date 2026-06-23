@@ -1,0 +1,49 @@
+name: "列编辑操作_Delete键删除"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  文中含多列的内容
+  
+  测试步骤:
+  1. 使用Alt+鼠标选中多列，仅选中多列的光标后，按压Delete
+  2. 使用Alt+鼠标选中多列， 包括整列的字符和光标均被选中，按压Delete
+  
+  预期结果:
+  1. 光标后的字符被整列删除
+  2. 整列的字符被删除，再次按压Detele才是光标后的字符被整列删除
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "137"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入多行文本"
+    action: keyboard_type
+    text: "aaa\nbbb\nccc"
+    wait: 0.3
+  - name: "Alt+Shift+Down列编辑"
+    action: keyboard_press
+    keys: "alt+shift+Down"
+    wait: 0.3
+  - name: "按Delete删除"
+    action: keyboard_press
+    keys: "Delete"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,46 @@
+name: "代码折叠标志"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  代码文件中有{
+  
+  测试步骤:
+  1. 文本编辑器的设置菜单中查看“代码折叠标志”
+  2. 支持自动检测文件类型，根据关键字显示节点;相应的折叠显示
+  
+  预期结果:
+  1. 默认勾选
+  2. 代码折叠标识一一对应显示正常
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "设置"
+tags:
+  - L2
+vars:
+  xlsx_id: "075"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开设置"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "切换代码折叠标志"
+    action: keyboard_press
+    keys: "space"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "设置"

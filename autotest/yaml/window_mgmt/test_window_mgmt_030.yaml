@@ -1,0 +1,48 @@
+name: "不保留现场_多窗口关闭应用"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  1.文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+  2.至少存在2个文本编辑器窗口
+  
+  测试步骤:
+  1. 窗口1中存在空白的新建标签页； 新建标签页中有内容但未进行保存的标签页； 已打开文档的标签页；  已打开文档中进行修改内容未保存（*标题）的标签页， 对窗口1进行关闭（点击X/主菜单“退出”/Alt+F4）
+  2. 窗口2中存在空白的新建标签页； 新建标签页中有内容但未进行保存的标签页； 已打开文档的标签页；  已打开文档中进行修改内容未保存（*标题）的标签页，（点击X/主菜单“退出”/Alt+F4） 关闭窗口
+  3. 再次打开文本编辑器
+  
+  预期结果:
+  1. 从左往右开始对每个标签页操作， 对于无*标签的直接关闭，对于未保存含有*标签页触发提示是否保存文档，可成功完成关闭窗口1中所有标签页。 窗口2未受影响。
+  2. 同上，窗口2可成功被完成关闭。
+  3. 新开一个空白文档tab标签页
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/主菜单"
+feature: "窗口管理"
+tags:
+  - L2
+vars:
+  xlsx_id: "030"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单新建窗口"
+    action: main_menu_comb
+    ref: menu_new_window
+    wait: 1.0
+  - name: "关闭所有窗口"
+    action: keyboard_hot_key
+    keys: "ctrl,q"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_not_running
+        app: "deepin-editor"

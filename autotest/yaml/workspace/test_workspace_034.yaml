@@ -1,0 +1,58 @@
+name: "复制含有跨行符文本_查找框"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  在含有跨行符的文档中打开查找框
+  
+  测试步骤:
+  1. 复制含有文字内容+跨行符的文本内容粘贴到查找框中
+  2. 点击Enter键开始查找
+  
+  预期结果:
+  1. 跨行符不显查找框中
+  2. 可正常查找到含跨行符的所有内容
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L1
+vars:
+  xlsx_id: "034"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入跨行文本"
+    action: keyboard_type
+    text: "line1\\nline2"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "Ctrl+C复制"
+    action: keyboard_hot_key
+    keys: "ctrl,c"
+    wait: 0.3
+  - name: "Ctrl+F打开查找"
+    action: keyboard_hot_key
+    keys: "ctrl,f"
+    wait: 0.5
+  - name: "Ctrl+V粘贴到查找框"
+    action: keyboard_hot_key
+    keys: "ctrl,v"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_visible
+        selector:
+          name: "查找"

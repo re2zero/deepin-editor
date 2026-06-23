@@ -1,0 +1,46 @@
+name: "主菜单，子菜单中的键盘交互"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 光标在标题栏时，使用键盘上的Tab键切换至主菜单图标，按下“回车键”
+  2. 在主菜单列表，使用“↑”、“↓”、“←”、“→”方向键
+  3. 在高亮的列表中使用“回车键”
+  4. 按“ESC键”
+  
+  预期结果:
+  1. 展示主菜单列表
+  2. 使用“↑”、“↓”方向键在条目中选择，“←”、“→”方向键进行“收起”、“展开”子菜单动作
+  3. 执行选中的按钮
+  4. 退出菜单
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/硬件交互"
+feature: "硬件交互"
+tags:
+  - L1
+vars:
+  xlsx_id: "147"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单键盘导航"
+    action: main_menu_comb
+    ref: menu_settings
+    wait: 0.5
+  - name: "ESC关闭菜单"
+    action: keyboard_press
+    keys: "Escape"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,42 @@
+name: "文件内容_输入特殊字符"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 打开文本编辑器
+  2. 按压键盘输入特殊字符:shift,Ctrl,Caps lock
+  
+  预期结果:
+  1. 默认新开一个空白窗口，标签页文件名无*显示
+  2. 不会键入字符，且标签页文件名无*显示
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "编辑操作"
+tags:
+  - L2
+vars:
+  xlsx_id: "107"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入特殊字符"
+    action: keyboard_type
+    text: "!@#$%^&*()_+-={}[]|\\:;\"'<>?,./~`"
+    wait: 0.3
+  - name: "输入Unicode"
+    action: keyboard_type
+    text: "①②③④⑤ ★☆ ☀☁ ☂☃"
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,50 @@
+name: "语音朗读"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 选择一段文字，点击右键，查看右键菜单
+  2. 点击“右键菜单”
+  3. 未选中任何文字，点击右键，查看右键菜单
+  4. 在设置中关闭语音朗读功能，编辑器选中一段文字右键，查看右键菜单
+  
+  预期结果:
+  1. 右键菜单中有语音朗读功能
+  2. 语音播报选中部分文字
+  3. “语音朗读”功能置灰处理，无法使用
+  4. 语音朗读功能置灰处理，无法使用
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "语音功能"
+tags:
+  - L2
+vars:
+  xlsx_id: "118"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入测试文本"
+    action: keyboard_type
+    text: "这是一段测试文本用于语音朗读"
+    wait: 0.3
+  - name: "Ctrl+A全选"
+    action: keyboard_hot_key
+    keys: "ctrl,a"
+    wait: 0.3
+  - name: "右键点击语音朗读"
+    action: context_menu_comb
+    ref: ctx_voice_read
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

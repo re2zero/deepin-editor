@@ -1,0 +1,54 @@
+name: "关闭应用自动保存现场_label页高亮检查"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  只剩下一个文本编辑器应用窗口
+  
+  测试步骤:
+  1. 新标签页不进行任何编辑
+  2. 新建标签页，新建标签页输入任意字符，不保存
+  3. 点击应用工具栏菜单“打开文件”，选择任意文件打开/拖拽任意文件至应用窗口打开，不进行任何编辑
+  4. 点击应用工具栏菜单“打开文件”，选择任意文件打开/拖拽任意文件至应用窗口打开，进行编辑（添加、复制、剪切、删除等等操作），不保存
+  5. 新建标签页，编辑并保存
+  6. 切换当前显示tab页为非最后一个label点击应用窗口右上角关闭X按钮
+  7. 打开文本编辑器
+  
+  预期结果:
+  1. 
+  2. 
+  3. 
+  4. 
+  5. 
+  6. 
+  7. 步骤1~5标签页恢复为关闭前的状态
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L1
+vars:
+  xlsx_id: "047"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "输入文本"
+    action: keyboard_type
+    text: "现场恢复测试"
+    wait: 0.3
+  - name: "等待关闭后恢复"
+    action: wait
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

@@ -1,0 +1,53 @@
+name: "关闭应用自动保存现场_根源文件删除"
+app: "deepin-editor"
+screenshot: false
+description: |
+  前置条件:
+  只剩下一个文本编辑器应用窗口
+  
+  测试步骤:
+  1. 使用文本编辑器打开文档A 和 文档B
+  2. 文档A 不做编辑 ， 文档B做修改编辑
+  3. 将文档A 和 文档B 删除
+  4. 关闭文本编辑器的应用后再次打开应用
+  
+  预期结果:
+  1. 
+  2. 
+  3. 
+  4. 1040阶段（根源文件被删除后，均不保留现场）
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "工作区"
+tags:
+  - L2
+vars:
+  xlsx_id: "051"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "主菜单打开文件"
+    action: main_menu_comb
+    ref: menu_open_file
+    wait: 1.0
+  - name: "输入文件路径"
+    action: keyboard_type
+    text: "${TEST_FILES_DIR}/delete_test.txt"
+    wait: 0.3
+  - name: "回车打开"
+    action: keyboard_press
+    keys: "Return"
+    wait: 1.0
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"

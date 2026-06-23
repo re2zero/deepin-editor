@@ -1,0 +1,52 @@
+name: "批量拖拽"
+app: "deepin-editor"
+screenshot: false
+description: |
+  测试步骤:
+  1. 在桌面/文管窗口任意选中多个文件拖动到编辑器中，查看软件显示
+  2. 在桌面/文管窗口拖拽一个没有文档的文件夹到编辑器中，查看软件显示
+  3. 在桌面/文管窗口拖拽含有文档的文件夹到编辑器中，查看软件显示
+  
+  预期结果:
+  1. 软件会自动过滤非文本文件，只加载文本文件
+  2. 软件没有任何文档加载
+  3. 软件提示无效文件
+module: "/V25_2500（测试部专用）/B类解耦商店应用/文本编辑器/工作区"
+feature: "标签栏"
+tags:
+  - L2
+vars:
+  xlsx_id: "061"
+  case_type: "功能测试"
+
+setup:
+  - action: session_start
+    command: "${APP_PATH}"
+    wait: 1.0
+
+teardown:
+  - action: session_stop
+
+steps:
+  - name: "点击新建标签"
+    action: element_action
+    ref: add_tab_button
+    do: "click"
+    wait: 0.3
+  - name: "点击新建标签"
+    action: element_action
+    ref: add_tab_button
+    do: "click"
+    wait: 0.3
+  - name: "拖拽标签页"
+    action: mouse_drag
+    ref: tab_bar
+    wait: 0.3
+  - name: "等待验证"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: element_numbers
+        selector:
+          role: "page tab"
+        number: 3
