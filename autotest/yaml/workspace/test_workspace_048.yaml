@@ -38,9 +38,10 @@ steps:
     action: keyboard_press
     keys: "Return"
     wait: 1.0
-  - name: "鼠标悬停标签页"
-    action: mouse_click
+  - name: "聚焦标签页区域"
+    action: element_action
     ref: tab_bar
+    do: focus
     wait: 1.0
   - name: "等待验证"
     action: wait

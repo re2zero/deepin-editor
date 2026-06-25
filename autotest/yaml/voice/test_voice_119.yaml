@@ -28,6 +28,10 @@ teardown:
   - action: session_stop
 
 steps:
+  - name: "输入听写测试文本"
+    action: keyboard_type
+    text: "听写测试文本"
+    wait: 0.3
   - name: "右键点击语音听写"
     action: context_menu_comb
     ref: ctx_dictation

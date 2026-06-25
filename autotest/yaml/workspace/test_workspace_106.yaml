@@ -43,6 +43,9 @@ steps:
     action: keyboard_press
     keys: "Return"
     wait: 2.0
+  - name: "等待大文件加载完成"
+    action: wait
+    wait: 10.0
   - name: "等待验证"
     action: wait
     wait: 0.3

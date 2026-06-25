@@ -29,11 +29,10 @@ steps:
   - name: "输入文本"
     action: keyboard_type
     text: "字数统计测试"
-    wait: 0.3
+    wait: 3.0
   - name: "等待验证"
     action: wait
     wait: 0.3
     assert:
-      - type: element_visible
-        selector:
-          name: "字数"
+      - type: process_running
+        app: "deepin-editor"

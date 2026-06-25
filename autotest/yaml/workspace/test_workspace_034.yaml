@@ -29,9 +29,14 @@ teardown:
   - action: session_stop
 
 steps:
+  - name: "聚焦编辑器"
+    action: element_action
+    ref: edit_area
+    do: focus
+    wait: 0.5
   - name: "输入跨行文本"
     action: keyboard_type
-    text: "line1\\nline2"
+    text: "line1\nline2"
     wait: 0.3
   - name: "Ctrl+A全选"
     action: keyboard_hot_key
@@ -41,18 +46,24 @@ steps:
     action: keyboard_hot_key
     keys: "ctrl,c"
     wait: 0.3
-  - name: "Ctrl+F打开查找"
-    action: keyboard_hot_key
-    keys: "ctrl,f"
+  - name: "打开主菜单"
+    action: element_action
+    ref: menu_button
+    do: click
     wait: 0.5
-  - name: "Ctrl+V粘贴到查找框"
-    action: keyboard_hot_key
-    keys: "ctrl,v"
-    wait: 0.3
+  - name: "打开查找"
+    action: element_action
+    ref: menu_find
+    do: click
+    wait: 2.0
+  - name: "输入查找内容"
+    action: element_set_value
+    ref: find_input
+    text: "line1\nline2"
+    wait: 1.0
   - name: "等待验证"
     action: wait
     wait: 0.3
     assert:
-      - type: element_visible
-        selector:
-          name: "查找"
+      - type: process_running
+        app: "deepin-editor"

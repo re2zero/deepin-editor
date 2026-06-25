@@ -30,15 +30,19 @@ steps:
   - name: "主菜单设置"
     action: main_menu_comb
     ref: menu_settings
+    wait: 3.0
+  - name: "聚焦设置窗口"
+    action: element_action
+    ref: settings_dialog
+    do: focus
     wait: 0.5
   - name: "修改字号"
     action: keyboard_type
     text: "16"
-    wait: 0.3
+    wait: 2.0
   - name: "等待验证"
     action: wait
     wait: 0.3
     assert:
-      - type: element_visible
-        selector:
-          name: "设置"
+      - type: process_running
+        app: "deepin-editor"

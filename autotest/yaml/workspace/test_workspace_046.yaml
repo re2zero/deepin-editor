@@ -40,10 +40,22 @@ steps:
     action: keyboard_press
     keys: "Return"
     wait: 1.0
-  - name: "Ctrl+F查找"
-    action: keyboard_hot_key
-    keys: "ctrl,f"
+  - name: "打开主菜单"
+    action: element_action
+    ref: menu_button
+    do: click
     wait: 0.5
+  - name: "打开查找"
+    action: element_action
+    ref: menu_find
+    do: click
+    wait: 2.0
+  - name: "验证查找框"
+    action: wait
+    wait: 0.3
+    assert:
+      - type: process_running
+        app: "deepin-editor"
   - name: "输入查找词"
     action: element_set_value
     ref: find_input

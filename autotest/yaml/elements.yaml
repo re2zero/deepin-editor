@@ -5,7 +5,7 @@ app: deepin-editor
 
 vars:
   BUILD_DIR: "${PROJECT_ROOT}/build"
-  APP_PATH: "${BUILD_DIR}/src/deepin-editor"
+  APP_PATH: "deepin-editor"
   TEST_FILES_DIR: "${PROJECT_ROOT}/test_files"
 
 elements:
@@ -97,6 +97,10 @@ elements:
   menu_print:
     menu: ["打印"]
 
+  menu_find:
+    name: "查找"
+    role: "menu item"
+
   menu_theme:
     menu: ["切换主题"]
 
@@ -104,239 +108,196 @@ elements:
     menu: ["设置"]
 
   # ===== Context menu items (right-click in edit area) =====
-  # Use context_menu_comb with these refs (all use edit_center coords)
+  # Use context_menu_comb with these refs. Coordinates are resolved from the target element,
+  # so the right-click position follows the text/tab under test instead of a hardcoded point.
   ctx_undo:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["撤销"]
 
   ctx_redo:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["重做"]
 
   ctx_cut:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["剪切"]
 
   ctx_copy:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["复制"]
 
   ctx_paste:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["粘贴"]
 
   ctx_delete:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["删除"]
 
   ctx_select_all:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["全选"]
 
   ctx_find:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["查找"]
 
   ctx_replace:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["替换"]
 
   ctx_jump_line:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["跳到行"]
 
   ctx_enable_readonly:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["开启只读模式"]
 
   ctx_disable_readonly:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["关闭只读模式"]
 
   ctx_fullscreen:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["全屏"]
 
   ctx_exit_fullscreen:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["退出全屏"]
 
   ctx_open_in_filemanager:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["在文件管理器中显示"]
 
   ctx_add_comment:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["添加注释"]
 
   ctx_remove_comment:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["取消注释"]
 
   ctx_voice_read:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["语音朗读"]
 
   ctx_dictation:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["语音听写"]
 
   ctx_translate:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["文本翻译"]
 
   ctx_column_mode:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["列编辑模式"]
 
   # Bookmarks
   ctx_add_bookmark:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["添加书签"]
 
   ctx_remove_bookmark:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["清除书签"]
 
   ctx_prev_bookmark:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["上一个书签"]
 
   ctx_next_bookmark:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["下一个书签"]
 
   ctx_clear_all_bookmarks:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["清除所有书签"]
 
   # Fold / Unfold
   ctx_fold_all:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["折叠所有层次"]
 
   ctx_fold_current:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["折叠当前层次"]
 
   ctx_unfold_all:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["展开所有层次"]
 
   ctx_unfold_current:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["展开当前层次"]
 
   # Color Mark submenu
   ctx_color_mark:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["颜色标记"]
 
   ctx_mark_current:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["颜色标记", "添加标记"]
 
   ctx_mark_all:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["颜色标记", "标记所有"]
 
   ctx_clear_last_mark:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["颜色标记", "清除上次标记"]
 
   ctx_clear_all_marks:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["颜色标记", "清除所有标记"]
 
   # Change Case submenu
   ctx_upper_case:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["切换大小写", "大写"]
 
   ctx_lower_case:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["切换大小写", "小写"]
 
   ctx_capitalize:
-    x: 500
-    y: 350
+    click_target: edit_area
     menu: ["切换大小写", "首字母大写"]
 
   # ===== Tab bar context menu (right-click on tab) =====
   tab_center:
-    x: 200
-    y: 45
+    click_target: tab_bar
 
   ctx_close_tab:
-    x: 200
-    y: 45
+    click_target: tab_bar
     menu: ["关闭标签页"]
 
   ctx_close_other_tabs:
-    x: 200
-    y: 45
+    click_target: tab_bar
     menu: ["关闭其他标签页"]
 
   ctx_close_left_tabs:
-    x: 200
-    y: 45
+    click_target: tab_bar
     menu: ["更多关闭方式", "关闭左侧所有标签页"]
 
   ctx_close_right_tabs:
-    x: 200
-    y: 45
+    click_target: tab_bar
     menu: ["更多关闭方式", "关闭右侧所有标签页"]
 
   ctx_close_unmodified_tabs:
-    x: 200
-    y: 45
+    click_target: tab_bar
     menu: ["更多关闭方式", "关闭所有未修改标签页"]
 
   # ===== Find / Replace dialog elements =====
   find_input:
-    name: "查找内容"
     role: "text"
+    index: 0
 
   replace_input:
-    name: "替换为"
     role: "text"
+    index: 1
 
   find_next_button:
     name: "查找下一个"

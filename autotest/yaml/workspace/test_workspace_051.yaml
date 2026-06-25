@@ -44,7 +44,7 @@ steps:
   - name: "回车打开"
     action: keyboard_press
     keys: "Return"
-    wait: 1.0
+    wait: 5.0
   - name: "等待验证"
     action: wait
     wait: 0.3
