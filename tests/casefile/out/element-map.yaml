@@ -1,0 +1,225 @@
+app: deepin-editor
+version: '1.0'
+updated: '2026-09-02'
+note: id_name 取自源码扫描 accessible 名 (运行时权威)
+elements:
+- desc: 'source: controls/findbar.cpp'
+  ui_name: FindNext
+  id_name: FindNext
+  role: push button
+- desc: 'source: controls/findbar.cpp'
+  ui_name: FindPrevious
+  id_name: FindPrevious
+  role: push button
+- desc: 'source: controls/findbar.cpp'
+  ui_name: SwitchToReplace
+  id_name: SwitchToReplace
+  role: push button
+- desc: 'source: controls/findbar.cpp'
+  ui_name: CloseFind
+  id_name: CloseFind
+  role: ''
+- desc: 'source: controls/findbar.cpp'
+  ui_name: FindInput
+  id_name: FindInput
+  role: ''
+- desc: 'source: controls/findbar.cpp'
+  ui_name: FindLabel
+  id_name: FindLabel
+  role: label
+- desc: 'source: controls/jumplinebar.cpp'
+  ui_name: LineNumberInput
+  id_name: LineNumberInput
+  role: spin box
+- desc: 'source: controls/jumplinebar.cpp'
+  ui_name: GoToLineLabel
+  id_name: GoToLineLabel
+  role: label
+- desc: 'source: controls/jumplinebar.cpp'
+  ui_name: CloseJumpLine
+  id_name: CloseJumpLine
+  role: ''
+- desc: 'source: controls/linebar.cpp'
+  ui_name: ClearButton
+  id_name: ClearButton
+  role: ''
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceAll
+  id_name: ReplaceAll
+  role: push button
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceNext
+  id_name: ReplaceNext
+  role: push button
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceRest
+  id_name: ReplaceRest
+  role: push button
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceSkip
+  id_name: ReplaceSkip
+  role: push button
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: CloseReplace
+  id_name: CloseReplace
+  role: ''
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceFindInput
+  id_name: ReplaceFindInput
+  role: ''
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceWithInput
+  id_name: ReplaceWithInput
+  role: ''
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceFindLabel
+  id_name: ReplaceFindLabel
+  role: label
+- desc: 'source: controls/replacebar.cpp'
+  ui_name: ReplaceWithLabel
+  id_name: ReplaceWithLabel
+  role: label
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: CloseOtherTabs
+  id_name: CloseOtherTabs
+  role: push button
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: CloseTab
+  id_name: CloseTab
+  role: push button
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: CloseTabsToLeft
+  id_name: CloseTabsToLeft
+  role: push button
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: CloseTabsToRight
+  id_name: CloseTabsToRight
+  role: push button
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: CloseUnmodifiedTabs
+  id_name: CloseUnmodifiedTabs
+  role: push button
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: TabContextMenu
+  id_name: TabContextMenu
+  role: menu
+- desc: 'source: controls/tabbar.cpp'
+  ui_name: MoreCloseOptions
+  id_name: MoreCloseOptions
+  role: menu
+- desc: 'source: controls/warningnotices.cpp'
+  ui_name: ReloadFile
+  id_name: ReloadFile
+  role: push button
+- desc: 'source: controls/warningnotices.cpp'
+  ui_name: WarningSaveAs
+  id_name: WarningSaveAs
+  role: push button
+- desc: 'source: controls/warningnotices.cpp'
+  ui_name: EditAnyway
+  id_name: EditAnyway
+  role: push button
+- desc: 'source: editor/editwrapper.cpp'
+  ui_name: TextEditor
+  id_name: TextEditor
+  role: text
+- desc: 'source: editor/editwrapper.cpp'
+  ui_name: EditorBottomBar
+  id_name: EditorBottomBar
+  role: ''
+- desc: 'source: editor/showflodcodewidget.cpp'
+  ui_name: PContentEdit
+  id_name: PContentEdit
+  role: text
+- desc: 'source: thememodule/themepanel.cpp'
+  ui_name: ThemeListView
+  id_name: ThemeListView
+  role: list
+- desc: 'source: widgets/ColorSelectWdg.cpp'
+  ui_name: PButton
+  id_name: PButton
+  role: push button
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: PositionLabel
+  id_name: PositionLabel
+  role: label
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: CharCountLabel
+  id_name: CharCountLabel
+  role: label
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: ScaleLabel
+  id_name: ScaleLabel
+  role: label
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: ProgressLabel
+  id_name: ProgressLabel
+  role: label
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: ProgressBar
+  id_name: ProgressBar
+  role: progress bar
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: UnixAction
+  id_name: UnixAction
+  role: push button
+- desc: 'source: widgets/bottombar.cpp'
+  ui_name: WindowsAction
+  id_name: WindowsAction
+  role: push button
+- desc: 'source: widgets/ddropdownmenu.cpp'
+  ui_name: DropdownToolButton
+  id_name: DropdownToolButton
+  role: push button
+- desc: 'source: widgets/ddropdownmenu.cpp'
+  ui_name: DropdownMenu
+  id_name: DropdownMenu
+  role: menu
+- desc: 'source: widgets/ddropdownmenu.cpp'
+  ui_name: ActionGroup
+  id_name: ActionGroup
+  role: push button
+- desc: 'source: widgets/ddropdownmenu.cpp'
+  ui_name: PActUtf8
+  id_name: PActUtf8
+  role: push button
+- desc: 'source: widgets/pathsettintwgt.cpp'
+  ui_name: SamePathAsCurrentFile
+  id_name: SamePathAsCurrentFile
+  role: check box
+- desc: 'source: widgets/pathsettintwgt.cpp'
+  ui_name: RememberLastPath
+  id_name: RememberLastPath
+  role: check box
+- desc: 'source: widgets/pathsettintwgt.cpp'
+  ui_name: CustomizeDefaultPath
+  id_name: CustomizeDefaultPath
+  role: check box
+- desc: 'source: widgets/pathsettintwgt.cpp'
+  ui_name: CustomPathInput
+  id_name: CustomPathInput
+  role: text
+- desc: 'source: widgets/pathsettintwgt.cpp'
+  ui_name: BrowseCustomPath
+  id_name: BrowseCustomPath
+  role: ''
+- desc: 'source: widgets/pathsettintwgt.cpp'
+  ui_name: Group
+  id_name: Group
+  role: ''
+- desc: 'source: widgets/window.cpp'
+  ui_name: CentralWidget
+  id_name: CentralWidget
+  role: ''
+- desc: 'source: widgets/window.cpp'
+  ui_name: EditorStack
+  id_name: EditorStack
+  role: layered pane
+- desc: 'source: widgets/window.cpp'
+  ui_name: Tabbar
+  id_name: Tabbar
+  role: page tab
+- desc: 'source: widgets/window.cpp'
+  ui_name: Menu_2
+  id_name: Menu_2
+  role: menu

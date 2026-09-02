@@ -1,0 +1,188 @@
+name: 补漏_suite
+app: deepin-editor
+module: 补漏
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_补漏_gapfill_001_s1
+  name: 运行时已构造的隐藏控件可定位性验证
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ProgressLabel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ProgressBar
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ThemeListView
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: PContentEdit
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: EditAnyway
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: WarningSaveAs
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReloadFile
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: DropdownMenu
+- id: suite_补漏_001_s1
+  name: 主窗口基础元素_中央区与底部状态栏
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type
+    text: 'position label test
+
+      second line'
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: PositionLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: EditorBottomBar
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CentralWidget
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_补漏_002_s1
+  name: 查找栏_查找标签与清除按钮
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: ctrl+f
+  - step_type: action
+    action: keyboard_type
+    text: test
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ClearButton
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+- id: suite_补漏_003_s1
+  name: 替换栏_查找/替换标签与输入框
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: ctrl+h
+  - step_type: action
+    action: keyboard_type
+    text: test
+  - step_type: action
+    action: keyboard_press
+    key: tab
+  - step_type: action
+    action: keyboard_type
+    text: replace target
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceFindLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceWithLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceFindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceWithInput
+
+- id: suite_补漏_004_s1
+  name: 设置_打开/保存位置控件
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: SamePathAsCurrentFile
+      role: check box
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: RememberLastPath
+      role: check box
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CustomizeDefaultPath
+      role: check box
+  # - step_type: assert
+  #   action: assert_element
+  #   selector:
+  #     name: CustomPathInput
+  #     role: text
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: BrowseCustomPath
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+teardown:
+- action: session_stop

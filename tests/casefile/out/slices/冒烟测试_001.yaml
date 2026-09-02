@@ -1,0 +1,552 @@
+app: deepin-editor
+module: 冒烟测试
+seq: 1
+case_count: 25
+cases:
+- id: '1919203'
+  raw_title: 查找替换-点击替换按钮切换至替换弹窗（未选中文本）
+  raw_precondition: 1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能
+
+    2. 点击查找弹窗中的''替换''按钮
+
+    3. 观察当前弹窗标题及布局'
+  raw_expected: '1. 查找弹窗正常显示
+
+    2. 替换弹窗正常显示
+
+    3. 弹窗标题显示为''替换''，输入框位置、替换、跳过、剩余替换、全部替换按钮与使用快捷键Ctrl+H触发的替换弹窗完全一致'
+  title: 查找替换-点击替换按钮切换至替换弹窗（未选中文本）
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能
+  - 点击查找弹窗中的'替换'按钮
+  - 观察当前弹窗标题及布局
+  expected:
+  - 查找弹窗正常显示
+  - 替换弹窗正常显示
+  - 弹窗标题显示为'替换'，输入框位置、替换、跳过、剩余替换、全部替换按钮与使用快捷键Ctrl+H触发的替换弹窗完全一致
+  case_type: 功能测试
+  manual: false
+
+- id: '1919201'
+  raw_title: 查找替换-查找弹窗中替换按钮可见性验证（未选中文本）
+  raw_precondition: 1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能
+
+    2. 观察查找弹窗底部按钮区域'
+  raw_expected: '1. 弹出查找弹窗
+
+    2. 查找弹窗中显示''替换''按钮，按钮无遮挡且未禁用（光标悬停时显示可点击状态）'
+  title: 查找替换-查找弹窗中替换按钮可见性验证（未选中文本）
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能
+  - 观察查找弹窗底部按钮区域
+  expected:
+  - 弹出查找弹窗
+  - 查找弹窗中显示'替换'按钮，按钮无遮挡且未禁用（光标悬停时显示可点击状态）
+  case_type: 功能测试
+  manual: false
+
+- id: '1704781'
+  raw_title: 【玲珑】【文本编辑器】卸载指定版本的玲珑应用
+  raw_precondition: 1. 已经安装玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli uninstall org.deepin.editor/6.0.17
+
+    2. 在终端执行命令：ll-cli info org.deepin.editor'
+  raw_expected: '1. 【文本编辑器】玲珑指定版本的应用卸载成功
+
+    2. 没有指定版本玲珑应用【文本编辑器】的应用信息'
+  title: 【玲珑】【文本编辑器】卸载指定版本的玲珑应用
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经安装玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli uninstall org.deepin.editor/6.0.17
+  - 在终端执行命令：ll-cli info org.deepin.editor
+  expected:
+  - 【文本编辑器】玲珑指定版本的应用卸载成功
+  - 没有指定版本玲珑应用【文本编辑器】的应用信息
+  case_type: 功能测试
+  manual: false
+
+- id: '1704777'
+  raw_title: 【玲珑】【文本编辑器】查看玲珑应用包含的文件
+  raw_precondition: 1. 已经安装玲珑应用
+  raw_steps: 1. 在终端执行命令：ll-cli content org.deepin.editor
+  raw_expected: 1. 展示已安装的【文本编辑器】应用包含的文件
+  title: 【玲珑】【文本编辑器】查看玲珑应用包含的文件
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经安装玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli content org.deepin.editor
+  expected:
+  - 展示已安装的【文本编辑器】应用包含的文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1704775'
+  raw_title: 【玲珑】【文本编辑器】杀掉玲珑应用运行进程
+  raw_precondition: 1. 已经运行玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli kill org.deepin.editor
+
+    2. 终止后再次终端执行命令：ll-cli ps'
+  raw_expected: '1. 【文本编辑器】应用进程运行被终止
+
+    2. 没有显示【文本编辑器】运行'
+  title: 【玲珑】【文本编辑器】杀掉玲珑应用运行进程
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经运行玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli kill org.deepin.editor
+  - 终止后再次终端执行命令：ll-cli ps
+  expected:
+  - 【文本编辑器】应用进程运行被终止
+  - 没有显示【文本编辑器】运行
+  case_type: 功能测试
+  manual: false
+
+- id: '1704773'
+  raw_title: 【玲珑】【文本编辑器】检查玲珑应用运行情况
+  raw_precondition: 1. 已经运行玲珑应用
+  raw_steps: 1. 在终端执行命令：ll-cli ps
+  raw_expected: 1. 可以查看到【文本编辑器】的运行情况，包含：应用名称、容器ID、进程ID
+  title: 【玲珑】【文本编辑器】检查玲珑应用运行情况
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经运行玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli ps
+  expected:
+  - 可以查看到【文本编辑器】的运行情况，包含：应用名称、容器ID、进程ID
+  case_type: 功能测试
+  manual: false
+
+- id: '1704761'
+  raw_title: 【玲珑】【文本编辑器】运行玲珑应用
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli run org.deepin.editor
+  raw_expected: 1. 打开运行【文本编辑器】应用
+  title: 【玲珑】【文本编辑器】运行玲珑应用
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli run org.deepin.editor
+  expected:
+  - 打开运行【文本编辑器】应用
+  case_type: 功能测试
+  manual: false
+
+- id: '1704759'
+  raw_title: 【玲珑】【文本编辑器】安装玲珑应用指定版本
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli install org.deepin.editor/XXX指定版本
+  raw_expected: 1. 可正常安装成功
+  title: 【玲珑】【文本编辑器】安装玲珑应用指定版本
+  module: 冒烟测试
+  priority: '3'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli install org.deepin.editor/XXX指定版本
+  expected:
+  - 可正常安装成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1704755'
+  raw_title: 【玲珑】【文本编辑器】仓库玲珑应用信息
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli search org.deepin.editor
+  raw_expected: 1. 展示【文本编辑器】应用的相关信息，包含appid、name、version、arch、channel、module、description；如果版本有多个，则全部展示
+  title: 【玲珑】【文本编辑器】仓库玲珑应用信息
+  module: 冒烟测试
+  priority: '3'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli search org.deepin.editor
+  expected:
+  - 展示【文本编辑器】应用的相关信息，包含appid、name、version、arch、channel、module、description；如果版本有多个，则全部展示
+  case_type: 功能测试
+  manual: false
+
+- id: '1704753'
+  raw_title: 【玲珑】【文本编辑器】查看玲珑应用信息
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli info org.deepin.editor
+  raw_expected: '1. 展示玲珑应用(文本编辑器)的应用信息；
+
+    PS: 没有安装则不展示应用信息'
+  title: 【玲珑】【文本编辑器】查看玲珑应用信息
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli info org.deepin.editor
+  expected:
+  - 展示玲珑应用(文本编辑器)的应用信息；
+  - 'PS: 没有安装则不展示应用信息'
+  case_type: 功能测试
+  manual: false
+
+- id: '1593667'
+  raw_title: 保存编码文件场景补充
+  raw_precondition: ''
+  raw_steps: '1. 编写任意代码，然后保存
+
+    #include <stdio.h>
+
+
+    int main() {
+
+    printf("hello world");
+
+    return 0;
+
+    }
+
+    2. 关闭文本编辑器窗口
+
+    3. 再次打开文本编辑器'
+  raw_expected: '1. 保存为对应编码格式文档，如：test.h
+
+    2. 窗口可正常关闭
+
+    3. 文本编辑器中的代码关键字高亮显示，如：include、int、hello world'
+  title: 保存编码文件场景补充
+  module: 冒烟测试
+  priority: '3'
+  precondition: []
+  steps:
+  - 编写任意代码，然后保存
+  - '#include <stdio.h>'
+  - int main() {
+  - printf("hello world");
+  - return 0;
+  - '}'
+  - 关闭文本编辑器窗口
+  - 再次打开文本编辑器
+  expected:
+  - 保存为对应编码格式文档，如：test.h
+  - 窗口可正常关闭
+  - 文本编辑器中的代码关键字高亮显示，如：include、int、hello world
+  case_type: 功能测试
+  manual: false
+
+- id: '1593535'
+  raw_title: 与当前文件保存一致_首次打开新文件
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+
+    2. 主菜单打开/Ctrl+O'
+  raw_expected: '1. “与当前文件保存一致”前高亮选中
+
+    2. 打开的默认路径为 系统-文档 路径'
+  title: 与当前文件保存一致_首次打开新文件
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+  - 主菜单打开/Ctrl+O
+  expected:
+  - “与当前文件保存一致”前高亮选中
+  - 打开的默认路径为 系统-文档 路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593533'
+  raw_title: 与当前文件保存一致_首次保存新文件
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+
+    2. 编辑空白文档进行保存'
+  raw_expected: '1. “与当前文件保存一致”前高亮选中
+
+    2. 存储的默认路径为 系统-文档 路径'
+  title: 与当前文件保存一致_首次保存新文件
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+  - 编辑空白文档进行保存
+  expected:
+  - “与当前文件保存一致”前高亮选中
+  - 存储的默认路径为 系统-文档 路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593509'
+  raw_title: 自定义操作路径_打开新文件
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“自定义操作路径”，并完成自定义路径设置
+
+    2. 主菜单打开/Ctrl+O'
+  raw_expected: '1. 成功设置自定义路径
+
+    2. 默认路径为用户设置的自定义操作路径'
+  title: 自定义操作路径_打开新文件
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“自定义操作路径”，并完成自定义路径设置
+  - 主菜单打开/Ctrl+O
+  expected:
+  - 成功设置自定义路径
+  - 默认路径为用户设置的自定义操作路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593491'
+  raw_title: 字数展示_UI
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器，默认新开空白文档
+
+    2. 输入中文、英文、中英文标点符号及空格'
+  raw_expected: '1. 底栏上“字数”显示0
+
+    2. “字数”跟随计数 ，每个字符都计入一个字'
+  title: 字数展示_UI
+  module: 冒烟测试
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开文本编辑器，默认新开空白文档
+  - 输入中文、英文、中英文标点符号及空格
+  expected:
+  - 底栏上“字数”显示0
+  - “字数”跟随计数 ，每个字符都计入一个字
+  case_type: 功能测试
+  manual: false
+
+- id: '1593273'
+  raw_title: Tip框显示文件路径
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器，点击+新建标签页，鼠标光标移动到标签页上
+
+    2. 点击Ctrl+s，弹出保存确认后，鼠标光标移动到标签页上'
+  raw_expected: '1. 弹出tip框显示，文件名称
+
+    2. 弹出tip框显示，文件路径+文件名称'
+  title: Tip框显示文件路径
+  module: 冒烟测试
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开编辑器，点击+新建标签页，鼠标光标移动到标签页上
+  - 点击Ctrl+s，弹出保存确认后，鼠标光标移动到标签页上
+  expected:
+  - 弹出tip框显示，文件名称
+  - 弹出tip框显示，文件路径+文件名称
+  case_type: 功能测试
+  manual: false
+
+- id: '1593177'
+  raw_title: 软件卸载
+  raw_precondition: ''
+  raw_steps: '1. 软件安装成功后，在启动器中选中图标，点击右键--卸载，查看软件显示
+
+    2. 软件安装成功后，在终端中用命令将其卸载，查看软件显示'
+  raw_expected: '1. 软件卸载成功
+
+    2. 软件卸载成功'
+  title: 软件卸载
+  module: 冒烟测试
+  priority: '1'
+  precondition: []
+  steps:
+  - 软件安装成功后，在启动器中选中图标，点击右键--卸载，查看软件显示
+  - 软件安装成功后，在终端中用命令将其卸载，查看软件显示
+  expected:
+  - 软件卸载成功
+  - 软件卸载成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1593171'
+  raw_title: 最小化后从启动器打开应用
+  raw_precondition: ''
+  raw_steps: '1. 打开软件后，点击右上角的最小化，查看软件显示
+
+    2. 软件最小化后，从启动器中点击文本编辑器打开'
+  raw_expected: '1. 当前窗口会自动最小化
+
+    2. 文本编辑器新开一窗口'
+  title: 最小化后从启动器打开应用
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开软件后，点击右上角的最小化，查看软件显示
+  - 软件最小化后，从启动器中点击文本编辑器打开
+  expected:
+  - 当前窗口会自动最小化
+  - 文本编辑器新开一窗口
+  case_type: 功能测试
+  manual: false
+
+- id: '1593091'
+  raw_title: 打开.crt格式文件
+  raw_precondition: ''
+  raw_steps: 1. 使用文本编辑器打开minetype:application/pkix-cert+pem类型文件(.crt)
+  raw_expected: 1. 可以正常打开，显示正常
+  title: 打开.crt格式文件
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开minetype:application/pkix-cert+pem类型文件(.crt)
+  expected:
+  - 可以正常打开，显示正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593089'
+  raw_title: 打开.md文本类型格式文件
+  raw_precondition: ''
+  raw_steps: '1. 使用文本编辑器打开markdown文本类型文件(.md)
+
+    2. 使用附件中的文件，搜索查看“搜索日程”'
+  raw_expected: '1. 可以正常打开
+
+    2. 显示正常无乱码'
+  title: 打开.md文本类型格式文件
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开markdown文本类型文件(.md)
+  - 使用附件中的文件，搜索查看“搜索日程”
+  expected:
+  - 可以正常打开
+  - 显示正常无乱码
+  case_type: 功能测试
+  manual: false
+
+- id: '1593087'
+  raw_title: 打开编码方式为BIG5格式文件
+  raw_precondition: ''
+  raw_steps: 1. 使用文本编辑器打开BIG5编码类型文件
+  raw_expected: 1. 可以正常打开
+  title: 打开编码方式为BIG5格式文件
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开BIG5编码类型文件
+  expected:
+  - 可以正常打开
+  case_type: 功能测试
+  manual: false
+
+- id: '1593075'
+  raw_title: 字号大小设置
+  raw_precondition: ''
+  raw_steps: '1. 打开设置窗口后，选中字体样式，任意切换字体大小，查看软件显示
+
+    2. 查看字体最大最小设置显示'
+  raw_expected: '1. 字体大小切换成功，在软件中显示正确
+
+    2. 字体最小设置显示为8，最大设置显示为50。默认字号12px；'
+  title: 字号大小设置
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开设置窗口后，选中字体样式，任意切换字体大小，查看软件显示
+  - 查看字体最大最小设置显示
+  expected:
+  - 字体大小切换成功，在软件中显示正确
+  - 字体最小设置显示为8，最大设置显示为50。默认字号12px；
+  case_type: 功能测试
+  manual: false
+
+- id: '1593063'
+  raw_title: 显示行号
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器，查看软件显示
+
+    2. 在主菜单打开设置界面，查看软件显示
+
+    3. 在设置界面取消“显示行号”的勾选状态，查看软件显示'
+  raw_expected: '1. 左侧默认显示行号
+
+    2. “显示行号”默认勾选状态
+
+    3. 左侧不显示行号'
+  title: 显示行号
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开编辑器，查看软件显示
+  - 在主菜单打开设置界面，查看软件显示
+  - 在设置界面取消“显示行号”的勾选状态，查看软件显示
+  expected:
+  - 左侧默认显示行号
+  - “显示行号”默认勾选状态
+  - 左侧不显示行号
+  case_type: 功能测试
+  manual: false
+
+- id: '1593045'
+  raw_title: 设置【快捷键】
+  raw_precondition: ''
+  raw_steps: '1. F1打开帮助手册
+
+    2. Ctrl+Shift+/显示快捷键预览'
+  raw_expected: '1. 可以打开帮助手册
+
+    2. 可以显示快捷键预览'
+  title: 设置【快捷键】
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - F1打开帮助手册
+  - Ctrl+Shift+/显示快捷键预览
+  expected:
+  - 可以打开帮助手册
+  - 可以显示快捷键预览
+  case_type: 功能测试
+  manual: false
+
+- id: '1592865'
+  raw_title: 退出
+  raw_precondition: ''
+  raw_steps: '1. 点击右上角的设置－退出按钮，查看软件显示
+
+    2. 打开软件后，按Alt+F4键，查看软件显示'
+  raw_expected: '1. 软件会自动退出
+
+    2. 软件会自动退出当前窗口'
+  title: 退出
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 点击右上角的设置－退出按钮，查看软件显示
+  - 打开软件后，按Alt+F4键，查看软件显示
+  expected:
+  - 软件会自动退出
+  - 软件会自动退出当前窗口
+  case_type: 功能测试
+  manual: false

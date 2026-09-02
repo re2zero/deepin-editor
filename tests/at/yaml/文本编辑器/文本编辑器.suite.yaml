@@ -1,0 +1,146 @@
+name: 文本编辑器_suite
+app: deepin-editor
+module: 文本编辑器
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_文本编辑器_001_s1
+  name: 查找替换-查找与替换弹窗切换
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type
+    text: '武汉
+
+      武汉
+
+      测试'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: keyboard_type
+    text: 武汉
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: SwitchToReplace
+      role: push button
+    do: click
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: element_action
+    selector:
+      name: SwitchToReplace
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseReplace
+    do: click
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+H
+  - step_type: action
+    action: keyboard_type
+    text: 示例文本测试替换
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: element_action
+    selector:
+      name: SwitchToReplace
+      role: push button
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceWithInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceFindInput
+
+- id: suite_文本编辑器_002_s1
+  name: 文本编辑与保存
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type
+    text: '
+
+      # youqu at save test
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/save_test.txt
+    wait: 3.0
+  - step_type: action
+    action: keyboard_type
+    text: basic edit test
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+C
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+V
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+H
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+  assert_steps:
+  - step_type: assert
+    action: assert_file_exists
+    path: ${TEST_FILES_DIR}/save_test.txt
+teardown:
+- action: session_stop

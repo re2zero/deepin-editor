@@ -1,0 +1,629 @@
+name: 工作区_suite
+app: deepin-editor
+module: 工作区
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_工作区_002_s1
+  name: 点击行号_最后一行
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'line one
+
+      line two
+
+      line three
+
+      line four
+
+      '
+  - step_type: action
+    action: element_action
+    selector:
+      name: TextEditor
+      role: text
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_003_s1
+  name: 复制含有跨行符文本_查找框
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: 'first line
+
+      second line
+
+      third line
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+C
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+    wait: 1.0
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: FindInput
+    text: first line
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseFind
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+
+- id: suite_工作区_004_s1
+  name: 设置中缩放字号_缩放比例显示
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl++
+    wait: 1.0
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+-
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ScaleLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_012_s1
+  name: 重做快捷键恢复为Ctrl+Y
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: 'hello world
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+Z
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+Y
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_013_s1
+  name: +标签
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: mouse_scroll
+    selector:
+      name: Tabbar
+      role: page tab
+    do: scroll
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: EditorStack
+      role: layered pane
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_019_s1
+  name: 文件查找【快捷键】
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'FindTarget findtarget FIND match
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+    wait: 1.0
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: FindInput
+    text: FindTarget
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindPrevious
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindPrevious
+      role: push button
+    do: click
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: FindInput
+    text: findtarget
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseFind
+    do: click
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindLabel
+      role: label
+
+- id: suite_工作区_020_s1
+  name: 跳转到行【快捷键】
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'line one
+
+      line two
+
+      line three
+
+      line four
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+G
+    wait: 1.0
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: LineNumberInput
+      role: spin box
+    text: '3'
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+G
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: LineNumberInput
+      role: spin box
+    text: '999'
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseJumpLine
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: GoToLineLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_021_s1
+  name: 全选复制粘贴回车交互【快捷键】
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'copy paste me'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+C
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+V
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CharCountLabel
+      role: label
+
+- id: suite_工作区_023_s1
+  name: 输入内容
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: Hello Deepin Editor
+  - step_type: action
+    action: keyboard_type_text
+    text: 中文输入测试
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CharCountLabel
+      role: label
+
+- id: suite_工作区_025_s1
+  name: 文件内容_输入特殊字符
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: 1234567890-=,./;l'~!@#$%^&*()_+
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_026_s1
+  name: 支持换行符：linux、Windows、Mac OS
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: 'line ending test
+
+      line two
+
+      '
+  # - step_type: action
+  #   action: element_action
+  #   selector:
+  #     name: UnixAction
+  #     role: push button
+  #   do: click
+  # - step_type: action
+  #   action: element_action
+  #   selector:
+  #     name: WindowsAction
+  #     role: push button
+  #   do: click
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_027_s1
+  name: 标签管理_异常保存_切换编码
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: modified content
+  - step_type: action
+    action: element_action
+    selector:
+      name: DropdownToolButton
+      role: push button
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_032_s1
+  name: 文本编辑器重新载入被其他应用修改的根源文件
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+O
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/sample_code.c
+    wait: 3.0
+  # - step_type: action
+  #   action: element_action
+  #   selector:
+  #     name: ReloadFile
+  #     role: push button
+  #   do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_036_s1
+  name: 编辑区右键菜单_全选/跳到行/重做
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'select jump redo
+
+      line two
+
+      line three
+
+      '
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 跳到行
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: LineNumberInput
+      role: spin box
+    text: '2'
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseJumpLine
+    do: click
+  - step_type: action
+    action: keyboard_type_text
+    text: extra
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+Z
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 重做
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+# - id: suite_工作区_037_s1
+#   name: 编辑区右键菜单_大小写转换
+#   description: ''
+#   steps:
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: keyboard_type_text
+#     text: 'Hello World test
+
+#       '
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+A
+#   - step_type: action
+#     action: dtk_context_menu
+#     selector:
+#       name: TextEditor
+#       role: text
+#     items:
+#     - 切换大小写
+#     - 大写
+#   # - step_type: action
+#   #   action: keyboard_hot_key
+#   #   key: Ctrl+A
+#   # - step_type: action
+#   #   action: dtk_context_menu
+#   #   selector:
+#   #     name: TextEditor
+#   #     role: text
+#   #   items:
+#   #   - 切换大小写
+#   #   - 小写
+#   # - step_type: action
+#   #   action: keyboard_hot_key
+#   #   key: Ctrl+A
+#   # - step_type: action
+#   #   action: dtk_context_menu
+#   #   selector:
+#   #     name: TextEditor
+#   #     role: text
+#   #   items:
+#   #   - 切换大小写
+#   #   - 首字母大写
+#   assert_steps:
+#   - step_type: assert
+#     action: assert_element
+#     selector:
+#       name: TextEditor
+#       role: text
+
+# - id: suite_工作区_038_s1
+#   name: 标签栏的右键菜单
+#   description: ''
+#   steps:
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: dtk_context_menu
+#     selector:
+#       name: Tabbar
+#       role: page tab
+#     items:
+#     - 关闭标签页
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#   # assert_steps:
+#   # - step_type: assert
+#   #   action: assert_element
+#   #   selector:
+#   #     name: TextEditor
+#   #     role: text
+
+# - id: suite_工作区_039_s1
+#   name: 有左右标签时查看“更多关闭方式”
+#   description: ''
+#   steps:
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: dtk_context_menu
+#     selector:
+#       name: Tabbar
+#       role: page tab
+#     items:
+#     - 更多关闭方式
+#     - 关闭左侧所有标签页
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#     wait: 2.0
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#     wait: 2.0
+#   # assert_steps:
+#   # - step_type: assert
+#   #   action: assert_element
+#   #   selector:
+#   #     name: TextEditor
+#   #     role: text
+
+teardown:
+- action: session_stop

@@ -1,0 +1,4452 @@
+app: deepin-editor
+source: 统信桌面操作系统 V25-文本编辑器-用例.xlsx
+converted_at: '2026-09-02'
+case_count: 150
+generated_by: convert_xlsx.py (mechanical)
+cases:
+- id: '1978835'
+  raw_title: 【bug转用例】使用Shift+Tab缩进文本场景验证
+  raw_precondition: 'https://pms.uniontech.com/bug-view-351091.html
+
+
+    文本编辑器中存在多行文本'
+  raw_steps: 1. 选中多行文本进行Shift+Tab缩进操作
+  raw_expected: 1. 多行文本可以同时进行缩进
+  title: 【bug转用例】使用Shift+Tab缩进文本场景验证
+  module: 文本编辑器
+  priority: '3'
+  precondition:
+  - https://pms.uniontech.com/bug-view-351091.html
+  - 文本编辑器中存在多行文本
+  steps:
+  - 选中多行文本进行Shift+Tab缩进操作
+  expected:
+  - 多行文本可以同时进行缩进
+  case_type: 功能测试
+  manual: false
+
+- id: '1934897'
+  raw_title: 【bug转用例】修改编辑保存bashrc文件
+  raw_precondition: 桌面存在bashrc文件
+  raw_steps: 1. 打开bashrc文件，修改任意信息，保存文本
+  raw_expected: 1. 保存成功
+  title: 【bug转用例】修改编辑保存bashrc文件
+  module: 文本编辑器
+  priority: '3'
+  precondition:
+  - 桌面存在bashrc文件
+  steps:
+  - 打开bashrc文件，修改任意信息，保存文本
+  expected:
+  - 保存成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1919211'
+  raw_title: 查找替换-多匹配项中特定选中状态保留
+  raw_precondition: 1.文本编辑器正文存在多个文本“武汉”
+  raw_steps: '1. 打开文本编辑器，快捷键Ctrl+F触发查找功能
+
+    2. 在查找输入框输入文本“武汉”，点击下一个，再次点击下一个
+
+    3. 在查找弹窗中，点击右上角的“替换”按钮
+
+    4. 观察文本编辑区域的高亮选中状态'
+  raw_expected: '1. 下方显示查找窗口
+
+    2. 第二个“武汉”文本被高亮选中
+
+    3. 替换弹窗的''替换为''输入框自动填充内容与原文本区域高亮选中文本一致
+
+    4. 原文本区域中第二个''武汉''文本保持高亮选中状态'
+  title: 查找替换-多匹配项中特定选中状态保留
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 文本编辑器正文存在多个文本“武汉”
+  steps:
+  - 打开文本编辑器，快捷键Ctrl+F触发查找功能
+  - 在查找输入框输入文本“武汉”，点击下一个，再次点击下一个
+  - 在查找弹窗中，点击右上角的“替换”按钮
+  - 观察文本编辑区域的高亮选中状态
+  expected:
+  - 下方显示查找窗口
+  - 第二个“武汉”文本被高亮选中
+  - 替换弹窗的'替换为'输入框自动填充内容与原文本区域高亮选中文本一致
+  - 原文本区域中第二个'武汉'文本保持高亮选中状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1919209'
+  raw_title: 查找替换-替换弹窗填充选中内容及状态保留
+  raw_precondition: 1.文本编辑器正文存在多个文本“武汉”
+  raw_steps: '1. 打开文本编辑器，正文鼠标右键，点击查找
+
+    2. 在查找输入框输入文本“武汉”，点击下一个
+
+    3. 在查找弹窗中，点击右上角的“替换”按钮
+
+    4. 观察文本编辑区域的高亮选中状态'
+  raw_expected: '1. 下方显示查找窗口
+
+    2. 第一个“武汉”文本被高亮选中
+
+    3. 替换弹窗的''替换为''输入框自动填充内容与原文本区域高亮选中文本一致
+
+    4. 原文本区域中第二个''武汉''文本保持高亮选中状态'
+  title: 查找替换-替换弹窗填充选中内容及状态保留
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 文本编辑器正文存在多个文本“武汉”
+  steps:
+  - 打开文本编辑器，正文鼠标右键，点击查找
+  - 在查找输入框输入文本“武汉”，点击下一个
+  - 在查找弹窗中，点击右上角的“替换”按钮
+  - 观察文本编辑区域的高亮选中状态
+  expected:
+  - 下方显示查找窗口
+  - 第一个“武汉”文本被高亮选中
+  - 替换弹窗的'替换为'输入框自动填充内容与原文本区域高亮选中文本一致
+  - 原文本区域中第二个'武汉'文本保持高亮选中状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1919207'
+  raw_title: 查找替换-替换按钮切换后与Ctrl+H触发功能一致性验证
+  raw_precondition: 1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档）
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能，点击''替换''按钮切换至替换弹窗
+
+    2. 关闭当前替换弹窗，使用快捷键Ctrl+H直接触发替换功能
+
+    3. 对比步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本'
+  raw_expected: '1. 成功切换至替换弹窗
+
+    2. 弹出替换弹窗
+
+    3. 步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本完全一致'
+  title: 查找替换-替换按钮切换后与Ctrl+H触发功能一致性验证
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档）
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能，点击'替换'按钮切换至替换弹窗
+  - 关闭当前替换弹窗，使用快捷键Ctrl+H直接触发替换功能
+  - 对比步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本
+  expected:
+  - 成功切换至替换弹窗
+  - 弹出替换弹窗
+  - 步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本完全一致
+  case_type: 功能测试
+  manual: false
+
+- id: '1919205'
+  raw_title: 查找替换-已选中文本时点击替换按钮切换至替换弹窗（代入选中文本）
+  raw_precondition: 1.文本编辑器已打开，打开包含文本内容&#039;示例文本测试替换&#039;的文档，使用鼠标左键拖动选中文本区域中的&#039;测试&#039;二字（保持选中状态）
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能
+
+    2. 点击查找弹窗中的''替换''按钮
+
+    3. 观察替换弹窗的''查找内容''输入框内容及文本区域选中状态'
+  raw_expected: '1. 查找弹窗正常显示
+
+    2. 替换弹窗正常显示
+
+    3. 替换弹窗的''查找内容''输入框自动填充选中文本''测试''；文本区域中''测试''二字保持选中状态'
+  title: 查找替换-已选中文本时点击替换按钮切换至替换弹窗（代入选中文本）
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 文本编辑器已打开，打开包含文本内容&#039;示例文本测试替换&#039;的文档，使用鼠标左键拖动选中文本区域中的&#039;测试&#039;二字（保持选中状态）
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能
+  - 点击查找弹窗中的'替换'按钮
+  - 观察替换弹窗的'查找内容'输入框内容及文本区域选中状态
+  expected:
+  - 查找弹窗正常显示
+  - 替换弹窗正常显示
+  - 替换弹窗的'查找内容'输入框自动填充选中文本'测试'；文本区域中'测试'二字保持选中状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1919203'
+  raw_title: 查找替换-点击替换按钮切换至替换弹窗（未选中文本）
+  raw_precondition: 1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能
+
+    2. 点击查找弹窗中的''替换''按钮
+
+    3. 观察当前弹窗标题及布局'
+  raw_expected: '1. 查找弹窗正常显示
+
+    2. 替换弹窗正常显示
+
+    3. 弹窗标题显示为''替换''，输入框位置、替换、跳过、剩余替换、全部替换按钮与使用快捷键Ctrl+H触发的替换弹窗完全一致'
+  title: 查找替换-点击替换按钮切换至替换弹窗（未选中文本）
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能
+  - 点击查找弹窗中的'替换'按钮
+  - 观察当前弹窗标题及布局
+  expected:
+  - 查找弹窗正常显示
+  - 替换弹窗正常显示
+  - 弹窗标题显示为'替换'，输入框位置、替换、跳过、剩余替换、全部替换按钮与使用快捷键Ctrl+H触发的替换弹窗完全一致
+  case_type: 功能测试
+  manual: false
+
+- id: '1919201'
+  raw_title: 查找替换-查找弹窗中替换按钮可见性验证（未选中文本）
+  raw_precondition: 1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能
+
+    2. 观察查找弹窗底部按钮区域'
+  raw_expected: '1. 弹出查找弹窗
+
+    2. 查找弹窗中显示''替换''按钮，按钮无遮挡且未禁用（光标悬停时显示可点击状态）'
+  title: 查找替换-查找弹窗中替换按钮可见性验证（未选中文本）
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档），当前文本区域未选中文本
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能
+  - 观察查找弹窗底部按钮区域
+  expected:
+  - 弹出查找弹窗
+  - 查找弹窗中显示'替换'按钮，按钮无遮挡且未禁用（光标悬停时显示可点击状态）
+  case_type: 功能测试
+  manual: false
+
+- id: '1875739'
+  raw_title: 替换（右键菜单）
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，空文档中点击右键，查看右键菜单显示
+
+    2. 在文档页面选中一段文本，右键菜单中选中替换
+
+    3. 点击 替换
+
+    4. 点击剩余替换
+
+    5. 点击全部替换
+
+    6. 点击跳过
+
+    7. 按下ESC，或 关闭按钮
+
+    8. 拖拉替换框（新需求）'
+  raw_expected: '1. 右键菜单中没有替换菜单
+
+    2. 替换框出现，默认查找当前选择文本；
+
+    3. 逐个替换
+
+    4. 一次性替换剩余匹配文本
+
+    5. 一次性替换所有匹配文本
+
+    6. 不替换当前匹配文本
+
+    7. 关闭替换框
+
+    8. 不可移动'
+  title: 替换（右键菜单）
+  module: 文本编辑器
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，空文档中点击右键，查看右键菜单显示
+  - 在文档页面选中一段文本，右键菜单中选中替换
+  - 点击 替换
+  - 点击剩余替换
+  - 点击全部替换
+  - 点击跳过
+  - 按下ESC，或 关闭按钮
+  - 拖拉替换框（新需求）
+  expected:
+  - 右键菜单中没有替换菜单
+  - 替换框出现，默认查找当前选择文本；
+  - 逐个替换
+  - 一次性替换剩余匹配文本
+  - 一次性替换所有匹配文本
+  - 不替换当前匹配文本
+  - 关闭替换框
+  - 不可移动
+  case_type: 功能测试
+  manual: false
+
+- id: '1873485'
+  raw_title: 语音朗读-全选文字
+  raw_precondition: 1.打开文本编辑器，且存在文字内容
+  raw_steps: 1. 编辑区鼠标右键全选/快捷键ctrl+a，再次鼠标右键，点击语音朗读
+  raw_expected: 1. 开始朗读所有内容
+  title: 语音朗读-全选文字
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 打开文本编辑器，且存在文字内容
+  steps:
+  - 编辑区鼠标右键全选/快捷键ctrl+a，再次鼠标右键，点击语音朗读
+  expected:
+  - 开始朗读所有内容
+  case_type: 功能测试
+  manual: false
+
+- id: '1873483'
+  raw_title: 语音朗读/语音听写-未安装uos-ai
+  raw_precondition: '1.打开文本编辑，且存在文本内容
+
+    2.已卸载UOS-AI'
+  raw_steps: '1. 选择一段文字，鼠标右键，点击语音朗读
+
+    2. 空白处，鼠标右键，点击语音听写'
+  raw_expected: '1. 提示“请前往应用商店安装“UOS AI”后再使用”
+
+    2. 提示“请前往应用商店安装“UOS AI”后再使用”'
+  title: 语音朗读/语音听写-未安装uos-ai
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 打开文本编辑，且存在文本内容
+  - 已卸载UOS-AI
+  steps:
+  - 选择一段文字，鼠标右键，点击语音朗读
+  - 空白处，鼠标右键，点击语音听写
+  expected:
+  - 提示“请前往应用商店安装“UOS AI”后再使用”
+  - 提示“请前往应用商店安装“UOS AI”后再使用”
+  case_type: 功能测试
+  manual: false
+
+- id: '1873481'
+  raw_title: 语音朗读-音频设备缺失
+  raw_precondition: '1.打开文本编辑器，且存在文本内容
+
+    2.没有接入音频设备'
+  raw_steps: 1. 选择一段文字，鼠标右键，点击语音朗读
+  raw_expected: 1. 提示未检测到音频输出设备，请检查后重试
+  title: 语音朗读-音频设备缺失
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 打开文本编辑器，且存在文本内容
+  - 没有接入音频设备
+  steps:
+  - 选择一段文字，鼠标右键，点击语音朗读
+  expected:
+  - 提示未检测到音频输出设备，请检查后重试
+  case_type: 功能测试
+  manual: false
+
+- id: '1873479'
+  raw_title: 语音听写-音频设备缺失
+  raw_precondition: '1.已打开文本编辑器
+
+    2.没有接入音频设备'
+  raw_steps: 1. 编辑器鼠标右键，点击语音听写
+  raw_expected: 1. 提示未检测到音频输入设备，请检查后重试
+  title: 语音听写-音频设备缺失
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 已打开文本编辑器
+  - 没有接入音频设备
+  steps:
+  - 编辑器鼠标右键，点击语音听写
+  expected:
+  - 提示未检测到音频输入设备，请检查后重试
+  case_type: 功能测试
+  manual: false
+
+- id: '1873477'
+  raw_title: 重复选择语音朗读
+  raw_precondition: '1.已打开文本编辑器，且存在文本内容
+
+    2.已接入麦克风设备'
+  raw_steps: '1. 选择一段文字，鼠标右键，点击语音朗读
+
+    2. 朗读过程中，重新选择一段文字，鼠标右键，点击语音朗读
+
+    3. 重复步骤2多次'
+  raw_expected: '1. 开始朗读选择的文字
+
+    2. 开始朗读重新选择的这段文字
+
+    3. 每次都朗读重新选择的文字'
+  title: 重复选择语音朗读
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 已打开文本编辑器，且存在文本内容
+  - 已接入麦克风设备
+  steps:
+  - 选择一段文字，鼠标右键，点击语音朗读
+  - 朗读过程中，重新选择一段文字，鼠标右键，点击语音朗读
+  - 重复步骤2多次
+  expected:
+  - 开始朗读选择的文字
+  - 开始朗读重新选择的这段文字
+  - 每次都朗读重新选择的文字
+  case_type: 功能测试
+  manual: false
+
+- id: '1704781'
+  raw_title: 【玲珑】【文本编辑器】卸载指定版本的玲珑应用
+  raw_precondition: 1. 已经安装玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli uninstall org.deepin.editor/6.0.17
+
+    2. 在终端执行命令：ll-cli info org.deepin.editor'
+  raw_expected: '1. 【文本编辑器】玲珑指定版本的应用卸载成功
+
+    2. 没有指定版本玲珑应用【文本编辑器】的应用信息'
+  title: 【玲珑】【文本编辑器】卸载指定版本的玲珑应用
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经安装玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli uninstall org.deepin.editor/6.0.17
+  - 在终端执行命令：ll-cli info org.deepin.editor
+  expected:
+  - 【文本编辑器】玲珑指定版本的应用卸载成功
+  - 没有指定版本玲珑应用【文本编辑器】的应用信息
+  case_type: 功能测试
+  manual: false
+
+- id: '1704779'
+  raw_title: 【玲珑】【文本编辑器】卸载玲珑应用
+  raw_precondition: 1. 已经安装玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli uninstall org.deepin.editor
+
+    2. 在终端执行命令：ll-cli info org.deepin.editor'
+  raw_expected: '1. 【文本编辑器】玲珑应用卸载成功
+
+    2. 没有玲珑应用【文本编辑器】的应用信息'
+  title: 【玲珑】【文本编辑器】卸载玲珑应用
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 已经安装玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli uninstall org.deepin.editor
+  - 在终端执行命令：ll-cli info org.deepin.editor
+  expected:
+  - 【文本编辑器】玲珑应用卸载成功
+  - 没有玲珑应用【文本编辑器】的应用信息
+  case_type: 功能测试
+  manual: false
+
+- id: '1704777'
+  raw_title: 【玲珑】【文本编辑器】查看玲珑应用包含的文件
+  raw_precondition: 1. 已经安装玲珑应用
+  raw_steps: 1. 在终端执行命令：ll-cli content org.deepin.editor
+  raw_expected: 1. 展示已安装的【文本编辑器】应用包含的文件
+  title: 【玲珑】【文本编辑器】查看玲珑应用包含的文件
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经安装玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli content org.deepin.editor
+  expected:
+  - 展示已安装的【文本编辑器】应用包含的文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1704775'
+  raw_title: 【玲珑】【文本编辑器】杀掉玲珑应用运行进程
+  raw_precondition: 1. 已经运行玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli kill org.deepin.editor
+
+    2. 终止后再次终端执行命令：ll-cli ps'
+  raw_expected: '1. 【文本编辑器】应用进程运行被终止
+
+    2. 没有显示【文本编辑器】运行'
+  title: 【玲珑】【文本编辑器】杀掉玲珑应用运行进程
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经运行玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli kill org.deepin.editor
+  - 终止后再次终端执行命令：ll-cli ps
+  expected:
+  - 【文本编辑器】应用进程运行被终止
+  - 没有显示【文本编辑器】运行
+  case_type: 功能测试
+  manual: false
+
+- id: '1704773'
+  raw_title: 【玲珑】【文本编辑器】检查玲珑应用运行情况
+  raw_precondition: 1. 已经运行玲珑应用
+  raw_steps: 1. 在终端执行命令：ll-cli ps
+  raw_expected: 1. 可以查看到【文本编辑器】的运行情况，包含：应用名称、容器ID、进程ID
+  title: 【玲珑】【文本编辑器】检查玲珑应用运行情况
+  module: 冒烟测试
+  priority: '3'
+  precondition:
+  - 已经运行玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli ps
+  expected:
+  - 可以查看到【文本编辑器】的运行情况，包含：应用名称、容器ID、进程ID
+  case_type: 功能测试
+  manual: false
+
+- id: '1704767'
+  raw_title: 【玲珑】【文本编辑器】更新玲珑应用
+  raw_precondition: 1. 已经安装过旧版本的玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli upgrade org.deepin.editor
+
+    2. 在终端执行命令：ll-cli run org.deepin.editor'
+  raw_expected: '1. 【文本编辑器】升级成功，默认升级到最新版本，可以使用命令查看信息：ll-cli info org.deepin.editor
+
+    2. 【文本编辑器】打开运行成功，版本为升级后的版本'
+  title: 【玲珑】【文本编辑器】更新玲珑应用
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 已经安装过旧版本的玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli upgrade org.deepin.editor
+  - 在终端执行命令：ll-cli run org.deepin.editor
+  expected:
+  - 【文本编辑器】升级成功，默认升级到最新版本，可以使用命令查看信息：ll-cli info org.deepin.editor
+  - 【文本编辑器】打开运行成功，版本为升级后的版本
+  case_type: 功能测试
+  manual: false
+
+- id: '1704765'
+  raw_title: 【玲珑】【文本编辑器】玲珑应用，基本功能测试
+  raw_precondition: 1. 已经运行玲珑应用
+  raw_steps: '1. 【文本编辑器】应用，进行文字输入，删减
+
+    2. 进行查找、替换
+
+    3. 复制、剪切、粘贴
+
+    4. 编辑完成后，保存/另存为文件'
+  raw_expected: '1. 功能正常
+
+    2. 功能正常
+
+    3. 功能正常
+
+    4. 功能正常'
+  title: 【玲珑】【文本编辑器】玲珑应用，基本功能测试
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 已经运行玲珑应用
+  steps:
+  - 【文本编辑器】应用，进行文字输入，删减
+  - 进行查找、替换
+  - 复制、剪切、粘贴
+  - 编辑完成后，保存/另存为文件
+  expected:
+  - 功能正常
+  - 功能正常
+  - 功能正常
+  - 功能正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1704763'
+  raw_title: 【玲珑】【文本编辑器】运行指定版本玲珑应用
+  raw_precondition: 1. 安装有多个版本的玲珑应用
+  raw_steps: 1. 在终端执行命令：ll-cli run org.deepin.editor/6.0.17
+  raw_expected: 1. 打开运行指定版本6.0.17的【文本编辑器】应用
+  title: 【玲珑】【文本编辑器】运行指定版本玲珑应用
+  module: 文本编辑器
+  priority: '3'
+  precondition:
+  - 安装有多个版本的玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli run org.deepin.editor/6.0.17
+  expected:
+  - 打开运行指定版本6.0.17的【文本编辑器】应用
+  case_type: 功能测试
+  manual: false
+
+- id: '1704761'
+  raw_title: 【玲珑】【文本编辑器】运行玲珑应用
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli run org.deepin.editor
+  raw_expected: 1. 打开运行【文本编辑器】应用
+  title: 【玲珑】【文本编辑器】运行玲珑应用
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli run org.deepin.editor
+  expected:
+  - 打开运行【文本编辑器】应用
+  case_type: 功能测试
+  manual: false
+
+- id: '1704759'
+  raw_title: 【玲珑】【文本编辑器】安装玲珑应用指定版本
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli install org.deepin.editor/XXX指定版本
+  raw_expected: 1. 可正常安装成功
+  title: 【玲珑】【文本编辑器】安装玲珑应用指定版本
+  module: 冒烟测试
+  priority: '3'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli install org.deepin.editor/XXX指定版本
+  expected:
+  - 可正常安装成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1704757'
+  raw_title: 【玲珑】【文本编辑器】安装玲珑应用
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli install org.deepin.editor
+  raw_expected: 1. 等待一段时间后，【文本编辑器】安装完成(如果有多个版本，默认安装最高版本)，可以使用命令查看信息：ll-cli info org.deepin.editor
+  title: 【玲珑】【文本编辑器】安装玲珑应用
+  module: 文本编辑器
+  priority: '2'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli install org.deepin.editor
+  expected:
+  - 等待一段时间后，【文本编辑器】安装完成(如果有多个版本，默认安装最高版本)，可以使用命令查看信息：ll-cli info org.deepin.editor
+  case_type: 功能测试
+  manual: false
+
+- id: '1704755'
+  raw_title: 【玲珑】【文本编辑器】仓库玲珑应用信息
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli search org.deepin.editor
+  raw_expected: 1. 展示【文本编辑器】应用的相关信息，包含appid、name、version、arch、channel、module、description；如果版本有多个，则全部展示
+  title: 【玲珑】【文本编辑器】仓库玲珑应用信息
+  module: 冒烟测试
+  priority: '3'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli search org.deepin.editor
+  expected:
+  - 展示【文本编辑器】应用的相关信息，包含appid、name、version、arch、channel、module、description；如果版本有多个，则全部展示
+  case_type: 功能测试
+  manual: false
+
+- id: '1704753'
+  raw_title: 【玲珑】【文本编辑器】查看玲珑应用信息
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli info org.deepin.editor
+  raw_expected: '1. 展示玲珑应用(文本编辑器)的应用信息；
+
+    PS: 没有安装则不展示应用信息'
+  title: 【玲珑】【文本编辑器】查看玲珑应用信息
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli info org.deepin.editor
+  expected:
+  - 展示玲珑应用(文本编辑器)的应用信息；
+  - 'PS: 没有安装则不展示应用信息'
+  case_type: 功能测试
+  manual: false
+
+- id: '1593669'
+  raw_title: 内存释放检查
+  raw_precondition: ''
+  raw_steps: 1. 反复打开几十兆的txt文件，在系统监视器中检查系统内存占用情况
+  raw_expected: 1. 内存在关闭后均可恢复正常
+  title: 内存释放检查
+  module: 安全性
+  priority: '3'
+  precondition: []
+  steps:
+  - 反复打开几十兆的txt文件，在系统监视器中检查系统内存占用情况
+  expected:
+  - 内存在关闭后均可恢复正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593667'
+  raw_title: 保存编码文件场景补充
+  raw_precondition: ''
+  raw_steps: '1. 编写任意代码，然后保存
+
+    #include <stdio.h>
+
+
+    int main() {
+
+    printf("hello world");
+
+    return 0;
+
+    }
+
+    2. 关闭文本编辑器窗口
+
+    3. 再次打开文本编辑器'
+  raw_expected: '1. 保存为对应编码格式文档，如：test.h
+
+    2. 窗口可正常关闭
+
+    3. 文本编辑器中的代码关键字高亮显示，如：include、int、hello world'
+  title: 保存编码文件场景补充
+  module: 冒烟测试
+  priority: '3'
+  precondition: []
+  steps:
+  - 编写任意代码，然后保存
+  - '#include <stdio.h>'
+  - int main() {
+  - printf("hello world");
+  - return 0;
+  - '}'
+  - 关闭文本编辑器窗口
+  - 再次打开文本编辑器
+  expected:
+  - 保存为对应编码格式文档，如：test.h
+  - 窗口可正常关闭
+  - 文本编辑器中的代码关键字高亮显示，如：include、int、hello world
+  case_type: 功能测试
+  manual: false
+
+- id: '1593649'
+  raw_title: 不保留现场_关闭应用（子标签页已保存+未保存）
+  raw_precondition: '1.文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+
+    2.仅存在一个文本编辑器窗口'
+  raw_steps: '1. 文本编辑器单窗口中标签页均含有已保存又含有未保存
+
+    2. 关闭应用（点击X/主菜单“退出”/Alt+F4）
+
+    3. 点击【不保存】
+
+    4. 点击【保存】
+
+    5. 再次打开文本编辑器'
+  raw_expected: '1. 所有标签页标题栏中均包含* （例如，文本a ;*文本b;*文本c）
+
+    2. 从左往右开始检测各标签页是否需要保存：最左边的标签页文本a为已存在文件，且无改动，直接关闭。 焦点顺移至*文本b标签页，并弹出提示框“您是否要保存此文件？”
+    取消/不保存/保存
+
+    3. 不保存当前的*文本b标签页中的修改内容，关闭该标签页。焦点顺移至*文本c标签页，并弹出提示框“您是否要保存此文件？” 取消/不保存/保存
+
+    4. 需弹出保存窗口，引导用户输入文件名、编码方式进行保存。保存完毕后，关闭窗口。
+
+    5. 新开一个空白文档tab标签页'
+  title: 不保留现场_关闭应用（子标签页已保存+未保存）
+  module: 主菜单
+  priority: '1'
+  precondition:
+  - 文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+  - 仅存在一个文本编辑器窗口
+  steps:
+  - 文本编辑器单窗口中标签页均含有已保存又含有未保存
+  - 关闭应用（点击X/主菜单“退出”/Alt+F4）
+  - 点击【不保存】
+  - 点击【保存】
+  - 再次打开文本编辑器
+  expected:
+  - 所有标签页标题栏中均包含* （例如，文本a ;*文本b;*文本c）
+  - 从左往右开始检测各标签页是否需要保存：最左边的标签页文本a为已存在文件，且无改动，直接关闭。 焦点顺移至*文本b标签页，并弹出提示框“您是否要保存此文件？”
+    取消/不保存/保存
+  - 不保存当前的*文本b标签页中的修改内容，关闭该标签页。焦点顺移至*文本c标签页，并弹出提示框“您是否要保存此文件？” 取消/不保存/保存
+  - 需弹出保存窗口，引导用户输入文件名、编码方式进行保存。保存完毕后，关闭窗口。
+  - 新开一个空白文档tab标签页
+  case_type: 功能测试
+  manual: false
+
+- id: '1593647'
+  raw_title: 不保留现场_多窗口关闭应用
+  raw_precondition: '1.文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+
+    2.至少存在2个文本编辑器窗口'
+  raw_steps: '1. 窗口1中存在空白的新建标签页； 新建标签页中有内容但未进行保存的标签页； 已打开文档的标签页；  已打开文档中进行修改内容未保存（*标题）的标签页，
+    对窗口1进行关闭（点击X/主菜单“退出”/Alt+F4）
+
+    2. 窗口2中存在空白的新建标签页； 新建标签页中有内容但未进行保存的标签页； 已打开文档的标签页；  已打开文档中进行修改内容未保存（*标题）的标签页，（点击X/主菜单“退出”/Alt+F4）
+    关闭窗口
+
+    3. 再次打开文本编辑器'
+  raw_expected: '1. 从左往右开始对每个标签页操作， 对于无*标签的直接关闭，对于未保存含有*标签页触发提示是否保存文档，可成功完成关闭窗口1中所有标签页。
+    窗口2未受影响。
+
+    2. 同上，窗口2可成功被完成关闭。
+
+    3. 新开一个空白文档tab标签页'
+  title: 不保留现场_多窗口关闭应用
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - 文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+  - 至少存在2个文本编辑器窗口
+  steps:
+  - 窗口1中存在空白的新建标签页； 新建标签页中有内容但未进行保存的标签页； 已打开文档的标签页；  已打开文档中进行修改内容未保存（*标题）的标签页， 对窗口1进行关闭（点击X/主菜单“退出”/Alt+F4）
+  - 窗口2中存在空白的新建标签页； 新建标签页中有内容但未进行保存的标签页； 已打开文档的标签页；  已打开文档中进行修改内容未保存（*标题）的标签页，（点击X/主菜单“退出”/Alt+F4）
+    关闭窗口
+  - 再次打开文本编辑器
+  expected:
+  - 从左往右开始对每个标签页操作， 对于无*标签的直接关闭，对于未保存含有*标签页触发提示是否保存文档，可成功完成关闭窗口1中所有标签页。 窗口2未受影响。
+  - 同上，窗口2可成功被完成关闭。
+  - 新开一个空白文档tab标签页
+  case_type: 功能测试
+  manual: false
+
+- id: '1593645'
+  raw_title: 文本编辑器应用强制退出后再次打开
+  raw_precondition: '1.文本编辑器应用已打开
+
+    2.文本编辑器高级设置中取消勾选“保留关闭前的窗口”'
+  raw_steps: '1. 系统监视器中对文本编辑器应用“结束进程”后再次打开应用
+
+    2. 任务栏中对文本编辑器应用“强制退出”后再次打开应用
+
+    3. 应用崩溃后关闭窗口后再次打开应用'
+  raw_expected: '1. 新开一个空白文档tab标签页
+
+    2. 新开一个空白文档tab标签页
+
+    3. 新开一个空白文档tab标签页'
+  title: 文本编辑器应用强制退出后再次打开
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - 文本编辑器应用已打开
+  - 文本编辑器高级设置中取消勾选“保留关闭前的窗口”
+  steps:
+  - 系统监视器中对文本编辑器应用“结束进程”后再次打开应用
+  - 任务栏中对文本编辑器应用“强制退出”后再次打开应用
+  - 应用崩溃后关闭窗口后再次打开应用
+  expected:
+  - 新开一个空白文档tab标签页
+  - 新开一个空白文档tab标签页
+  - 新开一个空白文档tab标签页
+  case_type: 功能测试
+  manual: false
+
+- id: '1593639'
+  raw_title: 文件加载进度条_新开大文件
+  raw_precondition: 准备一个50M大文件
+  raw_steps: '1. 使用文本编辑器打开一个新文档，查看窗口底栏
+
+    2. 加载完成'
+  raw_expected: '1. 当文件未加载完时底栏最左侧展示加载进度条： 文案【文本加载中】+ 进度展示，其他控件同步展示在加载进度条控件的右侧
+
+    2. 进度条同步消失，原右侧的控件向左补位显示'
+  title: 文件加载进度条_新开大文件
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 准备一个50M大文件
+  steps:
+  - 使用文本编辑器打开一个新文档，查看窗口底栏
+  - 加载完成
+  expected:
+  - 当文件未加载完时底栏最左侧展示加载进度条： 文案【文本加载中】+ 进度展示，其他控件同步展示在加载进度条控件的右侧
+  - 进度条同步消失，原右侧的控件向左补位显示
+  case_type: 功能测试
+  manual: false
+
+- id: '1593611'
+  raw_title: 点击行号_最后一行
+  raw_precondition: 文本编辑器设置中默认勾选“显示行号”
+  raw_steps: '1. 通过文本编辑器新开一多行文档
+
+    2. 在左侧栏中单击最后一行'
+  raw_expected: '1. 首行行号默认高亮（光标闪烁在首行）
+
+    2. 默认选中整行内容，并且光标定位在当前行尾'
+  title: 点击行号_最后一行
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 文本编辑器设置中默认勾选“显示行号”
+  steps:
+  - 通过文本编辑器新开一多行文档
+  - 在左侧栏中单击最后一行
+  expected:
+  - 首行行号默认高亮（光标闪烁在首行）
+  - 默认选中整行内容，并且光标定位在当前行尾
+  case_type: 功能测试
+  manual: false
+
+- id: '1593597'
+  raw_title: 复制含有跨行符文本_查找框
+  raw_precondition: 在含有跨行符的文档中打开查找框
+  raw_steps: '1. 复制含有文字内容+跨行符的文本内容粘贴到查找框中
+
+    2. 点击Enter键开始查找'
+  raw_expected: '1. 跨行符不显查找框中
+
+    2. 可正常查找到含跨行符的所有内容'
+  title: 复制含有跨行符文本_查找框
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 在含有跨行符的文档中打开查找框
+  steps:
+  - 复制含有文字内容+跨行符的文本内容粘贴到查找框中
+  - 点击Enter键开始查找
+  expected:
+  - 跨行符不显查找框中
+  - 可正常查找到含跨行符的所有内容
+  case_type: 功能测试
+  manual: false
+
+- id: '1593577'
+  raw_title: 设置中缩放字号_缩放比例显示
+  raw_precondition: 已开文本编辑器窗口
+  raw_steps: 1. 通过文本编辑器主菜单进入设置页面，调整字号大小(8~50)
+  raw_expected: 1. 底栏中缩放比例跟随字号增加展示正常，缩放范围为10%~500%
+  title: 设置中缩放字号_缩放比例显示
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 已开文本编辑器窗口
+  steps:
+  - 通过文本编辑器主菜单进入设置页面，调整字号大小(8~50)
+  expected:
+  - 底栏中缩放比例跟随字号增加展示正常，缩放范围为10%~500%
+  case_type: 功能测试
+  manual: false
+
+- id: '1593561'
+  raw_title: 取消勾选“允许鼠标中键执行粘贴操作”
+  raw_precondition: 默认勾选“允许鼠标中键执行粘贴操作”
+  raw_steps: '1. 进入设置 - 高级设置，取消勾选“允许鼠标中键执行粘贴操作”
+
+    2. 复制若干文字如abcd，通过按压鼠标中键进行粘贴
+
+    3. 进入设置 - 高级设置，勾选“允许鼠标中键执行粘贴操作”，通过按压鼠标中键进行粘贴'
+  raw_expected: '1. 可以取消勾选
+
+    2. 无法粘贴成功
+
+    3. 可以粘贴成功 (同step2中的复制内容abcd)'
+  title: 取消勾选“允许鼠标中键执行粘贴操作”
+  module: 主菜单
+  priority: '1'
+  precondition:
+  - 默认勾选“允许鼠标中键执行粘贴操作”
+  steps:
+  - 进入设置 - 高级设置，取消勾选“允许鼠标中键执行粘贴操作”
+  - 复制若干文字如abcd，通过按压鼠标中键进行粘贴
+  - 进入设置 - 高级设置，勾选“允许鼠标中键执行粘贴操作”，通过按压鼠标中键进行粘贴
+  expected:
+  - 可以取消勾选
+  - 无法粘贴成功
+  - 可以粘贴成功 (同step2中的复制内容abcd)
+  case_type: 功能测试
+  manual: false
+
+- id: '1593551'
+  raw_title: 记住最后的操作路径_打开新文件
+  raw_precondition: 存在最后的操作路径，比如 “下载 ”路径下
+  raw_steps: 1. 在文本编辑器应用中，主菜单打开/Ctrl+O
+  raw_expected: 1. 打开文件的路径为上次的操作路径（“下载 ”路径）
+  title: 记住最后的操作路径_打开新文件
+  module: 主菜单
+  priority: '1'
+  precondition:
+  - 存在最后的操作路径，比如 “下载 ”路径下
+  steps:
+  - 在文本编辑器应用中，主菜单打开/Ctrl+O
+  expected:
+  - 打开文件的路径为上次的操作路径（“下载 ”路径）
+  case_type: 功能测试
+  manual: false
+
+- id: '1593549'
+  raw_title: 记住最后的操作路径_保存一个未保存过的新文档
+  raw_precondition: 存在最后的操作路径，比如 “下载 ”路径下
+  raw_steps: 1. 在文本编辑器的空白标签页中进行编辑并保存
+  raw_expected: 1. 存储路径为上次的操作路径（“下载 ”路径）
+  title: 记住最后的操作路径_保存一个未保存过的新文档
+  module: 主菜单
+  priority: '1'
+  precondition:
+  - 存在最后的操作路径，比如 “下载 ”路径下
+  steps:
+  - 在文本编辑器的空白标签页中进行编辑并保存
+  expected:
+  - 存储路径为上次的操作路径（“下载 ”路径）
+  case_type: 功能测试
+  manual: false
+
+- id: '1593535'
+  raw_title: 与当前文件保存一致_首次打开新文件
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+
+    2. 主菜单打开/Ctrl+O'
+  raw_expected: '1. “与当前文件保存一致”前高亮选中
+
+    2. 打开的默认路径为 系统-文档 路径'
+  title: 与当前文件保存一致_首次打开新文件
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+  - 主菜单打开/Ctrl+O
+  expected:
+  - “与当前文件保存一致”前高亮选中
+  - 打开的默认路径为 系统-文档 路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593533'
+  raw_title: 与当前文件保存一致_首次保存新文件
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+
+    2. 编辑空白文档进行保存'
+  raw_expected: '1. “与当前文件保存一致”前高亮选中
+
+    2. 存储的默认路径为 系统-文档 路径'
+  title: 与当前文件保存一致_首次保存新文件
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“与当前文件保存一致”
+  - 编辑空白文档进行保存
+  expected:
+  - “与当前文件保存一致”前高亮选中
+  - 存储的默认路径为 系统-文档 路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593509'
+  raw_title: 自定义操作路径_打开新文件
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“自定义操作路径”，并完成自定义路径设置
+
+    2. 主菜单打开/Ctrl+O'
+  raw_expected: '1. 成功设置自定义路径
+
+    2. 默认路径为用户设置的自定义操作路径'
+  title: 自定义操作路径_打开新文件
+  module: 冒烟测试
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“自定义操作路径”，并完成自定义路径设置
+  - 主菜单打开/Ctrl+O
+  expected:
+  - 成功设置自定义路径
+  - 默认路径为用户设置的自定义操作路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593507'
+  raw_title: 自定义操作路径_保存一个未保存过的新文档
+  raw_precondition: 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  raw_steps: '1. 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“自定义操作路径”，并完成自定义路径设置
+
+    2. 在文本编辑器的空白标签页中进行编辑并保存'
+  raw_expected: '1. 成功设置自定义路径
+
+    2. 默认路径为用户设置的自定义操作路径'
+  title: 自定义操作路径_保存一个未保存过的新文档
+  module: 主菜单
+  priority: '1'
+  precondition:
+  - 创造首次打开的场景：rm -r ~/.config/deepin/deepin-editor/config.conf
+  steps:
+  - 进入文本编辑器设置中切换 “打开/保存位置”项的属性为“自定义操作路径”，并完成自定义路径设置
+  - 在文本编辑器的空白标签页中进行编辑并保存
+  expected:
+  - 成功设置自定义路径
+  - 默认路径为用户设置的自定义操作路径
+  case_type: 功能测试
+  manual: false
+
+- id: '1593491'
+  raw_title: 字数展示_UI
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器，默认新开空白文档
+
+    2. 输入中文、英文、中英文标点符号及空格'
+  raw_expected: '1. 底栏上“字数”显示0
+
+    2. “字数”跟随计数 ，每个字符都计入一个字'
+  title: 字数展示_UI
+  module: 冒烟测试
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开文本编辑器，默认新开空白文档
+  - 输入中文、英文、中英文标点符号及空格
+  expected:
+  - 底栏上“字数”显示0
+  - “字数”跟随计数 ，每个字符都计入一个字
+  case_type: 功能测试
+  manual: false
+
+- id: '1593461'
+  raw_title: 验证使用文本编辑器，无内存泄漏
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个大文件（如100M.txt）后关闭大文件的标签页
+
+    2. 多次打开和关闭文本编辑器'
+  raw_expected: '1. 无内存泄漏 （系统监视器中内容跟随打开关闭而相应地上升回落）
+
+    2. 无内存泄漏'
+  title: 验证使用文本编辑器，无内存泄漏
+  module: 安全性
+  priority: '3'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个大文件（如100M.txt）后关闭大文件的标签页
+  - 多次打开和关闭文本编辑器
+  expected:
+  - 无内存泄漏 （系统监视器中内容跟随打开关闭而相应地上升回落）
+  - 无内存泄漏
+  case_type: 安全性测试
+  manual: false
+
+- id: '1593373'
+  raw_title: 性能测试_冷热启动
+  raw_precondition: ''
+  raw_steps: 1. 应用冷、热启动
+  raw_expected: 1. 不超过1S
+  title: 性能测试_冷热启动
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 应用冷、热启动
+  expected:
+  - 不超过1S
+  case_type: 性能测试
+  manual: false
+
+- id: '1593349'
+  raw_title: 打开大文件加载过程中的交互测试_查找
+  raw_precondition: ''
+  raw_steps: '1. 使用文本编辑器打开大文件
+
+    2. 打开大文件加载过程中，按Ctrl+F/点击查找菜单
+
+    3. 在查找输入框输入字符进行查找操作'
+  raw_expected: "1. \n2. \n3. 文件加载过程中，可以正常进行查找操作"
+  title: 打开大文件加载过程中的交互测试_查找
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开大文件
+  - 打开大文件加载过程中，按Ctrl+F/点击查找菜单
+  - 在查找输入框输入字符进行查找操作
+  expected:
+  - ''
+  - ''
+  - 文件加载过程中，可以正常进行查找操作
+  case_type: 功能测试
+  manual: false
+
+- id: '1593295'
+  raw_title: 关闭应用自动保存现场_label页高亮检查
+  raw_precondition: 只剩下一个文本编辑器应用窗口
+  raw_steps: '1. 新标签页不进行任何编辑
+
+    2. 新建标签页，新建标签页输入任意字符，不保存
+
+    3. 点击应用工具栏菜单“打开文件”，选择任意文件打开/拖拽任意文件至应用窗口打开，不进行任何编辑
+
+    4. 点击应用工具栏菜单“打开文件”，选择任意文件打开/拖拽任意文件至应用窗口打开，进行编辑（添加、复制、剪切、删除等等操作），不保存
+
+    5. 新建标签页，编辑并保存
+
+    6. 切换当前显示tab页为非最后一个label点击应用窗口右上角关闭X按钮
+
+    7. 打开文本编辑器'
+  raw_expected: "1. \n2. \n3. \n4. \n5. \n6. \n7. 步骤1~5标签页恢复为关闭前的状态"
+  title: 关闭应用自动保存现场_label页高亮检查
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 只剩下一个文本编辑器应用窗口
+  steps:
+  - 新标签页不进行任何编辑
+  - 新建标签页，新建标签页输入任意字符，不保存
+  - 点击应用工具栏菜单“打开文件”，选择任意文件打开/拖拽任意文件至应用窗口打开，不进行任何编辑
+  - 点击应用工具栏菜单“打开文件”，选择任意文件打开/拖拽任意文件至应用窗口打开，进行编辑（添加、复制、剪切、删除等等操作），不保存
+  - 新建标签页，编辑并保存
+  - 切换当前显示tab页为非最后一个label点击应用窗口右上角关闭X按钮
+  - 打开文本编辑器
+  expected:
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - 步骤1~5标签页恢复为关闭前的状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1593273'
+  raw_title: Tip框显示文件路径
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器，点击+新建标签页，鼠标光标移动到标签页上
+
+    2. 点击Ctrl+s，弹出保存确认后，鼠标光标移动到标签页上'
+  raw_expected: '1. 弹出tip框显示，文件名称
+
+    2. 弹出tip框显示，文件路径+文件名称'
+  title: Tip框显示文件路径
+  module: 冒烟测试
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开编辑器，点击+新建标签页，鼠标光标移动到标签页上
+  - 点击Ctrl+s，弹出保存确认后，鼠标光标移动到标签页上
+  expected:
+  - 弹出tip框显示，文件名称
+  - 弹出tip框显示，文件路径+文件名称
+  case_type: 功能测试
+  manual: false
+
+- id: '1593271'
+  raw_title: Tip框显示文件路径_长文件名
+  raw_precondition: 文件名称长
+  raw_steps: '1. 使用文本编辑器打开文件
+
+    2. 鼠标光标移动到标签页
+
+    3. 切换系统字体为最大，鼠标移动到标签页
+
+    4. 切换屏幕缩放比率，鼠标移动到标签页'
+  raw_expected: "1. \n2. 弹出tip框显示文件路径+文件名称，显示无异常\n3. 弹出tip框显示文件路径+文件名称，显示无异常\n4. 弹出tip框显示文件路径+文件名称，显示无异常"
+  title: Tip框显示文件路径_长文件名
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 文件名称长
+  steps:
+  - 使用文本编辑器打开文件
+  - 鼠标光标移动到标签页
+  - 切换系统字体为最大，鼠标移动到标签页
+  - 切换屏幕缩放比率，鼠标移动到标签页
+  expected:
+  - ''
+  - 弹出tip框显示文件路径+文件名称，显示无异常
+  - 弹出tip框显示文件路径+文件名称，显示无异常
+  - 弹出tip框显示文件路径+文件名称，显示无异常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593251'
+  raw_title: 关闭应用自动保存现场_恢复现场后保存临时文件
+  raw_precondition: 只剩下一个文本编辑器应用窗口
+  raw_steps: '1. 使用文本编辑器打开一个文档并编辑或新建tab页进行编辑
+
+    2. 点击应用窗口右上角关闭X按钮
+
+    3. 再次打开文本编辑器
+
+    4. 保存这个临时文件
+
+    5. 点击应用窗口右上角关闭X按钮
+
+    6. 再次打开文本编辑器'
+  raw_expected: "1. \n2. \n3. 支持对该修改自动保存到应用的临时文件中\n4. 文件保存成功\n5. \n6. 标签页恢复为关闭前的状态"
+  title: 关闭应用自动保存现场_恢复现场后保存临时文件
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 只剩下一个文本编辑器应用窗口
+  steps:
+  - 使用文本编辑器打开一个文档并编辑或新建tab页进行编辑
+  - 点击应用窗口右上角关闭X按钮
+  - 再次打开文本编辑器
+  - 保存这个临时文件
+  - 点击应用窗口右上角关闭X按钮
+  - 再次打开文本编辑器
+  expected:
+  - ''
+  - ''
+  - 支持对该修改自动保存到应用的临时文件中
+  - 文件保存成功
+  - ''
+  - 标签页恢复为关闭前的状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1593243'
+  raw_title: 关闭应用自动保存现场_根源文件删除
+  raw_precondition: 只剩下一个文本编辑器应用窗口
+  raw_steps: '1. 使用文本编辑器打开文档A 和 文档B
+
+    2. 文档A 不做编辑 ， 文档B做修改编辑
+
+    3. 将文档A 和 文档B 删除
+
+    4. 关闭文本编辑器的应用后再次打开应用'
+  raw_expected: "1. \n2. \n3. \n4. 1040阶段（根源文件被删除后，均不保留现场）"
+  title: 关闭应用自动保存现场_根源文件删除
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 只剩下一个文本编辑器应用窗口
+  steps:
+  - 使用文本编辑器打开文档A 和 文档B
+  - 文档A 不做编辑 ， 文档B做修改编辑
+  - 将文档A 和 文档B 删除
+  - 关闭文本编辑器的应用后再次打开应用
+  expected:
+  - ''
+  - ''
+  - ''
+  - 1040阶段（根源文件被删除后，均不保留现场）
+  case_type: 功能测试
+  manual: false
+
+- id: '1593237'
+  raw_title: 打印预览2.0接口_存为PDF
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器应用
+
+    2. 主菜单/快捷键Ctrl+P 调用打印
+
+    3. 切换“打印机”子菜单为“存为PDF”，进行保存
+
+    4. 若修改当前文件（文档名前*显示），打印时选择“存为PDF”，进行保存'
+  raw_expected: "1. \n2. 显示打印预览2.0的接口\n3. 默认当前文件名+后缀名.pdf\n4. 默认当前文件名+后缀名.pdf"
+  title: 打印预览2.0接口_存为PDF
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开文本编辑器应用
+  - 主菜单/快捷键Ctrl+P 调用打印
+  - 切换“打印机”子菜单为“存为PDF”，进行保存
+  - 若修改当前文件（文档名前*显示），打印时选择“存为PDF”，进行保存
+  expected:
+  - ''
+  - 显示打印预览2.0的接口
+  - 默认当前文件名+后缀名.pdf
+  - 默认当前文件名+后缀名.pdf
+  case_type: 功能测试
+  manual: false
+
+- id: '1593219'
+  raw_title: 【快捷键优化】“重做”快捷键恢复为“Ctrl+Y”
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器，任意操作，如删除一行文字
+
+    2. 撤销（Ctrl +Z)
+
+    3. 重做Ctrl+Y
+
+    4. Shift+Ctrl+? 调出快捷键页面
+
+    5. 进入文本编辑器的设置页'
+  raw_expected: '1. 操作成功
+
+    2. 恢复Step1之前的状态
+
+    3. 恢复Step2的操作结果
+
+    4. 重做的快捷键为Ctrl+Y
+
+    5. 重做的快捷键默认为Ctrl+Y'
+  title: 【快捷键优化】“重做”快捷键恢复为“Ctrl+Y”
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开文本编辑器，任意操作，如删除一行文字
+  - 撤销（Ctrl +Z)
+  - 重做Ctrl+Y
+  - Shift+Ctrl+? 调出快捷键页面
+  - 进入文本编辑器的设置页
+  expected:
+  - 操作成功
+  - 恢复Step1之前的状态
+  - 恢复Step2的操作结果
+  - 重做的快捷键为Ctrl+Y
+  - 重做的快捷键默认为Ctrl+Y
+  case_type: 功能测试
+  manual: false
+
+- id: '1593181'
+  raw_title: 软件安装
+  raw_precondition: ''
+  raw_steps: '1. 手动下载软件包成功后，通过终端dpkg -i deepin-editor 进行软件安装
+
+    2. 安装成功后查看软件是否显示正常，软件图标是否显示正常
+
+    3. 软件安装成功后，再次用终端进行安装，查看软件是否依然能够安装成功'
+  raw_expected: '1. 可以安装成功
+
+    2. 软件显示正常，图标显示正常
+
+    3. 软件再次进行安装，依然可以安装成功'
+  title: 软件安装
+  module: 关机
+  priority: '1'
+  precondition: []
+  steps:
+  - 手动下载软件包成功后，通过终端dpkg -i deepin-editor 进行软件安装
+  - 安装成功后查看软件是否显示正常，软件图标是否显示正常
+  - 软件安装成功后，再次用终端进行安装，查看软件是否依然能够安装成功
+  expected:
+  - 可以安装成功
+  - 软件显示正常，图标显示正常
+  - 软件再次进行安装，依然可以安装成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1593179'
+  raw_title: 软件启动
+  raw_precondition: ''
+  raw_steps: '1. 软件安装成功后，在启动器中查看是否有软件图标
+
+    2. 在启动器中双击编辑器图标，查看软件显示
+
+    3. 启动器中右键打开编辑器
+
+    4. 在启动器中输入“编辑器”进行搜索该软件，查看是否可以搜索成功
+
+    5. 启动器右键发送到dock，查看软件显示
+
+    6. 软件图标发送到dock成功后，用鼠标点击dock上的图标，查看软件显示
+
+    7. 启动器右键发送到桌面，点击桌面图标打开编辑器
+
+    8. 通过终端命令打开编辑器　deepin-editor
+
+    9. 在启动器中设置设置该软件为开启启动，重启PC机，查看软件显示'
+  raw_expected: '1. 在启动器中有安装图标
+
+    2. 软件会自动启动，弹出对话框显示该软件的主界面
+
+    3. 正常打开
+
+    4. 可以正常搜索到该软件
+
+    5. 软件图标可以正常发送到dock
+
+    6. 软件会自动启动，弹出对话框显示该软件的主界面
+
+    7. 正常打开，没有报错
+
+    8. 正常打开，没有报错
+
+    9. 软件会随着系统启动而启动'
+  title: 软件启动
+  module: 关机
+  priority: '1'
+  precondition: []
+  steps:
+  - 软件安装成功后，在启动器中查看是否有软件图标
+  - 在启动器中双击编辑器图标，查看软件显示
+  - 启动器中右键打开编辑器
+  - 在启动器中输入“编辑器”进行搜索该软件，查看是否可以搜索成功
+  - 启动器右键发送到dock，查看软件显示
+  - 软件图标发送到dock成功后，用鼠标点击dock上的图标，查看软件显示
+  - 启动器右键发送到桌面，点击桌面图标打开编辑器
+  - 通过终端命令打开编辑器　deepin-editor
+  - 在启动器中设置设置该软件为开启启动，重启PC机，查看软件显示
+  expected:
+  - 在启动器中有安装图标
+  - 软件会自动启动，弹出对话框显示该软件的主界面
+  - 正常打开
+  - 可以正常搜索到该软件
+  - 软件图标可以正常发送到dock
+  - 软件会自动启动，弹出对话框显示该软件的主界面
+  - 正常打开，没有报错
+  - 正常打开，没有报错
+  - 软件会随着系统启动而启动
+  case_type: 功能测试
+  manual: false
+
+- id: '1593177'
+  raw_title: 软件卸载
+  raw_precondition: ''
+  raw_steps: '1. 软件安装成功后，在启动器中选中图标，点击右键--卸载，查看软件显示
+
+    2. 软件安装成功后，在终端中用命令将其卸载，查看软件显示'
+  raw_expected: '1. 软件卸载成功
+
+    2. 软件卸载成功'
+  title: 软件卸载
+  module: 冒烟测试
+  priority: '1'
+  precondition: []
+  steps:
+  - 软件安装成功后，在启动器中选中图标，点击右键--卸载，查看软件显示
+  - 软件安装成功后，在终端中用命令将其卸载，查看软件显示
+  expected:
+  - 软件卸载成功
+  - 软件卸载成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1593175'
+  raw_title: dock右键菜单
+  raw_precondition: ''
+  raw_steps: '1. 在启动器中将软件图标发送到dock上，在dock上右键软件图标查看系统显示
+
+    2. 软件弹出右键菜单后，选中打开按钮，查看软件显示
+
+    3. 软件弹出右键菜单后，选中移除驻留按，查看软件显示
+
+    4. 在dock上显示软件窗口后，点击鼠标右键，查看系统显示
+
+    5. 在系统弹出窗口后，点击关闭所有窗口，查看软件显示
+
+    6. 在系统弹出窗口后，点击所有窗口，查看软件显示
+
+    7. 在系统弹出窗口后，点击驻留按钮，查看系统显示'
+  raw_expected: '1. 系统会自动弹出右键菜单显示：打开、移除驻留
+
+    2. 软件会自动运行
+
+    3. 软件会自动在dock上移除图标
+
+    4. 系统会自动弹出右键菜单，显示：编辑器、强制退出、所有窗口、移除驻留、关闭所有
+
+    5. 系统会自动关闭当前所有打开的深度编辑器窗口
+
+    6. 软件会列出当前所有已经打开的窗口
+
+    7. 系统会自动将当前软件图标驻留在dock上'
+  title: dock右键菜单
+  module: 关机
+  priority: '2'
+  precondition: []
+  steps:
+  - 在启动器中将软件图标发送到dock上，在dock上右键软件图标查看系统显示
+  - 软件弹出右键菜单后，选中打开按钮，查看软件显示
+  - 软件弹出右键菜单后，选中移除驻留按，查看软件显示
+  - 在dock上显示软件窗口后，点击鼠标右键，查看系统显示
+  - 在系统弹出窗口后，点击关闭所有窗口，查看软件显示
+  - 在系统弹出窗口后，点击所有窗口，查看软件显示
+  - 在系统弹出窗口后，点击驻留按钮，查看系统显示
+  expected:
+  - 系统会自动弹出右键菜单显示：打开、移除驻留
+  - 软件会自动运行
+  - 软件会自动在dock上移除图标
+  - 系统会自动弹出右键菜单，显示：编辑器、强制退出、所有窗口、移除驻留、关闭所有
+  - 系统会自动关闭当前所有打开的深度编辑器窗口
+  - 软件会列出当前所有已经打开的窗口
+  - 系统会自动将当前软件图标驻留在dock上
+  case_type: 功能测试
+  manual: false
+
+- id: '1593173'
+  raw_title: 最小化后从桌面再次打开应用
+  raw_precondition: ''
+  raw_steps: '1. 打开软件后，点击右上角的最小化，查看软件显示
+
+    2. 软件最小化后，从桌面上双击新文件 或新文件右键菜单通过文本编辑器打开
+
+    3. 软件最小化后，从桌面上双击已打开文件 或 文件右键菜单通过文本编辑器打开'
+  raw_expected: '1. 当前窗口会自动最小化
+
+    2. 软件会自动还原窗口并展示新文件窗口
+
+    3. 软件会自动还原窗口'
+  title: 最小化后从桌面再次打开应用
+  module: 关机
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开软件后，点击右上角的最小化，查看软件显示
+  - 软件最小化后，从桌面上双击新文件 或新文件右键菜单通过文本编辑器打开
+  - 软件最小化后，从桌面上双击已打开文件 或 文件右键菜单通过文本编辑器打开
+  expected:
+  - 当前窗口会自动最小化
+  - 软件会自动还原窗口并展示新文件窗口
+  - 软件会自动还原窗口
+  case_type: 功能测试
+  manual: false
+
+- id: '1593171'
+  raw_title: 最小化后从启动器打开应用
+  raw_precondition: ''
+  raw_steps: '1. 打开软件后，点击右上角的最小化，查看软件显示
+
+    2. 软件最小化后，从启动器中点击文本编辑器打开'
+  raw_expected: '1. 当前窗口会自动最小化
+
+    2. 文本编辑器新开一窗口'
+  title: 最小化后从启动器打开应用
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开软件后，点击右上角的最小化，查看软件显示
+  - 软件最小化后，从启动器中点击文本编辑器打开
+  expected:
+  - 当前窗口会自动最小化
+  - 文本编辑器新开一窗口
+  case_type: 功能测试
+  manual: false
+
+- id: '1593169'
+  raw_title: +标签
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器后点击顶部工具栏的+号，查看软件显示
+
+    2. 连续点击顶部工具栏的+号，查看软件显示
+
+    3. 新建多个标签后，使用鼠标滚轮在标签上滚动
+
+    4. 将编辑器最大化显示，然后添加满标签，再将编辑器还原，查看标签显示
+
+    5. 在新建标签成功后，查看软件显示'
+  raw_expected: '1. 软件会自动新建一个标签
+
+    2. 可以连续新建多个标签
+
+    3. 滚动鼠标滚轮会自动切换标签显示
+
+    4. 标签正常显示，前面会自动出现<，>
+
+    5. 新建标签成功后，软件会将焦点自动切换到新标签上，且能正常看见'
+  title: +标签
+  module: 工作区
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开编辑器后点击顶部工具栏的+号，查看软件显示
+  - 连续点击顶部工具栏的+号，查看软件显示
+  - 新建多个标签后，使用鼠标滚轮在标签上滚动
+  - 将编辑器最大化显示，然后添加满标签，再将编辑器还原，查看标签显示
+  - 在新建标签成功后，查看软件显示
+  expected:
+  - 软件会自动新建一个标签
+  - 可以连续新建多个标签
+  - 滚动鼠标滚轮会自动切换标签显示
+  - 标签正常显示，前面会自动出现<，>
+  - 新建标签成功后，软件会将焦点自动切换到新标签上，且能正常看见
+  case_type: 功能测试
+  manual: false
+
+- id: '1593099'
+  raw_title: 批量拖拽
+  raw_precondition: ''
+  raw_steps: '1. 在桌面/文管窗口任意选中多个文件拖动到编辑器中，查看软件显示
+
+    2. 在桌面/文管窗口拖拽一个没有文档的文件夹到编辑器中，查看软件显示
+
+    3. 在桌面/文管窗口拖拽含有文档的文件夹到编辑器中，查看软件显示'
+  raw_expected: '1. 软件会自动过滤非文本文件，只加载文本文件
+
+    2. 软件没有任何文档加载
+
+    3. 软件提示无效文件'
+  title: 批量拖拽
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在桌面/文管窗口任意选中多个文件拖动到编辑器中，查看软件显示
+  - 在桌面/文管窗口拖拽一个没有文档的文件夹到编辑器中，查看软件显示
+  - 在桌面/文管窗口拖拽含有文档的文件夹到编辑器中，查看软件显示
+  expected:
+  - 软件会自动过滤非文本文件，只加载文本文件
+  - 软件没有任何文档加载
+  - 软件提示无效文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1593097'
+  raw_title: 打开无效文件
+  raw_precondition: ''
+  raw_steps: '1. 将一个mp3文件拖拽到编辑器中，查看软件显示
+
+    2. 将一个mp4文件拖拽到编辑器中，查看软件显示
+
+    3. 将一个jpg文件拖拽到编辑器中，查看软件显示
+
+    4. 将一个doc文件拖拽到编辑器中，查看软件显示'
+  raw_expected: '1. 软件给出提示信息，无效文档
+
+    2. 软件给出提示信息，无效文档
+
+    3. 软件给出提示信息，无效文档
+
+    4. 软件给出提示信息，无效文档'
+  title: 打开无效文件
+  module: 工作区
+  priority: '3'
+  precondition: []
+  steps:
+  - 将一个mp3文件拖拽到编辑器中，查看软件显示
+  - 将一个mp4文件拖拽到编辑器中，查看软件显示
+  - 将一个jpg文件拖拽到编辑器中，查看软件显示
+  - 将一个doc文件拖拽到编辑器中，查看软件显示
+  expected:
+  - 软件给出提示信息，无效文档
+  - 软件给出提示信息，无效文档
+  - 软件给出提示信息，无效文档
+  - 软件给出提示信息，无效文档
+  case_type: 功能测试
+  manual: false
+
+- id: '1593095'
+  raw_title: 打开U盘硬盘smb文件
+  raw_precondition: ''
+  raw_steps: '1. 在U盘中使用编辑器打开文本文档，查看软件显示
+
+    2. 在硬盘中使用编辑器打开文本文档，查看软件显示
+
+    3. 在smb中使用编辑器打开文本文档，查看软件显示'
+  raw_expected: '1. 软件可以正常打开文档
+
+    2. 软件可以正常打开文档
+
+    3. 软件可以正常打开文档'
+  title: 打开U盘硬盘smb文件
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在U盘中使用编辑器打开文本文档，查看软件显示
+  - 在硬盘中使用编辑器打开文本文档，查看软件显示
+  - 在smb中使用编辑器打开文本文档，查看软件显示
+  expected:
+  - 软件可以正常打开文档
+  - 软件可以正常打开文档
+  - 软件可以正常打开文档
+  case_type: 功能测试
+  manual: false
+
+- id: '1593093'
+  raw_title: 打开GB18030编码方式文件
+  raw_precondition: '1.参考标准《GB18030-2005.pdf》
+
+    2.准备GB18030标准样例文件'
+  raw_steps: 1. 打开GB18030标准样例文件，查看编码格式显示
+  raw_expected: 1. double1,double2,double3,double4,double5,four, use1,use2,use3第一时间应被识别为GB18030
+    ；若未被识别，可手动切换为GB18030
+  title: 打开GB18030编码方式文件
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 参考标准《GB18030-2005.pdf》
+  - 准备GB18030标准样例文件
+  steps:
+  - 打开GB18030标准样例文件，查看编码格式显示
+  expected:
+  - double1,double2,double3,double4,double5,four, use1,use2,use3第一时间应被识别为GB18030 ；若未被识别，可手动切换为GB18030
+  case_type: 功能测试
+  manual: false
+
+- id: '1593091'
+  raw_title: 打开.crt格式文件
+  raw_precondition: ''
+  raw_steps: 1. 使用文本编辑器打开minetype:application/pkix-cert+pem类型文件(.crt)
+  raw_expected: 1. 可以正常打开，显示正常
+  title: 打开.crt格式文件
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开minetype:application/pkix-cert+pem类型文件(.crt)
+  expected:
+  - 可以正常打开，显示正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593089'
+  raw_title: 打开.md文本类型格式文件
+  raw_precondition: ''
+  raw_steps: '1. 使用文本编辑器打开markdown文本类型文件(.md)
+
+    2. 使用附件中的文件，搜索查看“搜索日程”'
+  raw_expected: '1. 可以正常打开
+
+    2. 显示正常无乱码'
+  title: 打开.md文本类型格式文件
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开markdown文本类型文件(.md)
+  - 使用附件中的文件，搜索查看“搜索日程”
+  expected:
+  - 可以正常打开
+  - 显示正常无乱码
+  case_type: 功能测试
+  manual: false
+
+- id: '1593087'
+  raw_title: 打开编码方式为BIG5格式文件
+  raw_precondition: ''
+  raw_steps: 1. 使用文本编辑器打开BIG5编码类型文件
+  raw_expected: 1. 可以正常打开
+  title: 打开编码方式为BIG5格式文件
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开BIG5编码类型文件
+  expected:
+  - 可以正常打开
+  case_type: 功能测试
+  manual: false
+
+- id: '1593085'
+  raw_title: 打开大文件_1G +
+  raw_precondition: ''
+  raw_steps: 1. 使用文本编辑器打开大文件(1G , 1.2G ,1.5G ... )
+  raw_expected: 1. 支持正常打开 ，应用不会闪退 （参考竞品机的打开情况）
+  title: 打开大文件_1G +
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开大文件(1G , 1.2G ,1.5G ... )
+  expected:
+  - 支持正常打开 ，应用不会闪退 （参考竞品机的打开情况）
+  case_type: 功能测试
+  manual: false
+
+- id: '1593077'
+  raw_title: 设置按钮
+  raw_precondition: ''
+  raw_steps: '1. 在主菜单下拉列表中点击设置按钮，查看软件显示
+
+    2. 弹出设置对话框后，按ESC键，查看软件显示
+
+    3. 弹出设置对话框后，点击右上角的×按钮，查看软件显示
+
+    4. 上下滑动查看设置页面'
+  raw_expected: '1. 软件会自动弹出设置对话框
+
+    2. 设置对话框会自动消失
+
+    3. 设置对话框会自动消失
+
+    4. 滑块功能正常'
+  title: 设置按钮
+  module: 主菜单
+  priority: '1'
+  precondition: []
+  steps:
+  - 在主菜单下拉列表中点击设置按钮，查看软件显示
+  - 弹出设置对话框后，按ESC键，查看软件显示
+  - 弹出设置对话框后，点击右上角的×按钮，查看软件显示
+  - 上下滑动查看设置页面
+  expected:
+  - 软件会自动弹出设置对话框
+  - 设置对话框会自动消失
+  - 设置对话框会自动消失
+  - 滑块功能正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593075'
+  raw_title: 字号大小设置
+  raw_precondition: ''
+  raw_steps: '1. 打开设置窗口后，选中字体样式，任意切换字体大小，查看软件显示
+
+    2. 查看字体最大最小设置显示'
+  raw_expected: '1. 字体大小切换成功，在软件中显示正确
+
+    2. 字体最小设置显示为8，最大设置显示为50。默认字号12px；'
+  title: 字号大小设置
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开设置窗口后，选中字体样式，任意切换字体大小，查看软件显示
+  - 查看字体最大最小设置显示
+  expected:
+  - 字体大小切换成功，在软件中显示正确
+  - 字体最小设置显示为8，最大设置显示为50。默认字号12px；
+  case_type: 功能测试
+  manual: false
+
+- id: '1593073'
+  raw_title: 键盘映射
+  raw_precondition: ''
+  raw_steps: '1. 在键盘映射中共有三种方式可供选择，查看软件显示
+
+    2. 选中标准模式后，查看快捷键显示
+
+    3. 假如手动修改快捷键后，查看软件显示
+
+    4. 选中Emacs模式，查看快捷键显示
+
+    5. 分别使用标准，emacs，自定义三种模式快捷键操作编辑器'
+  raw_expected: '1. 分别是标准，emacs，自定义
+
+    2. 软件会自动显示默认标准快捷键显示
+
+    3. 软件会自动跳转到自定义模式
+
+    4. 快捷键和标准模式不同，但仍然可以正常使用
+
+    5. 三种模式都可以正常操作'
+  title: 键盘映射
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 在键盘映射中共有三种方式可供选择，查看软件显示
+  - 选中标准模式后，查看快捷键显示
+  - 假如手动修改快捷键后，查看软件显示
+  - 选中Emacs模式，查看快捷键显示
+  - 分别使用标准，emacs，自定义三种模式快捷键操作编辑器
+  expected:
+  - 分别是标准，emacs，自定义
+  - 软件会自动显示默认标准快捷键显示
+  - 软件会自动跳转到自定义模式
+  - 快捷键和标准模式不同，但仍然可以正常使用
+  - 三种模式都可以正常操作
+  case_type: 功能测试
+  manual: false
+
+- id: '1593071'
+  raw_title: 窗口设置
+  raw_precondition: ''
+  raw_steps: '1. 在设置中查看软件窗口显示
+
+    2. 将窗口设置为最大化，重启软件，查看软件显示
+
+    3. 将窗口设置为全屏，重启软件，查看软件显示
+
+    4. 将窗口设置为正常窗口，重启软件，查看软件显示'
+  raw_expected: '1. 默认显示为正常窗口
+
+    2. 软件启动后自动最大化显示
+
+    3. 软件启动后自动全屏显示
+
+    4. 软件启动后自动以正常窗口显示'
+  title: 窗口设置
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 在设置中查看软件窗口显示
+  - 将窗口设置为最大化，重启软件，查看软件显示
+  - 将窗口设置为全屏，重启软件，查看软件显示
+  - 将窗口设置为正常窗口，重启软件，查看软件显示
+  expected:
+  - 默认显示为正常窗口
+  - 软件启动后自动最大化显示
+  - 软件启动后自动全屏显示
+  - 软件启动后自动以正常窗口显示
+  case_type: 功能测试
+  manual: false
+
+- id: '1593069'
+  raw_title: 自动换行
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器设置栏
+
+    2. 取消勾选'
+  raw_expected: '1. 支持勾选自动换行；（默认为勾选状态）
+
+    2. 文字不会自动换行'
+  title: 自动换行
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开编辑器设置栏
+  - 取消勾选
+  expected:
+  - 支持勾选自动换行；（默认为勾选状态）
+  - 文字不会自动换行
+  case_type: 功能测试
+  manual: false
+
+- id: '1593067'
+  raw_title: 恢复默认
+  raw_precondition: ''
+  raw_steps: 1. 在设置中进行任意设置，然后点击恢复默认设置，查看软件显示
+  raw_expected: 1. 所有设置都被恢复成默认设置
+  title: 恢复默认
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 在设置中进行任意设置，然后点击恢复默认设置，查看软件显示
+  expected:
+  - 所有设置都被恢复成默认设置
+  case_type: 功能测试
+  manual: false
+
+- id: '1593065'
+  raw_title: 代码折叠标志
+  raw_precondition: 代码文件中有{
+  raw_steps: '1. 文本编辑器的设置菜单中查看“代码折叠标志”
+
+    2. 支持自动检测文件类型，根据关键字显示节点;相应的折叠显示'
+  raw_expected: '1. 默认勾选
+
+    2. 代码折叠标识一一对应显示正常'
+  title: 代码折叠标志
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - 代码文件中有{
+  steps:
+  - 文本编辑器的设置菜单中查看“代码折叠标志”
+  - 支持自动检测文件类型，根据关键字显示节点;相应的折叠显示
+  expected:
+  - 默认勾选
+  - 代码折叠标识一一对应显示正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593063'
+  raw_title: 显示行号
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器，查看软件显示
+
+    2. 在主菜单打开设置界面，查看软件显示
+
+    3. 在设置界面取消“显示行号”的勾选状态，查看软件显示'
+  raw_expected: '1. 左侧默认显示行号
+
+    2. “显示行号”默认勾选状态
+
+    3. 左侧不显示行号'
+  title: 显示行号
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开编辑器，查看软件显示
+  - 在主菜单打开设置界面，查看软件显示
+  - 在设置界面取消“显示行号”的勾选状态，查看软件显示
+  expected:
+  - 左侧默认显示行号
+  - “显示行号”默认勾选状态
+  - 左侧不显示行号
+  case_type: 功能测试
+  manual: false
+
+- id: '1593061'
+  raw_title: Tab 字符宽度
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器设置栏查看高级设置中的”编辑“设置参数
+
+    2. 调节tab字符宽度'
+  raw_expected: '1. Tab 字符宽度默认为4
+
+    2. 1~24的范围设置成功，且正文中tab字符的宽度相适应'
+  title: Tab 字符宽度
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开编辑器设置栏查看高级设置中的”编辑“设置参数
+  - 调节tab字符宽度
+  expected:
+  - Tab 字符宽度默认为4
+  - 1~24的范围设置成功，且正文中tab字符的宽度相适应
+  case_type: 功能测试
+  manual: false
+
+- id: '1593059'
+  raw_title: 空白字符/制表符
+  raw_precondition: 文本中含有空白字符和制表符
+  raw_steps: '1. 进入基础设置，查看“空白字符/制表符”的默认设置
+
+    2. 勾选“空白字符/制表符”
+
+    3. 勾选“空白字符/制表符”，删除空格或制表字符时'
+  raw_expected: '1. 默认不勾选， 且文本中不会显示空白字符和制表符
+
+    2. 显示文本中的空白字符和制表符
+
+    3. 空白字符和制表符正确显示'
+  title: 空白字符/制表符
+  module: 主菜单
+  priority: '1'
+  precondition:
+  - 文本中含有空白字符和制表符
+  steps:
+  - 进入基础设置，查看“空白字符/制表符”的默认设置
+  - 勾选“空白字符/制表符”
+  - 勾选“空白字符/制表符”，删除空格或制表字符时
+  expected:
+  - 默认不勾选， 且文本中不会显示空白字符和制表符
+  - 显示文本中的空白字符和制表符
+  - 空白字符和制表符正确显示
+  case_type: 功能测试
+  manual: false
+
+- id: '1593057'
+  raw_title: 窗口设置_新窗口路径
+  raw_precondition: 默认正常窗口
+  raw_steps: '1. 使用文本编辑器打开一个文件，进入设置中改变窗口为最大化/全屏
+
+    2. 从启动器中点击“文本编辑器”
+
+    3. 从任务栏中右击文本编辑器的图标-》文本编辑器
+
+    4. 从桌面上点击“文本编辑器”的快捷图标
+
+    5. 从主菜单的“新窗口”
+
+    6. 使用新窗口的快捷键Ctrl+N'
+  raw_expected: '1. 正常窗口
+
+    2. 新窗口的属性跟随设置显示大小
+
+    3. 新窗口的属性跟随设置显示大小
+
+    4. 新窗口的属性跟随设置显示大小
+
+    5. 新窗口的属性跟随设置显示大小
+
+    6. 新窗口的属性跟随设置显示大小'
+  title: 窗口设置_新窗口路径
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - 默认正常窗口
+  steps:
+  - 使用文本编辑器打开一个文件，进入设置中改变窗口为最大化/全屏
+  - 从启动器中点击“文本编辑器”
+  - 从任务栏中右击文本编辑器的图标-》文本编辑器
+  - 从桌面上点击“文本编辑器”的快捷图标
+  - 从主菜单的“新窗口”
+  - 使用新窗口的快捷键Ctrl+N
+  expected:
+  - 正常窗口
+  - 新窗口的属性跟随设置显示大小
+  - 新窗口的属性跟随设置显示大小
+  - 新窗口的属性跟随设置显示大小
+  - 新窗口的属性跟随设置显示大小
+  - 新窗口的属性跟随设置显示大小
+  case_type: 功能测试
+  manual: false
+
+- id: '1593055'
+  raw_title: Tab字符宽度_首行的显示
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器设置不同的Tab字符宽度（重点在最小，最大值）
+
+    2. 在文本编辑区键入tab 键，回车换行后继续键入tab键'
+  raw_expected: "1. \n2. 首行和其他行都显示正常"
+  title: Tab字符宽度_首行的显示
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开文本编辑器设置不同的Tab字符宽度（重点在最小，最大值）
+  - 在文本编辑区键入tab 键，回车换行后继续键入tab键
+  expected:
+  - ''
+  - 首行和其他行都显示正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593053'
+  raw_title: 窗口设置_关闭应用保留现场
+  raw_precondition: 默认正常窗口
+  raw_steps: '1. 打开文本编辑器应用
+
+    2. 最大化/全屏 窗口
+
+    3. 关闭应用
+
+    4. 再次打开文本编辑器'
+  raw_expected: '1. 正常窗口
+
+    2. 当前窗口最大化/全屏
+
+    3. 应用被关闭
+
+    4. 窗口的状态跟随设置里窗口状态的参数设置'
+  title: 窗口设置_关闭应用保留现场
+  module: 主菜单
+  priority: '3'
+  precondition:
+  - 默认正常窗口
+  steps:
+  - 打开文本编辑器应用
+  - 最大化/全屏 窗口
+  - 关闭应用
+  - 再次打开文本编辑器
+  expected:
+  - 正常窗口
+  - 当前窗口最大化/全屏
+  - 应用被关闭
+  - 窗口的状态跟随设置里窗口状态的参数设置
+  case_type: 功能测试
+  manual: false
+
+- id: '1593051'
+  raw_title: 字体类型设置
+  raw_precondition: 代码文档包含折叠标志和书签显示
+  raw_steps: '1. 通过文本编辑器打开一个代码文档，进入设置窗口后，选中“字体样式”
+
+    2. 切换不同的字体后检查文档窗口UI显示'
+  raw_expected: '1. 字体列表正常滑动查看
+
+    2. 左侧栏中（行号，书签，代码折叠标志）和正文内容均显示正常'
+  title: 字体类型设置
+  module: 主菜单
+  priority: '3'
+  precondition:
+  - 代码文档包含折叠标志和书签显示
+  steps:
+  - 通过文本编辑器打开一个代码文档，进入设置窗口后，选中“字体样式”
+  - 切换不同的字体后检查文档窗口UI显示
+  expected:
+  - 字体列表正常滑动查看
+  - 左侧栏中（行号，书签，代码折叠标志）和正文内容均显示正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593049'
+  raw_title: 快捷键编辑
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器，点击设置->快捷键->选择任意快捷键映射模式->窗口/编辑
+
+    2. 点击任意快捷键输入框
+
+    3. 键入符合规则的按键
+
+    4. 输入的单个按键（1~10）， 如数字1
+
+    5. 输入的单个按键（a~z），如字母a
+
+    6. 输入的单个符号按键，如逗号
+
+    7. 键入的按键和已存在的相同
+
+    8. 键入4个按键（如Ctrl+Alt+Shift+K）'
+  raw_expected: "1. \n2. 快捷键为空状态，显示文案“请输入新的快捷键”\n3. 直接显示为新的快捷键\n4. 弹出设置无效的对话框，文案提示“[Num+1]为无效快捷键，请重新设置”。“确认”后弹框消失。\n\
+    5. 弹出设置无效的对话框，文案提示“[A]为无效快捷键，请重新设置”。“确认”后弹框消失。\n6. 弹出设置无效的对话框，文案提示“[,]为无效快捷键，请重新设置”。“确认”后弹框消失。\n\
+    7. 弹出快捷键设置冲突的对话框，取消/替换 按钮功能正常\n8. 支持最多设置4个按键做为快捷键"
+  title: 快捷键编辑
+  module: 主菜单
+  priority: '3'
+  precondition: []
+  steps:
+  - 打开文本编辑器，点击设置->快捷键->选择任意快捷键映射模式->窗口/编辑
+  - 点击任意快捷键输入框
+  - 键入符合规则的按键
+  - 输入的单个按键（1~10）， 如数字1
+  - 输入的单个按键（a~z），如字母a
+  - 输入的单个符号按键，如逗号
+  - 键入的按键和已存在的相同
+  - 键入4个按键（如Ctrl+Alt+Shift+K）
+  expected:
+  - ''
+  - 快捷键为空状态，显示文案“请输入新的快捷键”
+  - 直接显示为新的快捷键
+  - 弹出设置无效的对话框，文案提示“[Num+1]为无效快捷键，请重新设置”。“确认”后弹框消失。
+  - 弹出设置无效的对话框，文案提示“[A]为无效快捷键，请重新设置”。“确认”后弹框消失。
+  - 弹出设置无效的对话框，文案提示“[,]为无效快捷键，请重新设置”。“确认”后弹框消失。
+  - 弹出快捷键设置冲突的对话框，取消/替换 按钮功能正常
+  - 支持最多设置4个按键做为快捷键
+  case_type: 功能测试
+  manual: false
+
+- id: '1593047'
+  raw_title: 快捷键编辑_小键盘
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器，点击设置->快捷键->选择任意快捷键映射模式->窗口/编辑，编辑任意快捷键输入框
+
+    2. （NUMLOCK键 亮）打开小键盘时，Ctrl/Alt +小键盘上的按键组合
+
+    3. （NUMLOCK键 灯灭）关闭小键盘时，Ctrl/Alt +小键盘上的按键组合'
+  raw_expected: '1. 快捷键输入框提示“请输入新的快捷键”
+
+    2. 文本编辑器中可设置，可使用（同系统中快捷键的设置）
+
+    3. 文本编辑器中可设置，可使用（同系统中快捷键的设置）'
+  title: 快捷键编辑_小键盘
+  module: 主菜单
+  priority: '3'
+  precondition: []
+  steps:
+  - 打开文本编辑器，点击设置->快捷键->选择任意快捷键映射模式->窗口/编辑，编辑任意快捷键输入框
+  - （NUMLOCK键 亮）打开小键盘时，Ctrl/Alt +小键盘上的按键组合
+  - （NUMLOCK键 灯灭）关闭小键盘时，Ctrl/Alt +小键盘上的按键组合
+  expected:
+  - 快捷键输入框提示“请输入新的快捷键”
+  - 文本编辑器中可设置，可使用（同系统中快捷键的设置）
+  - 文本编辑器中可设置，可使用（同系统中快捷键的设置）
+  case_type: 功能测试
+  manual: false
+
+- id: '1593045'
+  raw_title: 设置【快捷键】
+  raw_precondition: ''
+  raw_steps: '1. F1打开帮助手册
+
+    2. Ctrl+Shift+/显示快捷键预览'
+  raw_expected: '1. 可以打开帮助手册
+
+    2. 可以显示快捷键预览'
+  title: 设置【快捷键】
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - F1打开帮助手册
+  - Ctrl+Shift+/显示快捷键预览
+  expected:
+  - 可以打开帮助手册
+  - 可以显示快捷键预览
+  case_type: 功能测试
+  manual: false
+
+- id: '1593015'
+  raw_title: 文件查找【快捷键】
+  raw_precondition: ''
+  raw_steps: '1. 任意打开一个TXT文件，然后按Ctrl+F键，查看软件显示
+
+    2. 弹出查询菜单后，按Ctrl+T新建标签，查看查询菜单显示
+
+    3. 弹出查询菜单后，按Ctrl+N新建窗口，查看查询菜单显示
+
+    4. 弹出查询窗口后，按ESC键，查看软件显示
+
+    5. 弹出查询窗口后，点击×按钮，查看软件显示
+
+    6. 弹出查询窗口后，不输入任何字符，直接点击下一个/上一个，查看软件显示
+
+    7. 弹出查询窗口后，输入任意字符，查看软件显示
+
+    8. 弹出查询窗口后，输入文件中含有的字符，查看软件显示
+
+    9. 假如只查找到一个字符，点击下一个/上一个按钮，查看软件显示
+
+    10. 假如只查找到多个字符，点击下一个按钮，查看软件显示
+
+    11. 假如只查找到多个字符，点击上一个按钮，查看软件显示
+
+    12. 在查询输入框中输入大写字符，小写字符，查看能否正常查询'
+  raw_expected: '1. 软件会自动弹出查询菜单
+
+    2. 软件会切换到新标签，查询菜单会自动退出
+
+    3. 软件会切换到新窗口，原窗口的查询菜单依然显示
+
+    4. 查询窗口自动退出
+
+    5. 查询窗口自动退出
+
+    6. 软件无任何显示，点击按钮无任何反应
+
+    7. 搜索结果为空，不显示任何数据
+
+    8. 软件会自动显示已经查找到的字符,用其他颜色进行匹配
+
+    9. 按钮没有任何效果，只会显示那一个字符
+
+    10. 软件会依次向下查询字符，查询到低后，再次点击下一个按钮，会自动跳转到第一个字符，再次循环查询
+
+    11. 软件会依次向上查询字符，查询到最开始，再次点击上一个按钮，会自动跳转到最后一个字符，再次循环查询
+
+    12. 软件会自动匹配字符大小写，都可以正常查询（实际结果请follow 需求 ）'
+  title: 文件查找【快捷键】
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 任意打开一个TXT文件，然后按Ctrl+F键，查看软件显示
+  - 弹出查询菜单后，按Ctrl+T新建标签，查看查询菜单显示
+  - 弹出查询菜单后，按Ctrl+N新建窗口，查看查询菜单显示
+  - 弹出查询窗口后，按ESC键，查看软件显示
+  - 弹出查询窗口后，点击×按钮，查看软件显示
+  - 弹出查询窗口后，不输入任何字符，直接点击下一个/上一个，查看软件显示
+  - 弹出查询窗口后，输入任意字符，查看软件显示
+  - 弹出查询窗口后，输入文件中含有的字符，查看软件显示
+  - 假如只查找到一个字符，点击下一个/上一个按钮，查看软件显示
+  - 假如只查找到多个字符，点击下一个按钮，查看软件显示
+  - 假如只查找到多个字符，点击上一个按钮，查看软件显示
+  - 在查询输入框中输入大写字符，小写字符，查看能否正常查询
+  expected:
+  - 软件会自动弹出查询菜单
+  - 软件会切换到新标签，查询菜单会自动退出
+  - 软件会切换到新窗口，原窗口的查询菜单依然显示
+  - 查询窗口自动退出
+  - 查询窗口自动退出
+  - 软件无任何显示，点击按钮无任何反应
+  - 搜索结果为空，不显示任何数据
+  - 软件会自动显示已经查找到的字符,用其他颜色进行匹配
+  - 按钮没有任何效果，只会显示那一个字符
+  - 软件会依次向下查询字符，查询到低后，再次点击下一个按钮，会自动跳转到第一个字符，再次循环查询
+  - 软件会依次向上查询字符，查询到最开始，再次点击上一个按钮，会自动跳转到最后一个字符，再次循环查询
+  - 软件会自动匹配字符大小写，都可以正常查询（实际结果请follow 需求 ）
+  case_type: 功能测试
+  manual: false
+
+- id: '1593009'
+  raw_title: 跳转到行【快捷键】
+  raw_precondition: ''
+  raw_steps: '1. 任意打开一个TXT文件，然后按Ctrl+G键，查看软件显示
+
+    2. 弹出跳转菜单后，按ESC键，查看软件显示
+
+    3. 弹出跳转行菜单后，输入任意字符，查看软件显示
+
+    4. 打开TXT文件后，在跳转行中输入大于当前文本的行数，查看软件显示
+
+    5. 打开TXT文件后，假如当前文本只有100行，在跳转行中输入50回车，查看软件显示
+
+    6. 在跳转行中输入连续跳转多次其他的行，查看软件显示'
+  raw_expected: '1. 软件会自动打开跳转行菜单
+
+    2. 跳转行菜单会自动退出
+
+    3. 输入框只能输入数字，无法输入其他字符
+
+    4. 无法输入超过当前文本的行数
+
+    5. 软件会自动跳转到当前文件的第50行
+
+    6. 可以正常跳转'
+  title: 跳转到行【快捷键】
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 任意打开一个TXT文件，然后按Ctrl+G键，查看软件显示
+  - 弹出跳转菜单后，按ESC键，查看软件显示
+  - 弹出跳转行菜单后，输入任意字符，查看软件显示
+  - 打开TXT文件后，在跳转行中输入大于当前文本的行数，查看软件显示
+  - 打开TXT文件后，假如当前文本只有100行，在跳转行中输入50回车，查看软件显示
+  - 在跳转行中输入连续跳转多次其他的行，查看软件显示
+  expected:
+  - 软件会自动打开跳转行菜单
+  - 跳转行菜单会自动退出
+  - 输入框只能输入数字，无法输入其他字符
+  - 无法输入超过当前文本的行数
+  - 软件会自动跳转到当前文件的第50行
+  - 可以正常跳转
+  case_type: 功能测试
+  manual: false
+
+- id: '1592893'
+  raw_title: 全选复制粘贴回车交互【快捷键】
+  raw_precondition: ''
+  raw_steps: '1. 打开TXT文档，按Ctrl+A，按Ctrl+C键，然后按Ctrl+V多次（3~5次）
+
+    2. 按回车
+
+    3. 继续按Ctrl+V'
+  raw_expected: '1. 可以一直粘贴复制的文本
+
+    2. 新建换行
+
+    3. 可以粘贴成功'
+  title: 全选复制粘贴回车交互【快捷键】
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开TXT文档，按Ctrl+A，按Ctrl+C键，然后按Ctrl+V多次（3~5次）
+  - 按回车
+  - 继续按Ctrl+V
+  expected:
+  - 可以一直粘贴复制的文本
+  - 新建换行
+  - 可以粘贴成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1592885'
+  raw_title: 查找_按压enter键
+  raw_precondition: ''
+  raw_steps: '1. 编辑器打开TXT文档，主菜单中打开查找
+
+    2. 输入字符后完成后，用户按“enter” 键后
+
+    3. 查找结果高亮显示，点击“上一个”、“下一个”按钮
+
+    4. 点击查找输入框中的“X”
+
+    5. 点击查找框的“X”按钮
+
+    6. 查找框、替换框不可移动 （新增需求）'
+  raw_expected: '1. 打开查找框，页面显示应保持不变
+
+    2. 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+
+    3. 定位至上一个或下一个结果处
+
+    4. 清除当前输入文本时，不清除查找结果，当前页面保持不变
+
+    5. 关闭查找框，当前页面保持不变
+
+    6. （查找框、替换框弹出时，滚动条位置上移2行；例如：原来1屏幕可以显示30行，第30行的位置会有滚动条；查找框出来后，会覆盖2行；那么在28行的位置需要有滚动条；）即页面存在滚动条，不会妨碍用户查看文档内容'
+  title: 查找_按压enter键
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 编辑器打开TXT文档，主菜单中打开查找
+  - 输入字符后完成后，用户按“enter” 键后
+  - 查找结果高亮显示，点击“上一个”、“下一个”按钮
+  - 点击查找输入框中的“X”
+  - 点击查找框的“X”按钮
+  - 查找框、替换框不可移动 （新增需求）
+  expected:
+  - 打开查找框，页面显示应保持不变
+  - 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+  - 定位至上一个或下一个结果处
+  - 清除当前输入文本时，不清除查找结果，当前页面保持不变
+  - 关闭查找框，当前页面保持不变
+  - （查找框、替换框弹出时，滚动条位置上移2行；例如：原来1屏幕可以显示30行，第30行的位置会有滚动条；查找框出来后，会覆盖2行；那么在28行的位置需要有滚动条；）即页面存在滚动条，不会妨碍用户查看文档内容
+  case_type: 功能测试
+  manual: false
+
+- id: '1592883'
+  raw_title: 新建窗口
+  raw_precondition: ''
+  raw_steps: '1. 点击主菜单按钮，查看软件显示
+
+    2. 在下拉菜单中点击新建窗口，查看软件显示
+
+    3. 连续点击新建窗口按钮，查看软件显示
+
+    4. 连续打开多个窗口后，关闭新建窗口，查看软件显示
+
+    5. 在新建窗口中输入任意字符，查看窗口显示
+
+    6. 非1040--在新窗口中输入字符后，再关闭窗口，查看软件显示
+
+    7. 1040阶段--在新窗口中输入字符后，再关闭窗口，查看软件显示'
+  raw_expected: '1. 软件会自动弹出下拉菜单
+
+    2. 软件会自动弹出一个新的窗口
+
+    3. 软件会自动打开多个软件窗口
+
+    4. 自动关闭新开的窗口
+
+    5. 可以输入任意字符
+
+    6. 弹出提示保存对话框
+
+    7. 软件直接关闭，输入的内容会被保存，下次打开编辑器时内容会还原'
+  title: 新建窗口
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 点击主菜单按钮，查看软件显示
+  - 在下拉菜单中点击新建窗口，查看软件显示
+  - 连续点击新建窗口按钮，查看软件显示
+  - 连续打开多个窗口后，关闭新建窗口，查看软件显示
+  - 在新建窗口中输入任意字符，查看窗口显示
+  - 非1040--在新窗口中输入字符后，再关闭窗口，查看软件显示
+  - 1040阶段--在新窗口中输入字符后，再关闭窗口，查看软件显示
+  expected:
+  - 软件会自动弹出下拉菜单
+  - 软件会自动弹出一个新的窗口
+  - 软件会自动打开多个软件窗口
+  - 自动关闭新开的窗口
+  - 可以输入任意字符
+  - 弹出提示保存对话框
+  - 软件直接关闭，输入的内容会被保存，下次打开编辑器时内容会还原
+  case_type: 功能测试
+  manual: false
+
+- id: '1592881'
+  raw_title: 新建标签
+  raw_precondition: ''
+  raw_steps: '1. 在主菜单中点击新建标签，查看软件显示
+
+    2. 连续点击新建标签按钮，查看软件显示
+
+    3. 打开多个标签后，点击标签的关闭按钮，查看软件显示
+
+    4. 打开新建标签后，在标签中输入任意字符，查看软件显示
+
+    5. 输入字符成功后，点击关闭标签按钮，查看软件显示
+
+    6. 点击放弃更改并退出按钮，查看软件显示
+
+    7. 点击取消按钮，查看软件显示
+
+    8. 点击另存为按钮，查看软件显示'
+  raw_expected: '1. 软件会自动在当前窗口打开新标签
+
+    2. 软件会连续打开多个标签
+
+    3. 软件无任何提示，直接关闭标签
+
+    4. 可以输入任意字符
+
+    5. 软件会弹出提示信息，放弃更改并退出，取消，另存为
+
+    6. 软件不进行任何保存，直接关闭当前标签
+
+    7. 当前提示对话框自动取消
+
+    8. 软件会自动弹出文件保存对话框，可以另存文件'
+  title: 新建标签
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 在主菜单中点击新建标签，查看软件显示
+  - 连续点击新建标签按钮，查看软件显示
+  - 打开多个标签后，点击标签的关闭按钮，查看软件显示
+  - 打开新建标签后，在标签中输入任意字符，查看软件显示
+  - 输入字符成功后，点击关闭标签按钮，查看软件显示
+  - 点击放弃更改并退出按钮，查看软件显示
+  - 点击取消按钮，查看软件显示
+  - 点击另存为按钮，查看软件显示
+  expected:
+  - 软件会自动在当前窗口打开新标签
+  - 软件会连续打开多个标签
+  - 软件无任何提示，直接关闭标签
+  - 可以输入任意字符
+  - 软件会弹出提示信息，放弃更改并退出，取消，另存为
+  - 软件不进行任何保存，直接关闭当前标签
+  - 当前提示对话框自动取消
+  - 软件会自动弹出文件保存对话框，可以另存文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1592879'
+  raw_title: 打开文件
+  raw_precondition: ''
+  raw_steps: '1. 在主菜单中点击打开文件按钮，查看软件显示
+
+    2. 在文件选择对话框中任意选中一个TXT文件
+
+    3. 在文件选择对话框中任意选中一个TXT文件，txt文件较大有50M
+
+    4. 在文件选择对话框中任意选中一个json文件'
+  raw_expected: '1. 软件会自动弹出文件选择对话框
+
+    2. 可以正常打开TXT文件
+
+    3. 软件可以正常打开该文件，打开速度显示正常
+
+    4. 软件可以正常打开json文件'
+  title: 打开文件
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 在主菜单中点击打开文件按钮，查看软件显示
+  - 在文件选择对话框中任意选中一个TXT文件
+  - 在文件选择对话框中任意选中一个TXT文件，txt文件较大有50M
+  - 在文件选择对话框中任意选中一个json文件
+  expected:
+  - 软件会自动弹出文件选择对话框
+  - 可以正常打开TXT文件
+  - 软件可以正常打开该文件，打开速度显示正常
+  - 软件可以正常打开json文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1592877'
+  raw_title: 保存
+  raw_precondition: ''
+  raw_steps: '1. 任意打开一个TXT文件，然后修改数据后，点击主菜单的保存按钮，查看软件显示
+
+    2. 任意新打开一个窗口或一个标签，输入字符后，点击保存按钮'
+  raw_expected: '1. 文件会自动保存，文件保存时软件会有提示信息，文件已保存
+
+    2. 软件会弹出文件保存对话框，可以将文件进行保存'
+  title: 保存
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 任意打开一个TXT文件，然后修改数据后，点击主菜单的保存按钮，查看软件显示
+  - 任意新打开一个窗口或一个标签，输入字符后，点击保存按钮
+  expected:
+  - 文件会自动保存，文件保存时软件会有提示信息，文件已保存
+  - 软件会弹出文件保存对话框，可以将文件进行保存
+  case_type: 功能测试
+  manual: false
+
+- id: '1592875'
+  raw_title: 另存为
+  raw_precondition: ''
+  raw_steps: '1. 打开TXT文档，然后点击主菜单--另存为按钮，查看软件显示
+
+    2. 假如另行保存的文件和其他文件重名，查看软件显示
+
+    3. 新打开一个文件或一个标签，点击主菜单--另存为按钮，查看软件显示'
+  raw_expected: '1. 软件会自动文件保存对话框，文件可以进行另行保存
+
+    2. 软件会弹出重名提示对话框
+
+    3. 软件会弹出自动保存对话框'
+  title: 另存为
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开TXT文档，然后点击主菜单--另存为按钮，查看软件显示
+  - 假如另行保存的文件和其他文件重名，查看软件显示
+  - 新打开一个文件或一个标签，点击主菜单--另存为按钮，查看软件显示
+  expected:
+  - 软件会自动文件保存对话框，文件可以进行另行保存
+  - 软件会弹出重名提示对话框
+  - 软件会弹出自动保存对话框
+  case_type: 功能测试
+  manual: false
+
+- id: '1592873'
+  raw_title: 打印
+  raw_precondition: 在打印管理器中成功添加打印机
+  raw_steps: '1. 打开一个TXT文档，然后点击主菜单--打印按钮，查看软件显示
+
+    2. 弹出打印窗口后，按ESC键
+
+    3. 弹出打印窗口后，点击×按钮，查看软件显示
+
+    4. 新建空白标签页进行编辑（此时文件名前有*），点击主菜单--打印按钮进行打印，查看返回的打印toast消息 或 进入打印管理器中查看“打印队列”里此条记录的文档列
+
+    5. 本地文件进行编辑（此时文件名前有*），点击主菜单--打印按钮进行打印，查看返回的打印toast消息 或 进入打印管理器中查看“打印队列”里此条记录文档列'
+  raw_expected: '1. 软件会自动弹出打印窗口（预览内容显示正常，默认当前打印机）
+
+    2. 打印窗口消失
+
+    3. 打印窗口自动消失
+
+    4. 显示当前打印的文档名（无*）
+
+    5. 显示当前打印的文档名（无*）'
+  title: 打印
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - 在打印管理器中成功添加打印机
+  steps:
+  - 打开一个TXT文档，然后点击主菜单--打印按钮，查看软件显示
+  - 弹出打印窗口后，按ESC键
+  - 弹出打印窗口后，点击×按钮，查看软件显示
+  - 新建空白标签页进行编辑（此时文件名前有*），点击主菜单--打印按钮进行打印，查看返回的打印toast消息 或 进入打印管理器中查看“打印队列”里此条记录的文档列
+  - 本地文件进行编辑（此时文件名前有*），点击主菜单--打印按钮进行打印，查看返回的打印toast消息 或 进入打印管理器中查看“打印队列”里此条记录文档列
+  expected:
+  - 软件会自动弹出打印窗口（预览内容显示正常，默认当前打印机）
+  - 打印窗口消失
+  - 打印窗口自动消失
+  - 显示当前打印的文档名（无*）
+  - 显示当前打印的文档名（无*）
+  case_type: 功能测试
+  manual: false
+
+- id: '1592871'
+  raw_title: 切换主题
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器后，点击主菜单--主题按钮，查看软件显示
+
+    2. 在主题列表中任意点击其他主题，查看软件显示
+
+    3. 在主题列表中来回切换，查看主题显示'
+  raw_expected: '1. 软件会自动弹出侧边栏，显示主题列表
+
+    2. 当前软件会随着主题的切换变化而变化
+
+    3. 可以来回切换主题，主题切换正常'
+  title: 切换主题
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开编辑器后，点击主菜单--主题按钮，查看软件显示
+  - 在主题列表中任意点击其他主题，查看软件显示
+  - 在主题列表中来回切换，查看主题显示
+  expected:
+  - 软件会自动弹出侧边栏，显示主题列表
+  - 当前软件会随着主题的切换变化而变化
+  - 可以来回切换主题，主题切换正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1592869'
+  raw_title: 帮助
+  raw_precondition: ''
+  raw_steps: '1. 在设置下拉列表中点击帮助按钮，查看软件显示
+
+    2. 打开深度编辑器，按F1,查看软件显示
+
+    3. 核对中、英文下，文本编辑器帮助手册的文案'
+  raw_expected: '1. 软件会自动弹出该软件的帮助文档
+
+    2. 软件会自动弹出该软件的帮助文档
+
+    3. 正常显示文本编辑器相关功能介绍和对应截图无异常'
+  title: 帮助
+  module: 主菜单
+  priority: '1'
+  precondition: []
+  steps:
+  - 在设置下拉列表中点击帮助按钮，查看软件显示
+  - 打开深度编辑器，按F1,查看软件显示
+  - 核对中、英文下，文本编辑器帮助手册的文案
+  expected:
+  - 软件会自动弹出该软件的帮助文档
+  - 软件会自动弹出该软件的帮助文档
+  - 正常显示文本编辑器相关功能介绍和对应截图无异常
+  case_type: 功能测试
+  manual: false
+
+- id: '1592867'
+  raw_title: “关于”弹窗
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器，主菜单中选择“关于”
+
+    2. 用鼠标移动“关于”弹窗
+
+    3. “关于”弹窗出现时，按ESC键
+
+    4. 点击“关于”窗口外区域使焦点移出“关于”弹窗后， 点击任务栏上的文本编辑器图标观察'
+  raw_expected: '1. 弹出“关于”弹窗
+
+    2. “关于”弹窗跟随鼠标移动
+
+    3. “关于”弹窗会自动关闭
+
+    4. 文本编辑器窗口和“关于”弹窗同时隐藏和显示'
+  title: “关于”弹窗
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开文本编辑器，主菜单中选择“关于”
+  - 用鼠标移动“关于”弹窗
+  - “关于”弹窗出现时，按ESC键
+  - 点击“关于”窗口外区域使焦点移出“关于”弹窗后， 点击任务栏上的文本编辑器图标观察
+  expected:
+  - 弹出“关于”弹窗
+  - “关于”弹窗跟随鼠标移动
+  - “关于”弹窗会自动关闭
+  - 文本编辑器窗口和“关于”弹窗同时隐藏和显示
+  case_type: 功能测试
+  manual: false
+
+- id: '1592865'
+  raw_title: 退出
+  raw_precondition: ''
+  raw_steps: '1. 点击右上角的设置－退出按钮，查看软件显示
+
+    2. 打开软件后，按Alt+F4键，查看软件显示'
+  raw_expected: '1. 软件会自动退出
+
+    2. 软件会自动退出当前窗口'
+  title: 退出
+  module: 冒烟测试
+  priority: '2'
+  precondition: []
+  steps:
+  - 点击右上角的设置－退出按钮，查看软件显示
+  - 打开软件后，按Alt+F4键，查看软件显示
+  expected:
+  - 软件会自动退出
+  - 软件会自动退出当前窗口
+  case_type: 功能测试
+  manual: false
+
+- id: '1592863'
+  raw_title: 最大最小关闭
+  raw_precondition: ''
+  raw_steps: '1. 打开软件后，点击右上角的最小化，查看软件显示
+
+    2. 软件最小化后，在dock上点击深度编辑器，查看软件显示
+
+    3. 打开软件，点击最大化按钮，查看软件显示
+
+    4. 软件最大化后，再点击顶部按钮向下拖拽，查看软件显示
+
+    5. 手动修改对话框的大小，然后重启软件，查看软件窗口大小
+
+    6. 打开软件，点击右上角的关闭按钮，查看软件显示'
+  raw_expected: '1. 当前窗口会自动最小化
+
+    2. 软件会自动还原窗口
+
+    3. 当前窗口会自动最大化显示
+
+    4. 软件会自动还原到原来窗口大小
+
+    5. 新打开的窗口是上次修改的窗口大小
+
+    6. 软件会自动关闭当前窗口'
+  title: 最大最小关闭
+  module: 主菜单
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开软件后，点击右上角的最小化，查看软件显示
+  - 软件最小化后，在dock上点击深度编辑器，查看软件显示
+  - 打开软件，点击最大化按钮，查看软件显示
+  - 软件最大化后，再点击顶部按钮向下拖拽，查看软件显示
+  - 手动修改对话框的大小，然后重启软件，查看软件窗口大小
+  - 打开软件，点击右上角的关闭按钮，查看软件显示
+  expected:
+  - 当前窗口会自动最小化
+  - 软件会自动还原窗口
+  - 当前窗口会自动最大化显示
+  - 软件会自动还原到原来窗口大小
+  - 新打开的窗口是上次修改的窗口大小
+  - 软件会自动关闭当前窗口
+  case_type: 功能测试
+  manual: false
+
+- id: '1592861'
+  raw_title: 替换
+  raw_precondition: ''
+  raw_steps: '1. 编辑器打开一个txt文档，主菜单中选择“替换”
+
+    2. 输入字符后完成后，点击替换
+
+    3. 点击跳过
+
+    4. 剩余替换
+
+    5. 全部替换
+
+    6. 点击输入框中的“X”
+
+    7. 点击替换框的“X”按钮，
+
+    8. 替换框（新增需求）'
+  raw_expected: '1. 弹出替换框
+
+    2. 仅替换当前第一条，且替换结果不再高亮显示；
+
+    3. 显示下一条替换结果；
+
+    4. 替换当前光标所处文本后剩余查找结果；
+
+    5. 替换全部查找结果；
+
+    6. 清除当前输入文本；
+
+    7. 关闭替换框；
+
+    8. 不可以在整个屏幕内移动。'
+  title: 替换
+  module: 主菜单
+  priority: '2'
+  precondition: []
+  steps:
+  - 编辑器打开一个txt文档，主菜单中选择“替换”
+  - 输入字符后完成后，点击替换
+  - 点击跳过
+  - 剩余替换
+  - 全部替换
+  - 点击输入框中的“X”
+  - 点击替换框的“X”按钮，
+  - 替换框（新增需求）
+  expected:
+  - 弹出替换框
+  - 仅替换当前第一条，且替换结果不再高亮显示；
+  - 显示下一条替换结果；
+  - 替换当前光标所处文本后剩余查找结果；
+  - 替换全部查找结果；
+  - 清除当前输入文本；
+  - 关闭替换框；
+  - 不可以在整个屏幕内移动。
+  case_type: 功能测试
+  manual: false
+
+- id: '1592855'
+  raw_title: 查找_不按压enter键
+  raw_precondition: 1040适用
+  raw_steps: '1. 编辑器打开TXT文档，主菜单中打开查找
+
+    2. 输入字符后，直接点击“上一个”、"下一个"按钮'
+  raw_expected: '1. 打开查找框，页面显示应保持不变
+
+    2. 不会全文高亮匹配字符，仅仅跳转到当前光标后第一个匹配处'
+  title: 查找_不按压enter键
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - 适用
+  steps:
+  - 编辑器打开TXT文档，主菜单中打开查找
+  - 输入字符后，直接点击“上一个”、"下一个"按钮
+  expected:
+  - 打开查找框，页面显示应保持不变
+  - 不会全文高亮匹配字符，仅仅跳转到当前光标后第一个匹配处
+  case_type: 功能测试
+  manual: false
+
+- id: '1592853'
+  raw_title: 查找_更换查找词
+  raw_precondition: step5适用1040阶段
+  raw_steps: '1. 编辑器打开TXT文档，主菜单中打开查找
+
+    2. 输入字符后完成后，用户按“enter” 键后
+
+    3. 查找结果高亮显示，点击“上一个”、“下一个”按钮
+
+    4. 点击查找输入框中的“X”
+
+    5. 输入新的查找词，点击“上一个”、“下一个”按钮
+
+    6. 再次点检查找输入框中的“X”
+
+    7. 输入新的查找词，按压enter键
+
+    8. 点击“上一个”、“下一个”按钮'
+  raw_expected: '1. 打开查找框，页面显示应保持不变
+
+    2. 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+
+    3. 定位至上一个或下一个结果处
+
+    4. 清除当前输入文本时，不清除查找结果，当前页面保持不变
+
+    5. 跳转到当前光标后第一个新的查找词的匹配处（未有高亮匹配显示）
+
+    6. 清除当前输入文本时，不清除查找结果，当前页面保持不变
+
+    7. 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+
+    8. 定位至上一个或下一个结果处'
+  title: 查找_更换查找词
+  module: 主菜单
+  priority: '2'
+  precondition:
+  - step5适用1040阶段
+  steps:
+  - 编辑器打开TXT文档，主菜单中打开查找
+  - 输入字符后完成后，用户按“enter” 键后
+  - 查找结果高亮显示，点击“上一个”、“下一个”按钮
+  - 点击查找输入框中的“X”
+  - 输入新的查找词，点击“上一个”、“下一个”按钮
+  - 再次点检查找输入框中的“X”
+  - 输入新的查找词，按压enter键
+  - 点击“上一个”、“下一个”按钮
+  expected:
+  - 打开查找框，页面显示应保持不变
+  - 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+  - 定位至上一个或下一个结果处
+  - 清除当前输入文本时，不清除查找结果，当前页面保持不变
+  - 跳转到当前光标后第一个新的查找词的匹配处（未有高亮匹配显示）
+  - 清除当前输入文本时，不清除查找结果，当前页面保持不变
+  - 全文高亮显示匹配字符，跳转到当前光标后第一个匹配处。
+  - 定位至上一个或下一个结果处
+  case_type: 功能测试
+  manual: false
+
+- id: '1592845'
+  raw_title: 语法高亮
+  raw_precondition: 超多一页显示的代码文档
+  raw_steps: '1. 支持下列编程语言预设易分辨的色彩文本：Bat，C#，C++，CSS，HTML，Ini，Java，JavaScript，JSP，Markdown，Pascal
+    (Delphi)，Perl，PerlScript，PHP，Python，Ruby，SQL，TeX (LaTeX)，VBScript，WindowsScript，x86
+    Assembler，XML等
+
+    2. 根据代码语法自动根据主题配色展示：ASP 标记 (<% ... %>) 以及标准脚本标记的文本会根据其脚本语言所指定的语言属性(JavaScript，VBScript
+    或 PerlScript)来格式；
+
+    3. 滚动查看文本中的代码
+
+    4. 放大缩小全屏切换的过程中查看代码高亮的显示
+
+    5. 将代码文件的tab页拖拽窗口生成的新窗口中查看代码高亮度显示
+
+    6. 将代码文件的tab页拖拽窗口合并窗口中查看代码高亮度显示
+
+    7. 从大窗口下拖拽出来生成的新窗口中查看代码高亮度显示'
+  raw_expected: '1. 各编码预言的代码文本内容中显示正确的高亮颜色
+
+    2. 不同主题下，高亮的代码显示正常
+
+    3. 语法高亮的显示正常
+
+    4. 代码高亮显示正常
+
+    5. 代码高亮显示正常
+
+    6. 代码高亮显示正常
+
+    7. 代码高亮显示正常'
+  title: 语法高亮
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 超多一页显示的代码文档
+  steps:
+  - 支持下列编程语言预设易分辨的色彩文本：Bat，C#，C++，CSS，HTML，Ini，Java，JavaScript，JSP，Markdown，Pascal
+    (Delphi)，Perl，PerlScript，PHP，Python，Ruby，SQL，TeX (LaTeX)，VBScript，WindowsScript，x86
+    Assembler，XML等
+  - 根据代码语法自动根据主题配色展示：ASP 标记 (<% ... %>) 以及标准脚本标记的文本会根据其脚本语言所指定的语言属性(JavaScript，VBScript
+    或 PerlScript)来格式；
+  - 滚动查看文本中的代码
+  - 放大缩小全屏切换的过程中查看代码高亮的显示
+  - 将代码文件的tab页拖拽窗口生成的新窗口中查看代码高亮度显示
+  - 将代码文件的tab页拖拽窗口合并窗口中查看代码高亮度显示
+  - 从大窗口下拖拽出来生成的新窗口中查看代码高亮度显示
+  expected:
+  - 各编码预言的代码文本内容中显示正确的高亮颜色
+  - 不同主题下，高亮的代码显示正常
+  - 语法高亮的显示正常
+  - 代码高亮显示正常
+  - 代码高亮显示正常
+  - 代码高亮显示正常
+  - 代码高亮显示正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1592835'
+  raw_title: 输入内容
+  raw_precondition: ''
+  raw_steps: '1. 打开用文本编辑器
+
+    2. 英文下通过键盘键入
+
+    3. 中文下通过键盘键入'
+  raw_expected: '1. 默认新开一空白文档
+
+    2. 键入英文字符正常
+
+    3. 若支持输入预览则输入预览中的文字显示正常，中文输入正常'
+  title: 输入内容
+  module: 工作区
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开用文本编辑器
+  - 英文下通过键盘键入
+  - 中文下通过键盘键入
+  expected:
+  - 默认新开一空白文档
+  - 键入英文字符正常
+  - 若支持输入预览则输入预览中的文字显示正常，中文输入正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1592833'
+  raw_title: 大文件加载过程中“编码方式”和“文本类型”按钮
+  raw_precondition: Step2 适用于1040阶段
+  raw_steps: '1. 打开一个大文件
+
+    2. 加载的过程中查看底栏
+
+    3. 加载完成后查看底栏'
+  raw_expected: "1. \n2. “编码方式”和“文本类型”按钮置灰，无法点击\n3. “编码方式”和“文本类型”按钮恢复正常，可以被点击"
+  title: 大文件加载过程中“编码方式”和“文本类型”按钮
+  module: 工作区
+  priority: '2'
+  precondition:
+  - Step2 适用于1040阶段
+  steps:
+  - 打开一个大文件
+  - 加载的过程中查看底栏
+  - 加载完成后查看底栏
+  expected:
+  - ''
+  - “编码方式”和“文本类型”按钮置灰，无法点击
+  - “编码方式”和“文本类型”按钮恢复正常，可以被点击
+  case_type: 功能测试
+  manual: false
+
+- id: '1592831'
+  raw_title: 文件内容_输入特殊字符
+  raw_precondition: ''
+  raw_steps: '1. 打开文本编辑器
+
+    2. 按压键盘输入特殊字符:shift,Ctrl,Caps lock'
+  raw_expected: '1. 默认新开一个空白窗口，标签页文件名无*显示
+
+    2. 不会键入字符，且标签页文件名无*显示'
+  title: 文件内容_输入特殊字符
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开文本编辑器
+  - 按压键盘输入特殊字符:shift,Ctrl,Caps lock
+  expected:
+  - 默认新开一个空白窗口，标签页文件名无*显示
+  - 不会键入字符，且标签页文件名无*显示
+  case_type: 功能测试
+  manual: false
+
+- id: '1592827'
+  raw_title: 支持换行符：linux、Windows、Mac OS
+  raw_precondition: ''
+  raw_steps: '1. 在文本编辑器窗口中输入内容后保存,在触发保存对话框点击"换行符"
+
+    2. 选择"Linux"进行保存,再次打开做行号的检查
+
+    3. 选择"Windows"进行保存
+
+    4. 选择"Mac Os"进行保存'
+  raw_expected: '1. 子菜单列表"Linux ,Windows,Mac Os"
+
+    2. 行数自动加1
+
+    3. 保存成功
+
+    4. 保存成功'
+  title: 支持换行符：linux、Windows、Mac OS
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在文本编辑器窗口中输入内容后保存,在触发保存对话框点击"换行符"
+  - 选择"Linux"进行保存,再次打开做行号的检查
+  - 选择"Windows"进行保存
+  - 选择"Mac Os"进行保存
+  expected:
+  - 子菜单列表"Linux ,Windows,Mac Os"
+  - 行数自动加1
+  - 保存成功
+  - 保存成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1592813'
+  raw_title: 标签管理_异常保存_切换编码
+  raw_precondition: ''
+  raw_steps: '1. 文本文件被修改后，点击右下角的切换编码
+
+    2. 文本文件被修改后，关闭应用后重新打开，点击右下角的切换编码'
+  raw_expected: '1. “取消” 后弹框消失；
+
+    2. “保存”则会把修改的内容先保存，再展示保存后的内容以及新编码下的内容，同时标签页的*消失， 点击标签页进行关闭时，可直接关闭 。'
+  title: 标签管理_异常保存_切换编码
+  module: 工作区
+  priority: '1'
+  precondition: []
+  steps:
+  - 文本文件被修改后，点击右下角的切换编码
+  - 文本文件被修改后，关闭应用后重新打开，点击右下角的切换编码
+  expected:
+  - “取消” 后弹框消失；
+  - “保存”则会把修改的内容先保存，再展示保存后的内容以及新编码下的内容，同时标签页的*消失， 点击标签页进行关闭时，可直接关闭 。
+  case_type: 功能测试
+  manual: false
+
+- id: '1592811'
+  raw_title: 切换编码_数据错误
+  raw_precondition: 适用于103x之前（包括103x）阶段，文本编辑器用的是Qt原生的编码识别/编码转换的库
+  raw_steps: '1. 拖拽一个文件到编辑器，点击右下角的切换编码，会导致数据错误时
+
+    2. 点击取消
+
+    3. 点击继续，强制使用此编码'
+  raw_expected: '1. 会出现如下提示：
+
+    使用此编码加载文件出错，如果强制使用，可能会导致文件内容发生改变。
+
+    2. 提示弹框消失，不进行编码的切换
+
+    3. 编码显示为切换的编码方式，可能会导致文件内容发生改变。'
+  title: 切换编码_数据错误
+  module: 工作区
+  priority: '1'
+  precondition:
+  - 适用于103x之前（包括103x）阶段，文本编辑器用的是Qt原生的编码识别/编码转换的库
+  steps:
+  - 拖拽一个文件到编辑器，点击右下角的切换编码，会导致数据错误时
+  - 点击取消
+  - 点击继续，强制使用此编码
+  expected:
+  - 会出现如下提示：
+  - 使用此编码加载文件出错，如果强制使用，可能会导致文件内容发生改变。
+  - 提示弹框消失，不进行编码的切换
+  - 编码显示为切换的编码方式，可能会导致文件内容发生改变。
+  case_type: 功能测试
+  manual: false
+
+- id: '1592809'
+  raw_title: 大文件复制粘帖
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个大文件（如，100M.txt）
+
+    2. 对内容进行全选->复制->粘帖（多次）
+
+    3. 对内容进行全选后，复制->粘贴（多次）'
+  raw_expected: '1. 完全加载
+
+    2. 2-1： 粘帖正常 ；
+
+    2-2： （受限于不同的硬件配置）当系统可用内存无法完成复制时，toast提示语： “！内存不足，复制失败”，不会造成文本编辑器或者系统的运行异常
+
+    3. 无卡死，闪退等异常现象'
+  title: 大文件复制粘帖
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个大文件（如，100M.txt）
+  - 对内容进行全选->复制->粘帖（多次）
+  - 对内容进行全选后，复制->粘贴（多次）
+  expected:
+  - 完全加载
+  - 2-1： 粘帖正常 ；
+  - -2： （受限于不同的硬件配置）当系统可用内存无法完成复制时，toast提示语： “！内存不足，复制失败”，不会造成文本编辑器或者系统的运行异常
+  - 无卡死，闪退等异常现象
+  case_type: 功能测试
+  manual: false
+
+- id: '1592807'
+  raw_title: 文件内容_Insert覆盖输入
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个文档
+
+    2. 按压键盘上的Insert按键
+
+    3. 按压键盘输入内容（覆盖小键盘区）
+
+    4. 再次按压键盘的Insert按键'
+  raw_expected: '1. 底栏上默认“插入”模式
+
+    2. 底栏上切换为“覆盖”模式， 光标也切换为覆盖模式
+
+    3. 光标上的内容被覆盖
+
+    4. 切回“插入”模式'
+  title: 文件内容_Insert覆盖输入
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个文档
+  - 按压键盘上的Insert按键
+  - 按压键盘输入内容（覆盖小键盘区）
+  - 再次按压键盘的Insert按键
+  expected:
+  - 底栏上默认“插入”模式
+  - 底栏上切换为“覆盖”模式， 光标也切换为覆盖模式
+  - 光标上的内容被覆盖
+  - 切回“插入”模式
+  case_type: 功能测试
+  manual: false
+
+- id: '1592799'
+  raw_title: 休眠、待机、锁屏不需要阻止框
+  raw_precondition: ''
+  raw_steps: '1. 打开编辑器，新建TXT文档，输入任意字符，不保存的情况下进入休眠、待机、锁屏
+
+    2. 打开电脑，查看软件显示'
+  raw_expected: '1. 不弹出阻止框，直接进入休眠、待机、锁屏模式
+
+    2. 软件保留原有状态'
+  title: 休眠、待机、锁屏不需要阻止框
+  module: 关机
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开编辑器，新建TXT文档，输入任意字符，不保存的情况下进入休眠、待机、锁屏
+  - 打开电脑，查看软件显示
+  expected:
+  - 不弹出阻止框，直接进入休眠、待机、锁屏模式
+  - 软件保留原有状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1592797'
+  raw_title: 关机、重启、注销弹出阻止框
+  raw_precondition: ''
+  raw_steps: 1. 打开编辑器，新建TXT文档，输入任意字符，不保存的情况下直接关机、重启、注销
+  raw_expected: 1. 弹出阻止框，阻止关机、重启、注销
+  title: 关机、重启、注销弹出阻止框
+  module: 关机
+  priority: '1'
+  precondition: []
+  steps:
+  - 打开编辑器，新建TXT文档，输入任意字符，不保存的情况下直接关机、重启、注销
+  expected:
+  - 弹出阻止框，阻止关机、重启、注销
+  case_type: 功能测试
+  manual: false
+
+- id: '1592791'
+  raw_title: 未保存时关闭标签
+  raw_precondition: ''
+  raw_steps: '1. 编辑器任意打开一个文档，然后添加一些文字，关闭标签（或窗口）
+
+    2. 选中对话框中的”取消“
+
+    3. 选中对话框中的”不保存“
+
+    4. 选中对话框中的”保存“
+
+    5. 按ESC键'
+  raw_expected: '1. 软件会弹出保存提示对话框“您是否要保存此文件？）
+
+    （1040后新增加自动保存现场的需求，故1040后关闭窗口不会提示对话框）
+
+    2. 保存提示对话框消失
+
+    3. 此文档不保存关闭
+
+    4. 保存后关闭
+
+    5. 保存提示对话框消失'
+  title: 未保存时关闭标签
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 编辑器任意打开一个文档，然后添加一些文字，关闭标签（或窗口）
+  - 选中对话框中的”取消“
+  - 选中对话框中的”不保存“
+  - 选中对话框中的”保存“
+  - 按ESC键
+  expected:
+  - 软件会弹出保存提示对话框“您是否要保存此文件？）
+  - （1040后新增加自动保存现场的需求，故1040后关闭窗口不会提示对话框）
+  - 保存提示对话框消失
+  - 此文档不保存关闭
+  - 保存后关闭
+  - 保存提示对话框消失
+  case_type: 功能测试
+  manual: false
+
+- id: '1592787'
+  raw_title: 文本编辑器重新载入被其他应用修改的根源文件
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个文档A
+
+    2. 再通过另一个应用（例如kwrite）打开同样的这个文档A ，并对内容进行修改编辑后完成保存
+
+    3. 点击文本编辑器窗口，触发对话框“磁盘中的原文件已被修改，是否重新载入？”
+
+    3-1：选择“重新载入”
+
+    3-2:  选择关闭按钮'
+  raw_expected: '1. 文本编辑器窗口显示文档A
+
+    2. 另一个应用对更新后的文档A成功保存
+
+    3. 3-1.”重新载入“后文本编辑器窗口显示的是步骤2中另一应用修改后的内容，继续点击文档A的标签页中的关闭按钮可以直接关闭
+
+    3-2.“关闭”后弹框消失，当前标签页文件名前无*出现，此时继续点击当前标签页关闭时可以直接关闭'
+  title: 文本编辑器重新载入被其他应用修改的根源文件
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个文档A
+  - 再通过另一个应用（例如kwrite）打开同样的这个文档A ，并对内容进行修改编辑后完成保存
+  - 点击文本编辑器窗口，触发对话框“磁盘中的原文件已被修改，是否重新载入？”
+  - -1：选择“重新载入”
+  - '-2:  选择关闭按钮'
+  expected:
+  - 文本编辑器窗口显示文档A
+  - 另一个应用对更新后的文档A成功保存
+  - 3-1.”重新载入“后文本编辑器窗口显示的是步骤2中另一应用修改后的内容，继续点击文档A的标签页中的关闭按钮可以直接关闭
+  - -2.“关闭”后弹框消失，当前标签页文件名前无*出现，此时继续点击当前标签页关闭时可以直接关闭
+  case_type: 功能测试
+  manual: false
+
+- id: '1592779'
+  raw_title: “保存”一个有存储权限的网络文件
+  raw_precondition: 共享文件夹A的权限设置为读写
+  raw_steps: '1. 使用文本编辑器打开smb文件夹中A的文件进行编辑
+
+    2. 主菜单中保存/快捷键（Ctrl+S)'
+  raw_expected: '1. 文本编辑器窗口中实时显示修改的内容
+
+    2. toast保存成功'
+  title: “保存”一个有存储权限的网络文件
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 共享文件夹A的权限设置为读写
+  steps:
+  - 使用文本编辑器打开smb文件夹中A的文件进行编辑
+  - 主菜单中保存/快捷键（Ctrl+S)
+  expected:
+  - 文本编辑器窗口中实时显示修改的内容
+  - toast保存成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1592759'
+  raw_title: 语音朗读
+  raw_precondition: ''
+  raw_steps: '1. 选择一段文字，点击右键，查看右键菜单
+
+    2. 点击“右键菜单”
+
+    3. 未选中任何文字，点击右键，查看右键菜单
+
+    4. 在设置中关闭语音朗读功能，编辑器选中一段文字右键，查看右键菜单'
+  raw_expected: '1. 右键菜单中有语音朗读功能
+
+    2. 语音播报选中部分文字
+
+    3. “语音朗读”功能置灰处理，无法使用
+
+    4. 语音朗读功能置灰处理，无法使用'
+  title: 语音朗读
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 选择一段文字，点击右键，查看右键菜单
+  - 点击“右键菜单”
+  - 未选中任何文字，点击右键，查看右键菜单
+  - 在设置中关闭语音朗读功能，编辑器选中一段文字右键，查看右键菜单
+  expected:
+  - 右键菜单中有语音朗读功能
+  - 语音播报选中部分文字
+  - “语音朗读”功能置灰处理，无法使用
+  - 语音朗读功能置灰处理，无法使用
+  case_type: 功能测试
+  manual: false
+
+- id: '1592757'
+  raw_title: 语音听写
+  raw_precondition: ''
+  raw_steps: '1. 点击右键菜单，查看软件显示
+
+    2. 点击“语音听写”菜单，用户通过麦克风语音输入
+
+    3. 在设置中关闭语音听写功能，在编辑器中右击，查看右键菜单'
+  raw_expected: '1. 右键菜单中有语音听写功能
+
+    2. 语音转译文字被编辑在文档中
+
+    3. 语音听写功能无法使用，并置灰'
+  title: 语音听写
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 点击右键菜单，查看软件显示
+  - 点击“语音听写”菜单，用户通过麦克风语音输入
+  - 在设置中关闭语音听写功能，在编辑器中右击，查看右键菜单
+  expected:
+  - 右键菜单中有语音听写功能
+  - 语音转译文字被编辑在文档中
+  - 语音听写功能无法使用，并置灰
+  case_type: 功能测试
+  manual: false
+
+- id: '1592749'
+  raw_title: 全选
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+
+    2. 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+
+    3. 打开一个有字符的文档，点击右键，查看右键菜单
+
+    4. 在有字符的文档中点击右键--全选按钮，查看软件显示'
+  raw_expected: '1. 右键菜单中没有全选按钮
+
+    2. 右键菜单会显示出全选按钮
+
+    3. 右键菜单会显示全选按钮
+
+    4. 当前文档中所有的内容都会被选中，选中的文字可以进行复制或剪切'
+  title: 全选
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，点击右键，查看右键菜单显示
+  - 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+  - 打开一个有字符的文档，点击右键，查看右键菜单
+  - 在有字符的文档中点击右键--全选按钮，查看软件显示
+  expected:
+  - 右键菜单中没有全选按钮
+  - 右键菜单会显示出全选按钮
+  - 右键菜单会显示全选按钮
+  - 当前文档中所有的内容都会被选中，选中的文字可以进行复制或剪切
+  case_type: 功能测试
+  manual: false
+
+- id: '1592743'
+  raw_title: 跳到行
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+
+    2. 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+
+    3. 打开一个有字符的文档，点击右键，查看右键菜单
+
+    4. 在有字符的文档中点击右键--跳到行按钮，查看软件显示'
+  raw_expected: '1. 右键菜单中没有跳到行按钮
+
+    2. 右键菜单会显示出跳到行按钮
+
+    3. 右键菜单会显示跳到行按钮
+
+    4. 软件会自动弹出跳到行菜单，可以正确的进行行跳转'
+  title: 跳到行
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，点击右键，查看右键菜单显示
+  - 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+  - 打开一个有字符的文档，点击右键，查看右键菜单
+  - 在有字符的文档中点击右键--跳到行按钮，查看软件显示
+  expected:
+  - 右键菜单中没有跳到行按钮
+  - 右键菜单会显示出跳到行按钮
+  - 右键菜单会显示跳到行按钮
+  - 软件会自动弹出跳到行菜单，可以正确的进行行跳转
+  case_type: 功能测试
+  manual: false
+
+- id: '1592739'
+  raw_title: 重做
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+
+    2. 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+
+    3. 打开一个有字符的文档，点击右键，查看右键菜单
+
+    4. 打开一个有字符的文档，在文档中新增字符然后撤销，点击右键，查看右键菜单
+
+    5. 打开一个有字符的文档新增字符后撤销，点击右键菜单--重做按钮，查看右键菜单'
+  raw_expected: '1. 右键菜单中没有重做按钮
+
+    2. 右键菜单没有重做按钮
+
+    3. 文档不进行任何操作是没有撤销按钮显示的，只有先进行撤销操作后，才会出现重做
+
+    4. 右键菜单会显示出重做按钮
+
+    5. 软件会自动还原撤销操作，返回到最新操作'
+  title: 重做
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，点击右键，查看右键菜单显示
+  - 在新窗口中输入任意字符，点击右键，查看右键菜单显示
+  - 打开一个有字符的文档，点击右键，查看右键菜单
+  - 打开一个有字符的文档，在文档中新增字符然后撤销，点击右键，查看右键菜单
+  - 打开一个有字符的文档新增字符后撤销，点击右键菜单--重做按钮，查看右键菜单
+  expected:
+  - 右键菜单中没有重做按钮
+  - 右键菜单没有重做按钮
+  - 文档不进行任何操作是没有撤销按钮显示的，只有先进行撤销操作后，才会出现重做
+  - 右键菜单会显示出重做按钮
+  - 软件会自动还原撤销操作，返回到最新操作
+  case_type: 功能测试
+  manual: false
+
+- id: '1592731'
+  raw_title: 转换大写
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+
+    2. 打开TXT文档，点击右键，查看右键菜单显示
+
+    3. 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+
+    4. 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+
+    5. 假如选中的都是汉字，点击右键菜单--切换大写，查看软件显示
+
+    6. 假如选中的含有英文字符，点击右键菜单--切换大写，查看软件显示'
+  raw_expected: '1. 右键菜单中没有切换大写按钮
+
+    2. 右键菜单没有切换大写按钮
+
+    3. 选中字符后，右键菜单会有切换大写按钮显示
+
+    4. 右键菜单会有切换大写按钮显示
+
+    5. 汉字内容没有任何变化显示
+
+    6. 软件会自动将选中的英文字符切换成大写'
+  title: 转换大写
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，点击右键，查看右键菜单显示
+  - 打开TXT文档，点击右键，查看右键菜单显示
+  - 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+  - 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+  - 假如选中的都是汉字，点击右键菜单--切换大写，查看软件显示
+  - 假如选中的含有英文字符，点击右键菜单--切换大写，查看软件显示
+  expected:
+  - 右键菜单中没有切换大写按钮
+  - 右键菜单没有切换大写按钮
+  - 选中字符后，右键菜单会有切换大写按钮显示
+  - 右键菜单会有切换大写按钮显示
+  - 汉字内容没有任何变化显示
+  - 软件会自动将选中的英文字符切换成大写
+  case_type: 功能测试
+  manual: false
+
+- id: '1592729'
+  raw_title: 转换小写
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+
+    2. 打开TXT文档，点击右键，查看右键菜单显示
+
+    3. 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+
+    4. 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+
+    5. 假如选中的都是汉字，点击右键菜单--切换小写，查看软件显示
+
+    6. 假如选中的含有英文字符，点击右键菜单--切换小写，查看软件显示'
+  raw_expected: '1. 右键菜单中没有切换小写按钮
+
+    2. 右键菜单没有切换小写按钮
+
+    3. 选中字符后，右键菜单会有切换小写按钮显示
+
+    4. 右键菜单会有切换小写按钮显示
+
+    5. 汉字内容没有任何变化显示
+
+    6. 软件会自动将选中的英文字符切换成小写'
+  title: 转换小写
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，点击右键，查看右键菜单显示
+  - 打开TXT文档，点击右键，查看右键菜单显示
+  - 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+  - 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+  - 假如选中的都是汉字，点击右键菜单--切换小写，查看软件显示
+  - 假如选中的含有英文字符，点击右键菜单--切换小写，查看软件显示
+  expected:
+  - 右键菜单中没有切换小写按钮
+  - 右键菜单没有切换小写按钮
+  - 选中字符后，右键菜单会有切换小写按钮显示
+  - 右键菜单会有切换小写按钮显示
+  - 汉字内容没有任何变化显示
+  - 软件会自动将选中的英文字符切换成小写
+  case_type: 功能测试
+  manual: false
+
+- id: '1592727'
+  raw_title: 首字母大写
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，点击右键，查看右键菜单显示
+
+    2. 打开TXT文档，点击右键，查看右键菜单显示
+
+    3. 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+
+    4. 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+
+    5. 假如选中的都是汉字，点击右键菜单--首字母大写，查看软件显示
+
+    6. 假如选中的含有英文字符，点击右键菜单--首字母大写，查看软件显示'
+  raw_expected: '1. 右键菜单中没有首字母大写按钮
+
+    2. 右键菜单没有首字母大写按钮
+
+    3. 选中字符后，右键菜单会有首字母大写按钮显示
+
+    4. 右键菜单会有首字母大写按钮显示
+
+    5. 汉字内容没有任何变化显示
+
+    6. 软件会自动将选中的英文字符首字母切换成大写'
+  title: 首字母大写
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，点击右键，查看右键菜单显示
+  - 打开TXT文档，点击右键，查看右键菜单显示
+  - 打开TXT文档，用鼠标左键框选字符，点击右键查看右键菜单显示
+  - 打开TXT文档，在字符上点击鼠标右键，查看右键菜单显示
+  - 假如选中的都是汉字，点击右键菜单--首字母大写，查看软件显示
+  - 假如选中的含有英文字符，点击右键菜单--首字母大写，查看软件显示
+  expected:
+  - 右键菜单中没有首字母大写按钮
+  - 右键菜单没有首字母大写按钮
+  - 选中字符后，右键菜单会有首字母大写按钮显示
+  - 右键菜单会有首字母大写按钮显示
+  - 汉字内容没有任何变化显示
+  - 软件会自动将选中的英文字符首字母切换成大写
+  case_type: 功能测试
+  manual: false
+
+- id: '1592725'
+  raw_title: 标签栏的右键菜单
+  raw_precondition: ''
+  raw_steps: '1. 软件打开多个标签后，任意选中一个标签，点击右键
+
+    2. 在右键菜单中点击关闭标签，查看软件显示
+
+    3. 在右键菜单中点击关闭其他标签，查看软件显示
+
+    4. 假如当前只有一个标签，查看右键菜单显示'
+  raw_expected: '1. 软件自动弹出右键菜单显示
+
+    2. 软件会自动关闭当前标签页
+
+    3. 软件会只留当前标签，关闭其他标签
+
+    4. “关闭其他标签” & ”更多关闭方式“置灰'
+  title: 标签栏的右键菜单
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 软件打开多个标签后，任意选中一个标签，点击右键
+  - 在右键菜单中点击关闭标签，查看软件显示
+  - 在右键菜单中点击关闭其他标签，查看软件显示
+  - 假如当前只有一个标签，查看右键菜单显示
+  expected:
+  - 软件自动弹出右键菜单显示
+  - 软件会自动关闭当前标签页
+  - 软件会只留当前标签，关闭其他标签
+  - “关闭其他标签” & ”更多关闭方式“置灰
+  case_type: 功能测试
+  manual: false
+
+- id: '1592721'
+  raw_title: 有左右标签时查看“更多关闭方式”
+  raw_precondition: '有左右标签时；
+
+    存在修改和未修改的文档'
+  raw_steps: '1. 打开编辑器，新建/打开至少3个标签页
+
+    2. 点击有左右标签的标签页，查看右键菜单中的“更多关闭方式”
+
+    3. 点击“关闭左侧所有标签页”
+
+    4. 点击“关闭右侧所有标签页”
+
+    5. 点击“关闭所有未修改标签页”'
+  raw_expected: "1. \n2. 文案“关闭左侧所有标签页”\n2-2.文案“关闭右侧所有标签页”\n2-3.文案“关闭所有未修改标签页”\n3.\
+    \ 关闭当前标签页左侧的所有文件\n4. 关闭当前标签页右侧的所有文件\n5. 关闭所有未修改的文件"
+  title: 有左右标签时查看“更多关闭方式”
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 有左右标签时；
+  - 存在修改和未修改的文档
+  steps:
+  - 打开编辑器，新建/打开至少3个标签页
+  - 点击有左右标签的标签页，查看右键菜单中的“更多关闭方式”
+  - 点击“关闭左侧所有标签页”
+  - 点击“关闭右侧所有标签页”
+  - 点击“关闭所有未修改标签页”
+  expected:
+  - ''
+  - 文案“关闭左侧所有标签页”
+  - -2.文案“关闭右侧所有标签页”
+  - -3.文案“关闭所有未修改标签页”
+  - 关闭当前标签页左侧的所有文件
+  - 关闭当前标签页右侧的所有文件
+  - 关闭所有未修改的文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1592711'
+  raw_title: 颜色标记_清除所有标记
+  raw_precondition: 非空文档
+  raw_steps: '1. 打开编辑器，新建或打开txt文档
+
+    2. 选中未有颜色标记的文字区域，右键查看菜单栏
+
+    3. 选中右键菜单项中的“添加标记”
+
+    4. 继续选中右键菜单项中的“清除所有标记”'
+  raw_expected: "1. \n2. 添加标记、清除标记、标记所有\n3. 颜色标记成功\n4. 当前所有颜色标记均被清除"
+  title: 颜色标记_清除所有标记
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 非空文档
+  steps:
+  - 打开编辑器，新建或打开txt文档
+  - 选中未有颜色标记的文字区域，右键查看菜单栏
+  - 选中右键菜单项中的“添加标记”
+  - 继续选中右键菜单项中的“清除所有标记”
+  expected:
+  - ''
+  - 添加标记、清除标记、标记所有
+  - 颜色标记成功
+  - 当前所有颜色标记均被清除
+  case_type: 功能测试
+  manual: false
+
+- id: '1592701'
+  raw_title: 展开所有层次
+  raw_precondition: 有多层函数嵌套
+  raw_steps: '1. 文本编辑器新建/打开含有可折叠的函数的源代码文档
+
+    2. 移动光标位于多层函数的节点“+”所在行区域，右键菜单中选择“展开所有层次”'
+  raw_expected: "1. \n2. 将所有层次进行展开"
+  title: 展开所有层次
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 有多层函数嵌套
+  steps:
+  - 文本编辑器新建/打开含有可折叠的函数的源代码文档
+  - 移动光标位于多层函数的节点“+”所在行区域，右键菜单中选择“展开所有层次”
+  expected:
+  - ''
+  - 将所有层次进行展开
+  case_type: 功能测试
+  manual: false
+
+- id: '1592699'
+  raw_title: 添加书签
+  raw_precondition: ''
+  raw_steps: '1. 打开一个TXT文档，鼠标右键，查看右键菜单
+
+    2. 点击右键菜单“添加书签”
+
+    3. 关闭当前文档的标签页后重新打开'
+  raw_expected: '1. 右键菜单显示“添加书签”
+
+    2. 光标所在行添加书签
+
+    3. 添加的书签仍然有效'
+  title: 添加书签
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 打开一个TXT文档，鼠标右键，查看右键菜单
+  - 点击右键菜单“添加书签”
+  - 关闭当前文档的标签页后重新打开
+  expected:
+  - 右键菜单显示“添加书签”
+  - 光标所在行添加书签
+  - 添加的书签仍然有效
+  case_type: 功能测试
+  manual: false
+
+- id: '1592693'
+  raw_title: 上一个书签/下一个书签
+  raw_precondition: ''
+  raw_steps: '1. 文档上未设置任何书签，鼠标右键，查看右键菜单
+
+    2. 光标定位在已设置书签的行，右键菜单“上一个书签”
+
+    3. 光标定位在已设置书签的行，右键菜单“下一个书签”'
+  raw_expected: '1. 右键菜单“上一个书签/下一个书签”置灰
+
+    2. 光标切换到上一个书签的位置
+
+    3. 光标切换到下一个书签的位置'
+  title: 上一个书签/下一个书签
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 文档上未设置任何书签，鼠标右键，查看右键菜单
+  - 光标定位在已设置书签的行，右键菜单“上一个书签”
+  - 光标定位在已设置书签的行，右键菜单“下一个书签”
+  expected:
+  - 右键菜单“上一个书签/下一个书签”置灰
+  - 光标切换到上一个书签的位置
+  - 光标切换到下一个书签的位置
+  case_type: 功能测试
+  manual: false
+
+- id: '1592685'
+  raw_title: 不同源代码文件注释
+  raw_precondition: 文件名的后缀为代码格式
+  raw_steps: '1. 打开C、C++、java源文件，光标定位在任意一行，右键“添加注释”
+
+    2. 打开C、C++、java源文件，选中一段字符，右键“添加注释”
+
+    3. 打开Python源文件，光标定位在任意一行，右键“添加注释”'
+  raw_expected: '1. 对光标所在行使用“//”注释
+
+    2. 对选中文字使用“/* */”注释
+
+    3. 对光标所在行使用“#”注释（Python不支持对一段字符进行注释）'
+  title: 不同源代码文件注释
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 文件名的后缀为代码格式
+  steps:
+  - 打开C、C++、java源文件，光标定位在任意一行，右键“添加注释”
+  - 打开C、C++、java源文件，选中一段字符，右键“添加注释”
+  - 打开Python源文件，光标定位在任意一行，右键“添加注释”
+  expected:
+  - 对光标所在行使用“//”注释
+  - 对选中文字使用“/* */”注释
+  - 对光标所在行使用“#”注释（Python不支持对一段字符进行注释）
+  case_type: 功能测试
+  manual: false
+
+- id: '1592681'
+  raw_title: 列编辑操作 (SP3)
+  raw_precondition: ''
+  raw_steps: '1. 选中多列后，输入任意字符，查看软件显示
+
+    2. 选中多列后，删除任意字符，查看软件显示
+
+    3. 选中多列后，复制任意字符，查看软件显示
+
+    4. 选中多列后，粘贴任意字符，查看软件显示
+
+    5. 选中多列后，剪切任意字符，查看软件显示'
+  raw_expected: '1. 选中的多列都可以进行输入字符
+
+    2. 选中的多列都可以进行删除字符
+
+    3. 选中的多列都可以进行复制字符,在文中进行粘贴的内容应保留源格式，保持换行显示
+
+    4. 选中的多列都需要进行粘贴字符
+
+    5. 选中的多列都可以剪切输入字符,在文中进行粘贴的内容应保留源格式，保持换行显示'
+  title: 列编辑操作 (SP3)
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 选中多列后，输入任意字符，查看软件显示
+  - 选中多列后，删除任意字符，查看软件显示
+  - 选中多列后，复制任意字符，查看软件显示
+  - 选中多列后，粘贴任意字符，查看软件显示
+  - 选中多列后，剪切任意字符，查看软件显示
+  expected:
+  - 选中的多列都可以进行输入字符
+  - 选中的多列都可以进行删除字符
+  - 选中的多列都可以进行复制字符,在文中进行粘贴的内容应保留源格式，保持换行显示
+  - 选中的多列都需要进行粘贴字符
+  - 选中的多列都可以剪切输入字符,在文中进行粘贴的内容应保留源格式，保持换行显示
+  case_type: 功能测试
+  manual: false
+
+- id: '1592679'
+  raw_title: 只读模式_切换文件属性
+  raw_precondition: ''
+  raw_steps: '1. 使用文本编辑器打开一文件
+
+    2. 右击文件属性切换为只读模式
+
+    3. 继续右击文件属性切换为读写模式'
+  raw_expected: '1. 应用窗口底栏显示“插入”
+
+    2. 应用窗口底栏显示“只读”，当前的右键菜单list显示正常，各种输入法下均无法输入文字
+
+    3. 应用窗口底栏显示“插入”，当前的右键菜单list恢复正常，各种输入法下均可以输入文字'
+  title: 只读模式_切换文件属性
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开一文件
+  - 右击文件属性切换为只读模式
+  - 继续右击文件属性切换为读写模式
+  expected:
+  - 应用窗口底栏显示“插入”
+  - 应用窗口底栏显示“只读”，当前的右键菜单list显示正常，各种输入法下均无法输入文字
+  - 应用窗口底栏显示“插入”，当前的右键菜单list恢复正常，各种输入法下均可以输入文字
+  case_type: 功能测试
+  manual: false
+
+- id: '1592677'
+  raw_title: 切换注释&撤销的交互
+  raw_precondition: ''
+  raw_steps: '1. 使用文本编辑器打开一个代码文档
+
+    2. 在一行代码前“添加注释”
+
+    3. 执行“取消注释”
+
+    4. 执行“撤销”
+
+    5. 再次“撤销”
+
+    6. 选择一段内容进行“添加注释”
+
+    7. 执行“撤销”'
+  raw_expected: "1. \n2. 添加注释成功\n3. 已添加的注释取消成功\n4. 撤销step3,即恢复到添加注释的情景\n5. 撤销step2,即恢复到无注释添加的情景\n\
+    6. 块注释成功\n7. 撤销step6,即恢复到无注释的情景"
+  title: 切换注释&撤销的交互
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 使用文本编辑器打开一个代码文档
+  - 在一行代码前“添加注释”
+  - 执行“取消注释”
+  - 执行“撤销”
+  - 再次“撤销”
+  - 选择一段内容进行“添加注释”
+  - 执行“撤销”
+  expected:
+  - ''
+  - 添加注释成功
+  - 已添加的注释取消成功
+  - 撤销step3,即恢复到添加注释的情景
+  - 撤销step2,即恢复到无注释添加的情景
+  - 块注释成功
+  - 撤销step6,即恢复到无注释的情景
+  case_type: 功能测试
+  manual: false
+
+- id: '1592675'
+  raw_title: 只读模式_关闭应用后切换文件属性
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个文档A
+
+    2. 点击文本编辑器窗口右上角的X按钮关闭应用
+
+    3. 右击文件属性，权限管理切换“所有者”为只读
+
+    4. 再次打开此文档A，观察底栏'
+  raw_expected: '1. 文档A在文本编辑器窗口显示正常，底栏中显示为“插入”
+
+    2. 正常关闭应用
+
+    3. 文件图标上有上锁的图标
+
+    4. 底栏中显示为“只读”'
+  title: 只读模式_关闭应用后切换文件属性
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个文档A
+  - 点击文本编辑器窗口右上角的X按钮关闭应用
+  - 右击文件属性，权限管理切换“所有者”为只读
+  - 再次打开此文档A，观察底栏
+  expected:
+  - 文档A在文本编辑器窗口显示正常，底栏中显示为“插入”
+  - 正常关闭应用
+  - 文件图标上有上锁的图标
+  - 底栏中显示为“只读”
+  case_type: 功能测试
+  manual: false
+
+- id: '1592669'
+  raw_title: 列编辑操作_Delete键删除
+  raw_precondition: 文中含多列的内容
+  raw_steps: '1. 使用Alt+鼠标选中多列，仅选中多列的光标后，按压Delete
+
+    2. 使用Alt+鼠标选中多列， 包括整列的字符和光标均被选中，按压Delete'
+  raw_expected: '1. 光标后的字符被整列删除
+
+    2. 整列的字符被删除，再次按压Detele才是光标后的字符被整列删除'
+  title: 列编辑操作_Delete键删除
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 文中含多列的内容
+  steps:
+  - 使用Alt+鼠标选中多列，仅选中多列的光标后，按压Delete
+  - 使用Alt+鼠标选中多列， 包括整列的字符和光标均被选中，按压Delete
+  expected:
+  - 光标后的字符被整列删除
+  - 整列的字符被删除，再次按压Detele才是光标后的字符被整列删除
+  case_type: 功能测试
+  manual: false
+
+- id: '1592665'
+  raw_title: 切换大小写&撤销的交互
+  raw_precondition: ''
+  raw_steps: '1. 在文本内容中选中某段文字进行大小写切换
+
+    2. 撤销'
+  raw_expected: '1. 大小写切换成功，文本内容被修改（文件名前显示*）
+
+    2. 可用通过“撤销”恢复上级操作'
+  title: 切换大小写&撤销的交互
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 在文本内容中选中某段文字进行大小写切换
+  - 撤销
+  expected:
+  - 大小写切换成功，文本内容被修改（文件名前显示*）
+  - 可用通过“撤销”恢复上级操作
+  case_type: 功能测试
+  manual: false
+
+- id: '1592645'
+  raw_title: 只读模式_全选复制
+  raw_precondition: ''
+  raw_steps: '1. 非空文档中，开启只读模式后，右键菜单点击“全选”
+
+    2. 继续右键菜单中点击“复制”'
+  raw_expected: '1. 文中所有字符都被选中
+
+    2. 可以把选中的内容粘帖到其他可编辑区'
+  title: 只读模式_全选复制
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 非空文档中，开启只读模式后，右键菜单点击“全选”
+  - 继续右键菜单中点击“复制”
+  expected:
+  - 文中所有字符都被选中
+  - 可以把选中的内容粘帖到其他可编辑区
+  case_type: 功能测试
+  manual: false
+
+- id: '1592641'
+  raw_title: 颜色标记的&quot;标记所有”后继续“添加标记”
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个文档
+
+    2. 当光标在任意行，右键菜单栏选择“颜色标记”的“标记所有”->  后继续对某些文字进行“添加标记”
+
+    3. 当选择一段文字，右键菜单栏选择“颜色标记”的“标记所有”->  继续从上个查找标记的结果中选择部分文字->进行“添加标记”'
+  raw_expected: "1. \n2. 后操作的颜色会覆盖在之前的操作之上\n3. 后操作的颜色会覆盖在之前的操作之上"
+  title: 颜色标记的&quot;标记所有”后继续“添加标记”
+  module: 工作区
+  priority: '2'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个文档
+  - 当光标在任意行，右键菜单栏选择“颜色标记”的“标记所有”->  后继续对某些文字进行“添加标记”
+  - 当选择一段文字，右键菜单栏选择“颜色标记”的“标记所有”->  继续从上个查找标记的结果中选择部分文字->进行“添加标记”
+  expected:
+  - ''
+  - 后操作的颜色会覆盖在之前的操作之上
+  - 后操作的颜色会覆盖在之前的操作之上
+  case_type: 功能测试
+  manual: false
+
+- id: '1592637'
+  raw_title: 替换_查询结果包含大小写
+  raw_precondition: 测试文档 含有英文的大小写字符A，a
+  raw_steps: '1. 通过文本编辑器打开一个文档，右键菜单中选择替换框
+
+    2. 查找输入框中输入一个文中存在的查找词 A， “替换为”对话框中任意输入
+
+    3. 点击替换（根据查询结果做多次替换）
+
+    4. 点击剩余替换
+
+    5. 点击全部替换'
+  raw_expected: "1. 替换框出现\n2. \n3. 替换操作会根据查找词进去替换（区分大小写）\n4. 替换当前光标所处文本后剩余查找结果（区分大小写）\n\
+    5. 替换全部查找结果（区分大小写）"
+  title: 替换_查询结果包含大小写
+  module: 工作区
+  priority: '2'
+  precondition:
+  - 测试文档 含有英文的大小写字符A，a
+  steps:
+  - 通过文本编辑器打开一个文档，右键菜单中选择替换框
+  - 查找输入框中输入一个文中存在的查找词 A， “替换为”对话框中任意输入
+  - 点击替换（根据查询结果做多次替换）
+  - 点击剩余替换
+  - 点击全部替换
+  expected:
+  - 替换框出现
+  - ''
+  - 替换操作会根据查找词进去替换（区分大小写）
+  - 替换当前光标所处文本后剩余查找结果（区分大小写）
+  - 替换全部查找结果（区分大小写）
+  case_type: 功能测试
+  manual: false
+
+- id: '1592627'
+  raw_title: 列编辑交互颜色标记
+  raw_precondition: 通过文本编辑器打开多行内容的文档
+  raw_steps: '1. 在任意行用ALT+鼠标点选多行切换列编辑模式，右键''“颜色标记”进行“添加标记”
+
+    2. 清除颜色标记后，再次进去列编辑模式，通过快捷键Ctrl+F6进行颜色标记'
+  raw_expected: '1. 列编辑中的内容均可被标记
+
+    2. 列编辑中的内容均可被标记'
+  title: 列编辑交互颜色标记
+  module: 工作区
+  priority: '3'
+  precondition:
+  - 通过文本编辑器打开多行内容的文档
+  steps:
+  - 在任意行用ALT+鼠标点选多行切换列编辑模式，右键'“颜色标记”进行“添加标记”
+  - 清除颜色标记后，再次进去列编辑模式，通过快捷键Ctrl+F6进行颜色标记
+  expected:
+  - 列编辑中的内容均可被标记
+  - 列编辑中的内容均可被标记
+  case_type: 功能测试
+  manual: false
+
+- id: '1592617'
+  raw_title: 一指双击
+  raw_precondition: ''
+  raw_steps: '1. 在文本管理器页面中通过触控板上使用一指手势移动光标至任意文字行，双击
+
+    2. 在文件列表中通过触控板上使用一指手势双击文件'
+  raw_expected: '1. 选中当前行的全部内容
+
+    2. 可调用文本编辑器打开该文件'
+  title: 一指双击
+  module: 硬件交互
+  priority: '1'
+  precondition: []
+  steps:
+  - 在文本管理器页面中通过触控板上使用一指手势移动光标至任意文字行，双击
+  - 在文件列表中通过触控板上使用一指手势双击文件
+  expected:
+  - 选中当前行的全部内容
+  - 可调用文本编辑器打开该文件
+  case_type: 功能测试
+  manual: false
+
+- id: '1592615'
+  raw_title: 二指滚动
+  raw_precondition: ''
+  raw_steps: '1. 在文档视图界面，“自然滚动”选项关闭，二指向上移动
+
+    2. “自然滚动”选项打开，二指向上移动
+
+    3. “自然滚动”选项关闭，二指向下移动
+
+    4. “自然滚动”选项打开，二指向下移动'
+  raw_expected: '1. “自然滚动”选项关闭，二指向上移动对应的操作是“屏幕向上滚动”
+
+    2. “自然滚动”选项打开，二指向上移动对应的事件就是“屏幕向下滚动”
+
+    3. “自然滚动”选项关闭，二指向下移动对应的操作是“屏幕向下滚动”
+
+    4. “自然滚动”选项打开，二指向下移动对应的事件就是“屏幕向上滚动”'
+  title: 二指滚动
+  module: 硬件交互
+  priority: '1'
+  precondition: []
+  steps:
+  - 在文档视图界面，“自然滚动”选项关闭，二指向上移动
+  - “自然滚动”选项打开，二指向上移动
+  - “自然滚动”选项关闭，二指向下移动
+  - “自然滚动”选项打开，二指向下移动
+  expected:
+  - “自然滚动”选项关闭，二指向上移动对应的操作是“屏幕向上滚动”
+  - “自然滚动”选项打开，二指向上移动对应的事件就是“屏幕向下滚动”
+  - “自然滚动”选项关闭，二指向下移动对应的操作是“屏幕向下滚动”
+  - “自然滚动”选项打开，二指向下移动对应的事件就是“屏幕向上滚动”
+  case_type: 功能测试
+  manual: false
+
+- id: '1592589'
+  raw_title: 上下滑动
+  raw_precondition: ''
+  raw_steps: 1. 文档主视图界面（出现滚动条），上下滑动屏幕
+  raw_expected: 1. 内容可以滚动查看文档内容
+  title: 上下滑动
+  module: 硬件交互
+  priority: '1'
+  precondition: []
+  steps:
+  - 文档主视图界面（出现滚动条），上下滑动屏幕
+  expected:
+  - 内容可以滚动查看文档内容
+  case_type: 功能测试
+  manual: false
+
+- id: '1592587'
+  raw_title: 左右滑动
+  raw_precondition: ''
+  raw_steps: 1. 文档主视图界面，左右滑动屏幕（出现滚动条）
+  raw_expected: 1. 内容可以滚动查看文档内容
+  title: 左右滑动
+  module: 硬件交互
+  priority: '1'
+  precondition: []
+  steps:
+  - 文档主视图界面，左右滑动屏幕（出现滚动条）
+  expected:
+  - 内容可以滚动查看文档内容
+  case_type: 功能测试
+  manual: false
+
+- id: '1592573'
+  raw_title: 主菜单，子菜单中的键盘交互
+  raw_precondition: ''
+  raw_steps: '1. 光标在标题栏时，使用键盘上的Tab键切换至主菜单图标，按下“回车键”
+
+    2. 在主菜单列表，使用“↑”、“↓”、“←”、“→”方向键
+
+    3. 在高亮的列表中使用“回车键”
+
+    4. 按“ESC键”'
+  raw_expected: '1. 展示主菜单列表
+
+    2. 使用“↑”、“↓”方向键在条目中选择，“←”、“→”方向键进行“收起”、“展开”子菜单动作
+
+    3. 执行选中的按钮
+
+    4. 退出菜单'
+  title: 主菜单，子菜单中的键盘交互
+  module: 硬件交互
+  priority: '1'
+  precondition: []
+  steps:
+  - 光标在标题栏时，使用键盘上的Tab键切换至主菜单图标，按下“回车键”
+  - 在主菜单列表，使用“↑”、“↓”、“←”、“→”方向键
+  - 在高亮的列表中使用“回车键”
+  - 按“ESC键”
+  expected:
+  - 展示主菜单列表
+  - 使用“↑”、“↓”方向键在条目中选择，“←”、“→”方向键进行“收起”、“展开”子菜单动作
+  - 执行选中的按钮
+  - 退出菜单
+  case_type: 功能测试
+  manual: false
+
+- id: '1592559'
+  raw_title: 编码方式菜单调整_高分屏
+  raw_precondition: ''
+  raw_steps: '1. 高分屏下，切换屏幕缩放比率
+
+    2. 查看各个缩放比率下，编码及其二级菜单'
+  raw_expected: "1. \n2. 各个缩放比率下，编码及其二级菜单显示正常\n（注：中文、英文、繁体中文下均关注测试）"
+  title: 编码方式菜单调整_高分屏
+  module: 硬件交互
+  priority: '3'
+  precondition: []
+  steps:
+  - 高分屏下，切换屏幕缩放比率
+  - 查看各个缩放比率下，编码及其二级菜单
+  expected:
+  - ''
+  - 各个缩放比率下，编码及其二级菜单显示正常
+  - （注：中文、英文、繁体中文下均关注测试）
+  case_type: 兼容性测试
+  manual: false
+
+- id: '1592557'
+  raw_title: 高分屏_拖拽标签页
+  raw_precondition: 连接高分屏 ，切换缩放比 &gt; 1.25
+  raw_steps: '1. 打开文本编辑器，默认新开一个空白标签页（窗口1）
+
+    2. 再开新窗口（窗口2），打开文档A进行编辑 ，打开文档B
+
+    3. 将窗口1中的唯一的一个标签页拖拽合并到窗口2中
+
+    4. 再将窗口2中的任意标签页拖拽出来，生成新窗口'
+  raw_expected: "1. \n2. \n3. 每个缩放比下，拖拽过程中表现正常，合并成功\n4. 每个缩放比下，拖拽过程中表现正常，拆分成功"
+  title: 高分屏_拖拽标签页
+  module: 硬件交互
+  priority: '3'
+  precondition:
+  - 连接高分屏 ，切换缩放比 &gt; 1.25
+  steps:
+  - 打开文本编辑器，默认新开一个空白标签页（窗口1）
+  - 再开新窗口（窗口2），打开文档A进行编辑 ，打开文档B
+  - 将窗口1中的唯一的一个标签页拖拽合并到窗口2中
+  - 再将窗口2中的任意标签页拖拽出来，生成新窗口
+  expected:
+  - ''
+  - ''
+  - 每个缩放比下，拖拽过程中表现正常，合并成功
+  - 每个缩放比下，拖拽过程中表现正常，拆分成功
+  case_type: 兼容性测试
+  manual: false

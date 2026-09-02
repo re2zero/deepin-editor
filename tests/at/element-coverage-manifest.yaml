@@ -1,0 +1,226 @@
+version: '1.0'
+source: at-case-authoring:element-map.yaml
+scan_total: 51
+elements:
+  FindNext:
+    role: push button
+    ui_name: FindNext
+    desc: 'source: controls/findbar.cpp'
+  FindPrevious:
+    role: push button
+    ui_name: FindPrevious
+    desc: 'source: controls/findbar.cpp'
+  SwitchToReplace:
+    role: push button
+    ui_name: SwitchToReplace
+    desc: 'source: controls/findbar.cpp'
+  CloseFind:
+    role: ''
+    ui_name: CloseFind
+    desc: 'source: controls/findbar.cpp'
+  FindInput:
+    role: ''
+    ui_name: FindInput
+    desc: 'source: controls/findbar.cpp'
+  FindLabel:
+    role: label
+    ui_name: FindLabel
+    desc: 'source: controls/findbar.cpp'
+  LineNumberInput:
+    role: spin box
+    ui_name: LineNumberInput
+    desc: 'source: controls/jumplinebar.cpp'
+  GoToLineLabel:
+    role: label
+    ui_name: GoToLineLabel
+    desc: 'source: controls/jumplinebar.cpp'
+  CloseJumpLine:
+    role: ''
+    ui_name: CloseJumpLine
+    desc: 'source: controls/jumplinebar.cpp'
+  ClearButton:
+    role: ''
+    ui_name: ClearButton
+    desc: 'source: controls/linebar.cpp'
+  ReplaceAll:
+    role: push button
+    ui_name: ReplaceAll
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceNext:
+    role: push button
+    ui_name: ReplaceNext
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceRest:
+    role: push button
+    ui_name: ReplaceRest
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceSkip:
+    role: push button
+    ui_name: ReplaceSkip
+    desc: 'source: controls/replacebar.cpp'
+  CloseReplace:
+    role: ''
+    ui_name: CloseReplace
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceFindInput:
+    role: ''
+    ui_name: ReplaceFindInput
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceWithInput:
+    role: ''
+    ui_name: ReplaceWithInput
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceFindLabel:
+    role: label
+    ui_name: ReplaceFindLabel
+    desc: 'source: controls/replacebar.cpp'
+  ReplaceWithLabel:
+    role: label
+    ui_name: ReplaceWithLabel
+    desc: 'source: controls/replacebar.cpp'
+  CloseOtherTabs:
+    role: push button
+    ui_name: CloseOtherTabs
+    desc: 'source: controls/tabbar.cpp'
+  CloseTab:
+    role: push button
+    ui_name: CloseTab
+    desc: 'source: controls/tabbar.cpp'
+  CloseTabsToLeft:
+    role: push button
+    ui_name: CloseTabsToLeft
+    desc: 'source: controls/tabbar.cpp'
+  CloseTabsToRight:
+    role: push button
+    ui_name: CloseTabsToRight
+    desc: 'source: controls/tabbar.cpp'
+  CloseUnmodifiedTabs:
+    role: push button
+    ui_name: CloseUnmodifiedTabs
+    desc: 'source: controls/tabbar.cpp'
+  ReloadFile:
+    role: push button
+    ui_name: ReloadFile
+    desc: 'source: controls/warningnotices.cpp'
+  WarningSaveAs:
+    role: push button
+    ui_name: WarningSaveAs
+    desc: 'source: controls/warningnotices.cpp'
+  EditAnyway:
+    role: push button
+    ui_name: EditAnyway
+    desc: 'source: controls/warningnotices.cpp'
+  TextEditor:
+    role: text
+    ui_name: TextEditor
+    desc: 'source: editor/editwrapper.cpp'
+  EditorBottomBar:
+    role: ''
+    ui_name: EditorBottomBar
+    desc: 'source: editor/editwrapper.cpp'
+  PContentEdit:
+    role: text
+    ui_name: PContentEdit
+    desc: 'source: editor/showflodcodewidget.cpp'
+  ThemeListView:
+    role: list
+    ui_name: ThemeListView
+    desc: 'source: thememodule/themepanel.cpp'
+  PButton:
+    role: push button
+    ui_name: PButton
+    desc: 'source: widgets/ColorSelectWdg.cpp'
+  PositionLabel:
+    role: label
+    ui_name: PositionLabel
+    desc: 'source: widgets/bottombar.cpp'
+  CharCountLabel:
+    role: label
+    ui_name: CharCountLabel
+    desc: 'source: widgets/bottombar.cpp'
+  ScaleLabel:
+    role: label
+    ui_name: ScaleLabel
+    desc: 'source: widgets/bottombar.cpp'
+  ProgressLabel:
+    role: label
+    ui_name: ProgressLabel
+    desc: 'source: widgets/bottombar.cpp'
+  ProgressBar:
+    role: progress bar
+    ui_name: ProgressBar
+    desc: 'source: widgets/bottombar.cpp'
+  UnixAction:
+    role: push button
+    ui_name: UnixAction
+    desc: 'source: widgets/bottombar.cpp'
+  WindowsAction:
+    role: push button
+    ui_name: WindowsAction
+    desc: 'source: widgets/bottombar.cpp'
+  DropdownToolButton:
+    role: push button
+    ui_name: DropdownToolButton
+    desc: 'source: widgets/ddropdownmenu.cpp'
+  ActionGroup:
+    role: push button
+    ui_name: ActionGroup
+    desc: 'source: widgets/ddropdownmenu.cpp'
+  PActUtf8:
+    role: push button
+    ui_name: PActUtf8
+    desc: 'source: widgets/ddropdownmenu.cpp'
+  SamePathAsCurrentFile:
+    role: check box
+    ui_name: SamePathAsCurrentFile
+    desc: 'source: widgets/pathsettintwgt.cpp'
+  RememberLastPath:
+    role: check box
+    ui_name: RememberLastPath
+    desc: 'source: widgets/pathsettintwgt.cpp'
+  CustomizeDefaultPath:
+    role: check box
+    ui_name: CustomizeDefaultPath
+    desc: 'source: widgets/pathsettintwgt.cpp'
+  CustomPathInput:
+    role: text
+    ui_name: CustomPathInput
+    desc: 'source: widgets/pathsettintwgt.cpp'
+  BrowseCustomPath:
+    role: ''
+    ui_name: BrowseCustomPath
+    desc: 'source: widgets/pathsettintwgt.cpp'
+  Group:
+    role: ''
+    ui_name: Group
+    desc: 'source: widgets/pathsettintwgt.cpp'
+  CentralWidget:
+    role: ''
+    ui_name: CentralWidget
+    desc: 'source: widgets/window.cpp'
+  EditorStack:
+    role: layered pane
+    ui_name: EditorStack
+    desc: 'source: widgets/window.cpp'
+  Tabbar:
+    role: page tab
+    ui_name: Tabbar
+    desc: 'source: widgets/window.cpp'
+transient_items:
+- name: TabContextMenu
+  role: menu
+  ui_name: TabContextMenu
+  desc: 'source: controls/tabbar.cpp'
+- name: MoreCloseOptions
+  role: menu
+  ui_name: MoreCloseOptions
+  desc: 'source: controls/tabbar.cpp'
+- name: DropdownMenu
+  role: menu
+  ui_name: DropdownMenu
+  desc: 'source: widgets/ddropdownmenu.cpp'
+- name: Menu_2
+  role: menu
+  ui_name: Menu_2
+  desc: 'source: widgets/window.cpp'
+unresolved: []

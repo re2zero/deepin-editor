@@ -1,0 +1,457 @@
+app: deepin-editor
+module: 文本编辑器
+seq: 1
+case_count: 17
+cases:
+- id: '1978835'
+  raw_title: 【bug转用例】使用Shift+Tab缩进文本场景验证
+  raw_precondition: 'https://pms.uniontech.com/bug-view-351091.html
+
+
+    文本编辑器中存在多行文本'
+  raw_steps: 1. 选中多行文本进行Shift+Tab缩进操作
+  raw_expected: 1. 多行文本可以同时进行缩进
+  title: 【bug转用例】使用Shift+Tab缩进文本场景验证
+  module: 文本编辑器
+  priority: '3'
+  precondition:
+  - https://pms.uniontech.com/bug-view-351091.html
+  - 文本编辑器中存在多行文本
+  steps:
+  - 选中多行文本进行Shift+Tab缩进操作
+  expected:
+  - 多行文本可以同时进行缩进
+  case_type: 功能测试
+  manual: false
+
+- id: '1934897'
+  raw_title: 【bug转用例】修改编辑保存bashrc文件
+  raw_precondition: 桌面存在bashrc文件
+  raw_steps: 1. 打开bashrc文件，修改任意信息，保存文本
+  raw_expected: 1. 保存成功
+  title: 【bug转用例】修改编辑保存bashrc文件
+  module: 文本编辑器
+  priority: '3'
+  precondition:
+  - 桌面存在bashrc文件
+  steps:
+  - 打开bashrc文件，修改任意信息，保存文本
+  expected:
+  - 保存成功
+  case_type: 功能测试
+  manual: false
+
+- id: '1919211'
+  raw_title: 查找替换-多匹配项中特定选中状态保留
+  raw_precondition: 1.文本编辑器正文存在多个文本“武汉”
+  raw_steps: '1. 打开文本编辑器，快捷键Ctrl+F触发查找功能
+
+    2. 在查找输入框输入文本“武汉”，点击下一个，再次点击下一个
+
+    3. 在查找弹窗中，点击右上角的“替换”按钮
+
+    4. 观察文本编辑区域的高亮选中状态'
+  raw_expected: '1. 下方显示查找窗口
+
+    2. 第二个“武汉”文本被高亮选中
+
+    3. 替换弹窗的''替换为''输入框自动填充内容与原文本区域高亮选中文本一致
+
+    4. 原文本区域中第二个''武汉''文本保持高亮选中状态'
+  title: 查找替换-多匹配项中特定选中状态保留
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 文本编辑器正文存在多个文本“武汉”
+  steps:
+  - 打开文本编辑器，快捷键Ctrl+F触发查找功能
+  - 在查找输入框输入文本“武汉”，点击下一个，再次点击下一个
+  - 在查找弹窗中，点击右上角的“替换”按钮
+  - 观察文本编辑区域的高亮选中状态
+  expected:
+  - 下方显示查找窗口
+  - 第二个“武汉”文本被高亮选中
+  - 替换弹窗的'替换为'输入框自动填充内容与原文本区域高亮选中文本一致
+  - 原文本区域中第二个'武汉'文本保持高亮选中状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1919209'
+  raw_title: 查找替换-替换弹窗填充选中内容及状态保留
+  raw_precondition: 1.文本编辑器正文存在多个文本“武汉”
+  raw_steps: '1. 打开文本编辑器，正文鼠标右键，点击查找
+
+    2. 在查找输入框输入文本“武汉”，点击下一个
+
+    3. 在查找弹窗中，点击右上角的“替换”按钮
+
+    4. 观察文本编辑区域的高亮选中状态'
+  raw_expected: '1. 下方显示查找窗口
+
+    2. 第一个“武汉”文本被高亮选中
+
+    3. 替换弹窗的''替换为''输入框自动填充内容与原文本区域高亮选中文本一致
+
+    4. 原文本区域中第二个''武汉''文本保持高亮选中状态'
+  title: 查找替换-替换弹窗填充选中内容及状态保留
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 文本编辑器正文存在多个文本“武汉”
+  steps:
+  - 打开文本编辑器，正文鼠标右键，点击查找
+  - 在查找输入框输入文本“武汉”，点击下一个
+  - 在查找弹窗中，点击右上角的“替换”按钮
+  - 观察文本编辑区域的高亮选中状态
+  expected:
+  - 下方显示查找窗口
+  - 第一个“武汉”文本被高亮选中
+  - 替换弹窗的'替换为'输入框自动填充内容与原文本区域高亮选中文本一致
+  - 原文本区域中第二个'武汉'文本保持高亮选中状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1919207'
+  raw_title: 查找替换-替换按钮切换后与Ctrl+H触发功能一致性验证
+  raw_precondition: 1.文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档）
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能，点击''替换''按钮切换至替换弹窗
+
+    2. 关闭当前替换弹窗，使用快捷键Ctrl+H直接触发替换功能
+
+    3. 对比步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本'
+  raw_expected: '1. 成功切换至替换弹窗
+
+    2. 弹出替换弹窗
+
+    3. 步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本完全一致'
+  title: 查找替换-替换按钮切换后与Ctrl+H触发功能一致性验证
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 文本编辑器已打开，新建空白文档（或打开任意包含普通文本内容的文档）
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能，点击'替换'按钮切换至替换弹窗
+  - 关闭当前替换弹窗，使用快捷键Ctrl+H直接触发替换功能
+  - 对比步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本
+  expected:
+  - 成功切换至替换弹窗
+  - 弹出替换弹窗
+  - 步骤1与步骤2的弹窗标题、输入框位置、按钮排列顺序及功能按钮文本完全一致
+  case_type: 功能测试
+  manual: false
+
+- id: '1919205'
+  raw_title: 查找替换-已选中文本时点击替换按钮切换至替换弹窗（代入选中文本）
+  raw_precondition: 1.文本编辑器已打开，打开包含文本内容&#039;示例文本测试替换&#039;的文档，使用鼠标左键拖动选中文本区域中的&#039;测试&#039;二字（保持选中状态）
+  raw_steps: '1. 使用快捷键Ctrl+F触发查找功能
+
+    2. 点击查找弹窗中的''替换''按钮
+
+    3. 观察替换弹窗的''查找内容''输入框内容及文本区域选中状态'
+  raw_expected: '1. 查找弹窗正常显示
+
+    2. 替换弹窗正常显示
+
+    3. 替换弹窗的''查找内容''输入框自动填充选中文本''测试''；文本区域中''测试''二字保持选中状态'
+  title: 查找替换-已选中文本时点击替换按钮切换至替换弹窗（代入选中文本）
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 文本编辑器已打开，打开包含文本内容&#039;示例文本测试替换&#039;的文档，使用鼠标左键拖动选中文本区域中的&#039;测试&#039;二字（保持选中状态）
+  steps:
+  - 使用快捷键Ctrl+F触发查找功能
+  - 点击查找弹窗中的'替换'按钮
+  - 观察替换弹窗的'查找内容'输入框内容及文本区域选中状态
+  expected:
+  - 查找弹窗正常显示
+  - 替换弹窗正常显示
+  - 替换弹窗的'查找内容'输入框自动填充选中文本'测试'；文本区域中'测试'二字保持选中状态
+  case_type: 功能测试
+  manual: false
+
+- id: '1875739'
+  raw_title: 替换（右键菜单）
+  raw_precondition: ''
+  raw_steps: '1. 在新打开一个窗口中，空文档中点击右键，查看右键菜单显示
+
+    2. 在文档页面选中一段文本，右键菜单中选中替换
+
+    3. 点击 替换
+
+    4. 点击剩余替换
+
+    5. 点击全部替换
+
+    6. 点击跳过
+
+    7. 按下ESC，或 关闭按钮
+
+    8. 拖拉替换框（新需求）'
+  raw_expected: '1. 右键菜单中没有替换菜单
+
+    2. 替换框出现，默认查找当前选择文本；
+
+    3. 逐个替换
+
+    4. 一次性替换剩余匹配文本
+
+    5. 一次性替换所有匹配文本
+
+    6. 不替换当前匹配文本
+
+    7. 关闭替换框
+
+    8. 不可移动'
+  title: 替换（右键菜单）
+  module: 文本编辑器
+  priority: '2'
+  precondition: []
+  steps:
+  - 在新打开一个窗口中，空文档中点击右键，查看右键菜单显示
+  - 在文档页面选中一段文本，右键菜单中选中替换
+  - 点击 替换
+  - 点击剩余替换
+  - 点击全部替换
+  - 点击跳过
+  - 按下ESC，或 关闭按钮
+  - 拖拉替换框（新需求）
+  expected:
+  - 右键菜单中没有替换菜单
+  - 替换框出现，默认查找当前选择文本；
+  - 逐个替换
+  - 一次性替换剩余匹配文本
+  - 一次性替换所有匹配文本
+  - 不替换当前匹配文本
+  - 关闭替换框
+  - 不可移动
+  case_type: 功能测试
+  manual: false
+
+- id: '1873485'
+  raw_title: 语音朗读-全选文字
+  raw_precondition: 1.打开文本编辑器，且存在文字内容
+  raw_steps: 1. 编辑区鼠标右键全选/快捷键ctrl+a，再次鼠标右键，点击语音朗读
+  raw_expected: 1. 开始朗读所有内容
+  title: 语音朗读-全选文字
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 打开文本编辑器，且存在文字内容
+  steps:
+  - 编辑区鼠标右键全选/快捷键ctrl+a，再次鼠标右键，点击语音朗读
+  expected:
+  - 开始朗读所有内容
+  case_type: 功能测试
+  manual: false
+
+- id: '1873483'
+  raw_title: 语音朗读/语音听写-未安装uos-ai
+  raw_precondition: '1.打开文本编辑，且存在文本内容
+
+    2.已卸载UOS-AI'
+  raw_steps: '1. 选择一段文字，鼠标右键，点击语音朗读
+
+    2. 空白处，鼠标右键，点击语音听写'
+  raw_expected: '1. 提示“请前往应用商店安装“UOS AI”后再使用”
+
+    2. 提示“请前往应用商店安装“UOS AI”后再使用”'
+  title: 语音朗读/语音听写-未安装uos-ai
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 打开文本编辑，且存在文本内容
+  - 已卸载UOS-AI
+  steps:
+  - 选择一段文字，鼠标右键，点击语音朗读
+  - 空白处，鼠标右键，点击语音听写
+  expected:
+  - 提示“请前往应用商店安装“UOS AI”后再使用”
+  - 提示“请前往应用商店安装“UOS AI”后再使用”
+  case_type: 功能测试
+  manual: false
+
+- id: '1873481'
+  raw_title: 语音朗读-音频设备缺失
+  raw_precondition: '1.打开文本编辑器，且存在文本内容
+
+    2.没有接入音频设备'
+  raw_steps: 1. 选择一段文字，鼠标右键，点击语音朗读
+  raw_expected: 1. 提示未检测到音频输出设备，请检查后重试
+  title: 语音朗读-音频设备缺失
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 打开文本编辑器，且存在文本内容
+  - 没有接入音频设备
+  steps:
+  - 选择一段文字，鼠标右键，点击语音朗读
+  expected:
+  - 提示未检测到音频输出设备，请检查后重试
+  case_type: 功能测试
+  manual: false
+
+- id: '1873479'
+  raw_title: 语音听写-音频设备缺失
+  raw_precondition: '1.已打开文本编辑器
+
+    2.没有接入音频设备'
+  raw_steps: 1. 编辑器鼠标右键，点击语音听写
+  raw_expected: 1. 提示未检测到音频输入设备，请检查后重试
+  title: 语音听写-音频设备缺失
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 已打开文本编辑器
+  - 没有接入音频设备
+  steps:
+  - 编辑器鼠标右键，点击语音听写
+  expected:
+  - 提示未检测到音频输入设备，请检查后重试
+  case_type: 功能测试
+  manual: false
+
+- id: '1873477'
+  raw_title: 重复选择语音朗读
+  raw_precondition: '1.已打开文本编辑器，且存在文本内容
+
+    2.已接入麦克风设备'
+  raw_steps: '1. 选择一段文字，鼠标右键，点击语音朗读
+
+    2. 朗读过程中，重新选择一段文字，鼠标右键，点击语音朗读
+
+    3. 重复步骤2多次'
+  raw_expected: '1. 开始朗读选择的文字
+
+    2. 开始朗读重新选择的这段文字
+
+    3. 每次都朗读重新选择的文字'
+  title: 重复选择语音朗读
+  module: 文本编辑器
+  priority: '1'
+  precondition:
+  - 已打开文本编辑器，且存在文本内容
+  - 已接入麦克风设备
+  steps:
+  - 选择一段文字，鼠标右键，点击语音朗读
+  - 朗读过程中，重新选择一段文字，鼠标右键，点击语音朗读
+  - 重复步骤2多次
+  expected:
+  - 开始朗读选择的文字
+  - 开始朗读重新选择的这段文字
+  - 每次都朗读重新选择的文字
+  case_type: 功能测试
+  manual: false
+
+- id: '1704779'
+  raw_title: 【玲珑】【文本编辑器】卸载玲珑应用
+  raw_precondition: 1. 已经安装玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli uninstall org.deepin.editor
+
+    2. 在终端执行命令：ll-cli info org.deepin.editor'
+  raw_expected: '1. 【文本编辑器】玲珑应用卸载成功
+
+    2. 没有玲珑应用【文本编辑器】的应用信息'
+  title: 【玲珑】【文本编辑器】卸载玲珑应用
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 已经安装玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli uninstall org.deepin.editor
+  - 在终端执行命令：ll-cli info org.deepin.editor
+  expected:
+  - 【文本编辑器】玲珑应用卸载成功
+  - 没有玲珑应用【文本编辑器】的应用信息
+  case_type: 功能测试
+  manual: false
+
+- id: '1704767'
+  raw_title: 【玲珑】【文本编辑器】更新玲珑应用
+  raw_precondition: 1. 已经安装过旧版本的玲珑应用
+  raw_steps: '1. 在终端执行命令：ll-cli upgrade org.deepin.editor
+
+    2. 在终端执行命令：ll-cli run org.deepin.editor'
+  raw_expected: '1. 【文本编辑器】升级成功，默认升级到最新版本，可以使用命令查看信息：ll-cli info org.deepin.editor
+
+    2. 【文本编辑器】打开运行成功，版本为升级后的版本'
+  title: 【玲珑】【文本编辑器】更新玲珑应用
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 已经安装过旧版本的玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli upgrade org.deepin.editor
+  - 在终端执行命令：ll-cli run org.deepin.editor
+  expected:
+  - 【文本编辑器】升级成功，默认升级到最新版本，可以使用命令查看信息：ll-cli info org.deepin.editor
+  - 【文本编辑器】打开运行成功，版本为升级后的版本
+  case_type: 功能测试
+  manual: false
+
+- id: '1704765'
+  raw_title: 【玲珑】【文本编辑器】玲珑应用，基本功能测试
+  raw_precondition: 1. 已经运行玲珑应用
+  raw_steps: '1. 【文本编辑器】应用，进行文字输入，删减
+
+    2. 进行查找、替换
+
+    3. 复制、剪切、粘贴
+
+    4. 编辑完成后，保存/另存为文件'
+  raw_expected: '1. 功能正常
+
+    2. 功能正常
+
+    3. 功能正常
+
+    4. 功能正常'
+  title: 【玲珑】【文本编辑器】玲珑应用，基本功能测试
+  module: 文本编辑器
+  priority: '2'
+  precondition:
+  - 已经运行玲珑应用
+  steps:
+  - 【文本编辑器】应用，进行文字输入，删减
+  - 进行查找、替换
+  - 复制、剪切、粘贴
+  - 编辑完成后，保存/另存为文件
+  expected:
+  - 功能正常
+  - 功能正常
+  - 功能正常
+  - 功能正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1704763'
+  raw_title: 【玲珑】【文本编辑器】运行指定版本玲珑应用
+  raw_precondition: 1. 安装有多个版本的玲珑应用
+  raw_steps: 1. 在终端执行命令：ll-cli run org.deepin.editor/6.0.17
+  raw_expected: 1. 打开运行指定版本6.0.17的【文本编辑器】应用
+  title: 【玲珑】【文本编辑器】运行指定版本玲珑应用
+  module: 文本编辑器
+  priority: '3'
+  precondition:
+  - 安装有多个版本的玲珑应用
+  steps:
+  - 在终端执行命令：ll-cli run org.deepin.editor/6.0.17
+  expected:
+  - 打开运行指定版本6.0.17的【文本编辑器】应用
+  case_type: 功能测试
+  manual: false
+
+- id: '1704757'
+  raw_title: 【玲珑】【文本编辑器】安装玲珑应用
+  raw_precondition: ''
+  raw_steps: 1. 在终端执行命令：ll-cli install org.deepin.editor
+  raw_expected: 1. 等待一段时间后，【文本编辑器】安装完成(如果有多个版本，默认安装最高版本)，可以使用命令查看信息：ll-cli info org.deepin.editor
+  title: 【玲珑】【文本编辑器】安装玲珑应用
+  module: 文本编辑器
+  priority: '2'
+  precondition: []
+  steps:
+  - 在终端执行命令：ll-cli install org.deepin.editor
+  expected:
+  - 等待一段时间后，【文本编辑器】安装完成(如果有多个版本，默认安装最高版本)，可以使用命令查看信息：ll-cli info org.deepin.editor
+  case_type: 功能测试
+  manual: false

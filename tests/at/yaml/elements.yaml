@@ -1,0 +1,116 @@
+elements:
+  OptionMenu:
+    name: OptionMenu
+    role: menu
+  CustomizeDefaultPath:
+    name: CustomizeDefaultPath
+    role: check box
+  CustomPathInput:
+    name: CustomPathInput
+    role: text
+  TextEditor:
+    name: TextEditor
+    role: text
+  FindNext:
+    name: FindNext
+    role: push button
+  FindPrevious:
+    name: FindPrevious
+    role: push button
+  CloseFind:
+    name: CloseFind
+  FindInput:
+    name: FindInput
+  EditorStack:
+    name: EditorStack
+    role: layered pane
+  ReplaceWithInput:
+    name: ReplaceWithInput
+  ReplaceNext:
+    name: ReplaceNext
+    role: push button
+  ReplaceSkip:
+    name: ReplaceSkip
+    role: push button
+  ReplaceRest:
+    name: ReplaceRest
+    role: push button
+  ReplaceAll:
+    name: ReplaceAll
+    role: push button
+  CloseReplace:
+    name: CloseReplace
+  ReplaceFindInput:
+    name: ReplaceFindInput
+  SwitchToReplace:
+    name: SwitchToReplace
+    role: push button
+  SamePathAsCurrentFile:
+    name: SamePathAsCurrentFile
+    role: check box
+  CharCountLabel:
+    name: CharCountLabel
+    role: label
+  ScaleLabel:
+    name: ScaleLabel
+    role: label
+  Tabbar:
+    name: Tabbar
+    role: page tab
+  FindLabel:
+    name: FindLabel
+    role: label
+  LineNumberInput:
+    name: LineNumberInput
+    role: spin box
+  CloseJumpLine:
+    name: CloseJumpLine
+  GoToLineLabel:
+    name: GoToLineLabel
+    role: label
+  DropdownToolButton:
+    name: DropdownToolButton
+    role: push button
+  DropdownMenu:
+    name: DropdownMenu
+    role: menu
+  ReloadFile:
+    name: ReloadFile
+  MainWindow:
+    name: MainWindow
+    role: frame
+  ProgressLabel:
+    name: ProgressLabel
+  ProgressBar:
+    name: ProgressBar
+  ThemeListView:
+    name: ThemeListView
+  PContentEdit:
+    name: PContentEdit
+  EditAnyway:
+    name: EditAnyway
+  WarningSaveAs:
+    name: WarningSaveAs
+  PositionLabel:
+    name: PositionLabel
+    role: label
+  EditorBottomBar:
+    name: EditorBottomBar
+  CentralWidget:
+    name: CentralWidget
+  ClearButton:
+    name: ClearButton
+  ReplaceFindLabel:
+    name: ReplaceFindLabel
+    role: label
+  ReplaceWithLabel:
+    name: ReplaceWithLabel
+    role: label
+  RememberLastPath:
+    name: RememberLastPath
+    role: check box
+  BrowseCustomPath:
+    name: BrowseCustomPath
+  PButton:
+    name: PButton
+    role: push button

@@ -1,0 +1,205 @@
+name: 冒烟测试_suite
+app: deepin-editor
+module: 冒烟测试
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_冒烟测试_001_s1
+  name: 查找替换弹窗切换
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: find test
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: element_action
+    selector:
+      name: SwitchToReplace
+      role: push button
+    do: click
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceFindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceWithInput
+  - step_type: action
+    action: keyboard_press
+    key: escape
+
+- id: suite_冒烟测试_003_s1
+  name: 保存路径设置与编码保存
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+  - step_type: action
+    action: element_action
+    selector:
+      name: SamePathAsCurrentFile
+      role: check box
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+O
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: action
+    action: keyboard_type_text
+    text: hello deepin-editor
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+  - step_type: action
+    action: element_action
+    selector:
+      name: SamePathAsCurrentFile
+      role: check box
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+  - step_type: action
+    action: element_action
+    selector:
+      name: CustomizeDefaultPath
+      role: check box
+    do: click
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: CustomPathInput
+      role: text
+    text: ~/Documents/custom
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+O
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_type_text
+    text: '#include <stdio.h>
+
+      int main() {
+
+      printf("hello world");
+
+      return 0;
+
+      }'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+  # - step_type: action
+  #   action: file_dialog_select
+  #   path: ${TEST_FILES_DIR}/sample_code.c
+  #   wait: 2.0
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 2.0
+  assert_steps:
+  - step_type: assert
+    action: assert_file_exists
+    path: ${TEST_FILES_DIR}/sample_code.c
+
+- id: suite_冒烟测试_004_s1
+  name: 底栏信息与标签页
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 你好hello世界。!? 空格
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CharCountLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: CharCountLabel
+      role: label
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_冒烟测试_008_s1
+  name: 退出
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 退出
+  # assert_steps:
+  # - step_type: assert
+  #   action: assert_process_not_running
+
+teardown:
+- action: session_stop

@@ -1,0 +1,42 @@
+app: deepin-editor
+module: 安全性
+seq: 1
+case_count: 2
+cases:
+- id: '1593669'
+  raw_title: 内存释放检查
+  raw_precondition: ''
+  raw_steps: 1. 反复打开几十兆的txt文件，在系统监视器中检查系统内存占用情况
+  raw_expected: 1. 内存在关闭后均可恢复正常
+  title: 内存释放检查
+  module: 安全性
+  priority: '3'
+  precondition: []
+  steps:
+  - 反复打开几十兆的txt文件，在系统监视器中检查系统内存占用情况
+  expected:
+  - 内存在关闭后均可恢复正常
+  case_type: 功能测试
+  manual: false
+
+- id: '1593461'
+  raw_title: 验证使用文本编辑器，无内存泄漏
+  raw_precondition: ''
+  raw_steps: '1. 通过文本编辑器打开一个大文件（如100M.txt）后关闭大文件的标签页
+
+    2. 多次打开和关闭文本编辑器'
+  raw_expected: '1. 无内存泄漏 （系统监视器中内容跟随打开关闭而相应地上升回落）
+
+    2. 无内存泄漏'
+  title: 验证使用文本编辑器，无内存泄漏
+  module: 安全性
+  priority: '3'
+  precondition: []
+  steps:
+  - 通过文本编辑器打开一个大文件（如100M.txt）后关闭大文件的标签页
+  - 多次打开和关闭文本编辑器
+  expected:
+  - 无内存泄漏 （系统监视器中内容跟随打开关闭而相应地上升回落）
+  - 无内存泄漏
+  case_type: 安全性测试
+  manual: false

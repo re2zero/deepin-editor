@@ -1,0 +1,219 @@
+name: 工作区_suite
+app: deepin-editor
+module: 工作区
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor ${TEST_FILES_DIR}/sample_code.c
+  wait: 3.0
+suites:
+# - id: suite_工作区_040_s1
+#   name: 有左右标签时查看“更多关闭方式”
+#   description: ''
+#   steps:
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: dtk_context_menu
+#     selector:
+#       name: Tabbar
+#       role: page tab
+#     items:
+#     - 关闭其他标签页
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#     wait: 2.0
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#     wait: 2.0
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#     wait: 2.0
+
+- id: suite_工作区_043_s1
+  name: 不同源代码文件注释
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+O
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/sample_code.c
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 添加注释
+  # - step_type: action
+  #   action: keyboard_hot_key
+  #   key: Ctrl+A
+  # - step_type: action
+  #   action: dtk_context_menu
+  #   selector:
+  #     name: TextEditor
+  #     role: text
+  #   items:
+  #   - 添加注释
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+Z
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+# - id: suite_工作区_046_s1
+#   name: 切换注释&撤销的交互
+#   description: ''
+#   steps:
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+T
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+O
+#     wait: 1.0
+#   - step_type: action
+#     action: file_dialog_select
+#     path: ${TEST_FILES_DIR}/code_save.c
+#   - step_type: action
+#     action: keyboard_press
+#     key: escape
+#   - step_type: action
+#     action: dtk_context_menu
+#     selector:
+#       name: TextEditor
+#       role: text
+#     items:
+#     - 添加注释
+#   # - step_type: action
+#   #   action: dtk_context_menu
+#   #   selector:
+#   #     name: TextEditor
+#   #     role: text
+#   #   items:
+#   #   - 取消注释
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+Z
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+Z
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+A
+#   # - step_type: action
+#   #   action: dtk_context_menu
+#   #   selector:
+#   #     name: TextEditor
+#   #     role: text
+#   #   items:
+#   #   - 添加注释
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+Z
+#   - step_type: action
+#     action: keyboard_hot_key
+#     key: Ctrl+W
+    
+- id: suite_工作区_049_s1
+  name: 切换大小写&撤销的交互
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'hello world test
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 切换大小写
+    - 大写
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+Z
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_工作区_052_s1
+  name: 替换_查询结果包含大小写
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: 'A and a and A text
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+H
+    wait: 1.0
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: ReplaceFindInput
+    text: A
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: ReplaceWithInput
+    text: X
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceAll
+      role: push button
+    do: click
+  assert_steps:
+  # - step_type: assert
+  #   action: assert_element
+  #   selector:
+  #     name: ReplaceFindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop

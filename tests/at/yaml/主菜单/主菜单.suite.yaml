@@ -1,0 +1,373 @@
+name: 主菜单_suite
+app: deepin-editor
+module: 主菜单
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_主菜单_007_s1
+  name: 自定义操作路径_保存一个未保存过的新文档
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: custom path save test
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 另存为
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_008_s1
+  name: 设置按钮
+  description: ''
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_主菜单_022_s1
+  name: 查找_按压enter键
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type
+    text: 'find target
+
+      find target
+
+      other'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: keyboard_type
+    text: find
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindPrevious
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseFind
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_023_s1
+  name: 新建窗口
+  description: ''
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 新窗口
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type
+    text: new window input
+  assert_steps:
+  - step_type: assert
+    action: assert_window_count
+    expected: 2
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: EditorStack
+      role: layered pane
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_024_s1
+  name: 新建标签
+  description: ''
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 新标签页
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type
+    text: tab content test
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+W
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  # - step_type: assert
+  #   action: assert_element
+  #   selector:
+  #     name: Tabbar
+  #     role: page tab
+
+- id: suite_主菜单_025_s1
+  name: 打开文件
+  description: ''
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/menu_save.txt
+    wait: 3.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_026_s1
+  name: 保存
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: save content test
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 保存
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/menu_save.txt
+    wait: 3.0
+  assert_steps:
+  - step_type: assert
+    action: assert_file_exists
+    path: ${TEST_FILES_DIR}/menu_save.txt
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_033_s1
+  name: 替换
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_type
+    text: 'replace target
+
+      replace target
+
+      other'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+H
+  - step_type: action
+    action: keyboard_type
+    text: replace
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: ReplaceWithInput
+    text: sub
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceNext
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceSkip
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceRest
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceAll
+      role: push button
+    do: click
+  - step_type: action
+    action: element_action
+    selector:
+      name: CloseReplace
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: ReplaceFindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_034_s1
+  name: 查找_不按压enter键
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type
+    text: 'find target
+
+      find target'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: keyboard_type
+    text: find
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_主菜单_035_s1
+  name: 查找_更换查找词
+  description: ''
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type
+    text: 'alpha beta
+
+      alpha gamma
+
+      beta gamma'
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F
+  - step_type: action
+    action: keyboard_type
+    text: alpha
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+  - step_type: action
+    action: keyboard_type
+    text: beta
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: action
+    action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: FindInput
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop
