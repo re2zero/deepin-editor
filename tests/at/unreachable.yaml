@@ -1,0 +1,10 @@
+# 人工豁免清单 (unreachable.yaml)
+# 口径变更 (2026-09-03): 豁免逻辑已移至扫描源头。
+# - QAction/DAction/QShortcut 家族: 仅 setObjectName (暴露为 accessible-id 而非
+#   accessible-name), youqu 引擎只按 accessible-name 定位, 无法被 AT 用例触达,
+#   已在 scan_gaps.py 中从扫描分母剔除, 无需在此豁免。
+# - QActionGroup/QButtonGroup 容器: 非真实控件, 已从交互分类排除。
+# - PButton: 条件构造 (m_text 非空时创建), 但具备 setAccessibleName, 是合法
+#   可定位控件, 不豁免, 保留在分母以暴露未覆盖缺口。
+# 当前无运行时豁免项, 分母 SPI = AT。
+unreachable: []

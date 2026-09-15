@@ -1,0 +1,27 @@
+scan_total: 55
+transient_items:
+- name: TabContextMenu
+  role: menu
+  ui_name: TabContextMenu
+- name: MoreCloseOptions
+  role: menu
+  ui_name: MoreCloseOptions
+- name: DropdownMenu
+  role: menu
+  ui_name: DropdownMenu
+- name: Menu_2
+  role: menu
+  ui_name: Menu_2
+- name: EditorContextMenu
+  role: menu
+  ui_name: EditorContextMenu
+- name: ViewModeContextMenu
+  role: menu
+  ui_name: ViewModeContextMenu
+unreachable: 11
+denominator: 44
+covered: 44
+uncovered: 0
+coverage: 100.0
+passed: true
+uncovered_elements: []

@@ -1,0 +1,188 @@
+name: 查找计数_suite
+app: deepin-editor
+module: 查找计数
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_查找计数_001_s1
+  name: 查找匹配_显示索引与总数
+  description: '查找有结果时显示第X/Y项计数'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world hello test hello'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: enter
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MatchCountLabel
+      role: label
+- id: suite_查找计数_002_s1
+  name: 无匹配结果_查找栏可见
+  description: '查找无结果时查找栏仍可见'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_type_text
+    text: xyznotexist
+  - action: keyboard_press
+    key: enter
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: CloseFind
+- id: suite_查找计数_003_s1
+  name: 切换下一项_索引更新
+  description: '点击查找下一个后索引更新'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world hello test hello'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: enter
+  - action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MatchCountLabel
+      role: label
+  - action: assert_element
+    selector:
+      name: FindNext
+      role: push button
+- id: suite_查找计数_004_s1
+  name: 切换上一项_索引更新
+  description: '点击查找上一个后索引更新'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world hello test hello'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: enter
+  - action: element_action
+    selector:
+      name: FindNext
+      role: push button
+    do: click
+  - action: element_action
+    selector:
+      name: FindPrevious
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MatchCountLabel
+      role: label
+  - action: assert_element
+    selector:
+      name: FindPrevious
+      role: push button
+- id: suite_查找计数_005_s1
+  name: 编辑文本_总数实时更新
+  description: '编辑文本后重新查找总数更新'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world hello'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: enter
+  - action: keyboard_press
+    key: escape
+  - action: keyboard_hot_key
+    key: Ctrl+A
+  - action: keyboard_type_text
+    text: 'hello world hello test hello hello'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: enter
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MatchCountLabel
+      role: label
+- id: suite_查找计数_006_s1
+  name: 替换操作_总数更新
+  description: '替换一个后总数从3变为2'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world hello test hello'
+  - action: keyboard_hot_key
+    key: Ctrl+H
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: tab
+  - action: keyboard_type_text
+    text: hi
+  - action: element_action
+    selector:
+      name: ReplaceNext
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MatchCountLabel
+      role: label
+  - action: assert_element
+    selector:
+      name: ReplaceNext
+      role: push button
+- id: suite_查找计数_007_s1
+  name: 全部替换_编辑区可见
+  description: '全部替换后编辑区内容变为hi'
+  steps:
+  - action: keyboard_type_text
+    text: 'hello world hello test hello'
+  - action: keyboard_hot_key
+    key: Ctrl+H
+  - action: keyboard_type_text
+    text: hello
+  - action: keyboard_press
+    key: tab
+  - action: keyboard_type_text
+    text: hi
+  - action: element_action
+    selector:
+      name: ReplaceAll
+      role: push button
+    do: click
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+teardown:
+- action: session_stop

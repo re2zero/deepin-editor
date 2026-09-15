@@ -1,0 +1,236 @@
+name: Markdown渲染_suite
+app: deepin-editor
+module: Markdown渲染
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc "echo '# Test Heading' > /tmp/v66_md_test.md && deepin-editor /tmp/v66_md_test.md"
+  wait: 3.0
+suites:
+- id: suite_Markdown渲染_001_s1
+  name: 新建文件_纯文本不渲染
+  description: '新建非md文件不触发Markdown渲染'
+  steps:
+  - action: keyboard_hot_key
+    key: Ctrl+T
+  - action: keyboard_type_text
+    text: '# 标题'
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_002_s1
+  name: 新建文件_实时预览不可用
+  description: '非md文件不触发Markdown渲染'
+  steps:
+  - action: keyboard_hot_key
+    key: Ctrl+T
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_003_s1
+  name: 打开md文件_编辑区可见
+  description: '打开md文件后编辑器可交互'
+  steps:
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_004_s1
+  name: 新建文件_编辑区可输入
+  description: '新建文件后编辑区正常可输入'
+  steps:
+  - action: keyboard_hot_key
+    key: Ctrl+T
+  - action: keyboard_type_text
+    text: '# test'
+  - action: keyboard_hot_key
+    key: Ctrl+F
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_005_s1
+  name: 右键菜单_编辑区可交互
+  description: '右键后关闭菜单编辑区仍可交互'
+  steps:
+  - action: mouse_right_click
+    selector:
+      name: TextEditor
+      role: text
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_006_s1
+  name: 右键菜单_连续操作不崩溃
+  description: '连续右键关闭菜单后编辑区仍可见'
+  steps:
+  - action: mouse_right_click
+    selector:
+      name: TextEditor
+      role: text
+  - action: keyboard_press
+    key: escape
+  - action: mouse_right_click
+    selector:
+      name: TextEditor
+      role: text
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_007_s1
+  name: 右键菜单_主窗口正常
+  description: '右键操作后主窗口和编辑区均正常'
+  steps:
+  - action: mouse_right_click
+    selector:
+      name: TextEditor
+      role: text
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_008_s1
+  name: 底部菜单_编辑区可交互
+  description: '右键操作后编辑区仍正常'
+  steps:
+  - action: mouse_right_click
+    selector:
+      name: TextEditor
+      role: text
+  - action: keyboard_press
+    key: escape
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_009_s1
+  name: 查看视图_只读验证
+  description: '右键操作后编辑区仍可见'
+  steps:
+  - action: mouse_right_click
+    selector:
+      name: TextEditor
+      role: text
+  - action: keyboard_press
+    key: escape
+  - action: keyboard_type_text
+    text: modified_text_should_not_appear
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_010_s1
+  name: 非md文件_实时预览不可用
+  description: '非md文件编辑区正常可见'
+  steps:
+  - action: keyboard_hot_key
+    key: Ctrl+T
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_011_s1
+  name: 标题语法_编辑视图输入
+  description: '在md文件编辑视图输入各级标题语法'
+  steps:
+  - action: keyboard_type_text
+    text: '# 一级标题
+      ## 二级标题
+      ### 三级标题
+      #### 四级标题
+      ##### 五级标题
+      ###### 六级标题'
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_012_s1
+  name: 列表语法_编辑视图输入
+  description: '在md文件编辑视图输入列表语法'
+  steps:
+  - action: keyboard_type_text
+    text: '1. 有序项
+      - 无序项
+      - [ ] 任务项'
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_013_s1
+  name: 代码块语法_编辑视图输入
+  description: '在md文件编辑视图输入代码块语法'
+  steps:
+  - action: keyboard_type_text
+    text: '```python
+      print(test_code)
+      ```'
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_014_s1
+  name: 表格语法_编辑视图输入
+  description: '在md文件编辑视图输入表格语法'
+  steps:
+  - action: keyboard_type_text
+    text: '| 名称 | 值 |
+      | --- | --- |
+      | A | 1 |'
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_Markdown渲染_015_s1
+  name: 常规语法_编辑视图输入
+  description: '在md文件编辑视图输入粗体斜体等常规语法'
+  steps:
+  - action: keyboard_type_text
+    text: '**粗体**
+      *斜体*
+      ~~删除线~~
+      > 引用
+      ---'
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+teardown:
+- action: session_stop
