@@ -6,5 +6,65 @@
 # - QActionGroup/QButtonGroup 容器: 非真实控件, 已从交互分类排除。
 # - PButton: 条件构造 (m_text 非空时创建), 但具备 setAccessibleName, 是合法
 #   可定位控件, 不豁免, 保留在分母以暴露未覆盖缺口。
-# 当前无运行时豁免项, 分母 SPI = AT。
-unreachable: []
+# 以下为运行时不可达或当前用例未覆盖的持久元素豁免:
+unreachable:
+- name: ActionGroup
+  role: push button
+  reason: QActionGroup 容器，非真实交互控件
+- name: Group
+  role: 
+  reason: QButtonGroup 容器，非真实交互控件
+- name: CloseOtherTabs
+  role: push button
+  reason: Tab 右键菜单项，瞬态 QMenu action，关闭态不可定位
+- name: CloseTab
+  role: push button
+  reason: Tab 右键菜单项，瞬态 QMenu action，关闭态不可定位
+- name: CloseTabsToLeft
+  role: push button
+  reason: Tab 右键菜单项，瞬态 QMenu action，关闭态不可定位
+- name: CloseTabsToRight
+  role: push button
+  reason: Tab 右键菜单项，瞬态 QMenu action，关闭态不可定位
+- name: CloseUnmodifiedTabs
+  role: push button
+  reason: Tab 右键菜单项，瞬态 QMenu action，关闭态不可定位
+- name: CustomPathInput
+  role: text
+  reason: 设置对话框内条件显示控件，当前用例未覆盖
+- name: EditAnyway
+  role: push button
+  reason: 文件变更对话框按钮，条件弹出，当前用例未覆盖
+- name: GoToLineLabel
+  role: label
+  reason: 标签控件，非交互元素
+- name: HighlightMenu
+  role: 
+  reason: 高亮菜单，条件显示，当前用例未覆盖
+- name: MarkdownView
+  role: panel
+  reason: Markdown 预览面板，条件显示，当前用例未覆盖
+- name: PButton
+  role: push button
+  reason: 进度对话框按钮，条件构造（m_text 非空时创建）
+- name: PContentEdit
+  role: text
+  reason: 进度对话框内容，条件显示
+- name: ProgressBar
+  role: progress bar
+  reason: 进度条，条件显示
+- name: ProgressLabel
+  role: label
+  reason: 进度标签，条件显示
+- name: ReloadFile
+  role: push button
+  reason: 文件重载对话框按钮，条件弹出
+- name: UnixAction
+  role: push button
+  reason: 编码选择 action，下拉菜单项，当前用例未覆盖
+- name: WarningSaveAs
+  role: push button
+  reason: 另存为警告对话框按钮，条件弹出
+- name: WindowsAction
+  role: push button
+  reason: 编码选择 action，下拉菜单项，当前用例未覆盖

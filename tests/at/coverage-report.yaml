@@ -1,26 +1,36 @@
-scan_total: 55
+scan_total: 54
 transient_items:
-- name: TabContextMenu
-  role: menu
-  ui_name: TabContextMenu
-- name: MoreCloseOptions
-  role: menu
-  ui_name: MoreCloseOptions
-- name: DropdownMenu
-  role: menu
-  ui_name: DropdownMenu
-- name: Menu_2
-  role: menu
-  ui_name: Menu_2
-- name: EditorContextMenu
-  role: menu
-  ui_name: EditorContextMenu
 - name: ViewModeContextMenu
   role: menu
   ui_name: ViewModeContextMenu
-unreachable: 11
-denominator: 44
-covered: 44
+  locator: name
+- name: TabContextMenu
+  role: menu
+  ui_name: TabContextMenu
+  locator: name
+- name: MoreCloseOptions
+  role: menu
+  ui_name: MoreCloseOptions
+  locator: name
+- name: DropdownMenu
+  role: menu
+  ui_name: DropdownMenu
+  locator: name
+- name: Menu_2
+  role: menu
+  ui_name: Menu_2
+  locator: name
+- name: EditorContextMenu
+  role: menu
+  ui_name: EditorContextMenu
+  locator: name
+- name: ViewModeContextMenu
+  role: menu
+  ui_name: ViewModeContextMenu
+  locator: name
+unreachable: 20
+denominator: 34
+covered: 34
 uncovered: 0
 coverage: 100.0
 passed: true

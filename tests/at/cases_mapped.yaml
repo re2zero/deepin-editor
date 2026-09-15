@@ -1949,3 +1949,107 @@ cases:
     selector:
       name: TextEditor
       role: text
+- id: suite_主菜单_B01_001_s1
+  name: 帮助_打开帮助文档
+  module: 主菜单
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 帮助
+    wait: 3.0
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_主菜单_B01_002_s1
+  name: 切换主题_应用主题
+  module: 主菜单
+  status: unsupported
+  reason: switchThemeAction 的 m_menu->addAction 被注释禁用（window.cpp:575），切换主题菜单项当前不可用
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 切换主题
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: ThemeListView
+    do: click
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_主菜单_B01_003_s1
+  name: 打印_调用打印对话框
+  module: 主菜单
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: print test content
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打印
+    wait: 3.0
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_主菜单_B01_004_s1
+  name: 另存为_选择路径保存
+  module: 主菜单
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: save as test content
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 另存为
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: b01_saveas.txt
+    wait: 3.0
+  - step_type: action
+    action: keyboard_press
+    key: return
+    wait: 1.0
+  - step_type: action
+    action: keyboard_press
+    key: escape
+  - step_type: assert
+    action: assert_file_exists
+    path: ${TEST_FILES_DIR}/b01_saveas.txt
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
