@@ -1,0 +1,120 @@
+name: tabmgr_suite
+app: deepin-editor
+module: tabmgr
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    bash -lc 'rm -rf ${TEST_FILES_DIR}/未命名文档*; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_tabmgr_B07_001_s1
+  name: 标签栏右键菜单_关闭标签
+  description: '覆盖原始用例：1592725（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: tab one content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: tab two content
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Tabbar
+      role: page tab
+    items:
+    - 关闭标签页
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_tabmgr_B07_002_s1
+  name: 更多关闭方式_关闭左侧标签
+  description: '覆盖原始用例：1592721（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: left tab content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: middle tab content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: right tab content
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Tabbar
+      role: page tab
+    items:
+    - 更多关闭方式
+    - 关闭左侧所有标签页
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_tabmgr_B07_003_s1
+  name: 未保存时关闭标签_弹出提示
+  description: '覆盖原始用例：1592791（P2）'
+  status: unsupported
+  reason: >-
+    按 Ctrl+W 关闭已修改未保存的标签页时，window.cpp:961/1054 调用
+    createDialog() 弹出 DDialog 确认对话框。该 DDialog 及其按钮（Cancel/
+    Discard/Save）均未调用 setObjectName 或 setAccessibleName，AT-SPI 树中
+    无稳定可定位的 accessible-name 或 accessible-id，youqu 执行器无法通过
+    selector 定位并断言该对话框，故标记为 unsupported。待开发为 DDialog
+    及按钮补全 setAccessibleName 后可自动化执行。
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: unsaved content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+W
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop
