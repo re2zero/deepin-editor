@@ -2780,3 +2780,84 @@ cases:
     selector:
       name: TextEditor
       role: text
+- id: suite_fileopen_B09_001_s1
+  name: 打开无效文件_提示无效
+  module: fileopen
+  steps:
+  - step_type: action
+    action: dbus_call
+    value:
+      dbus_name: com.deepin.Editor
+      object_path: /com/deepin/Editor
+      interface: com.deepin.Editor
+      method: openFilesInTab
+      args:
+      - - ${TEST_FILES_DIR}/invalid_test.mp3
+    wait: 2.0
+  - step_type: assert
+    action: assert_ocr_exists
+    expected: 无效文件
+- id: suite_fileopen_B09_002_s1
+  name: 批量拖拽_过滤非文本
+  module: fileopen
+  steps:
+  - step_type: action
+    action: dbus_call
+    value:
+      dbus_name: com.deepin.Editor
+      object_path: /com/deepin/Editor
+      interface: com.deepin.Editor
+      method: openFilesInTab
+      args:
+      - - ${TEST_FILES_DIR}/save_test.txt
+        - ${TEST_FILES_DIR}/invalid_test.jpg
+    wait: 2.0
+  - step_type: action
+    action: dbus_call
+    value:
+      dbus_name: com.deepin.Editor
+      object_path: /com/deepin/Editor
+      interface: com.deepin.Editor
+      method: openFilesInTab
+      args:
+      - - ${TEST_FILES_DIR}/empty_folder
+    wait: 2.0
+  - step_type: action
+    action: dbus_call
+    value:
+      dbus_name: com.deepin.Editor
+      object_path: /com/deepin/Editor
+      interface: com.deepin.Editor
+      method: openFilesInTab
+      args:
+      - - ${TEST_FILES_DIR}/folder_with_docs/nontext.doc
+    wait: 2.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  - step_type: assert
+    action: assert_ocr_exists
+    expected: 无效文件
+- id: suite_fileopen_B09_003_s1
+  name: 打印预览存为PDF
+  module: fileopen
+  status: unsupported
+  reason: >-
+    按 Ctrl+P 触发 popupPrintDialog（window.cpp:2366），创建 DPrintPreviewDialog
+    （DTK 打印预览对话框）。该对话框内部的打印机选择下拉框、"存为PDF" 选项、
+    保存按钮等控件均为 DTK 框架内部组件，未调用 setAccessibleName 或
+    setObjectName，AT-SPI 树中无稳定可定位的标识符，youqu 执行器无法通过
+    selector 定位并操作这些控件，故标记为 unsupported。待 DTK 为
+    DPrintPreviewDialog 内部控件补全 setAccessibleName 后可自动化执行。
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+P
+    wait: 2.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
