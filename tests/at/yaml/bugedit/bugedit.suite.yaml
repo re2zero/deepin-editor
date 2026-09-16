@@ -1,0 +1,221 @@
+name: bugedit_suite
+app: deepin-editor
+module: bugedit
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_bugedit_B13_001_s1
+  name: Shift+Tab缩进_多行
+  description: '覆盖原始用例：1978835（P3，bug转用例）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type
+    text: '    line one
+
+      line two
+
+      line three'
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Shift+Tab
+    wait: 0.5
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_bugedit_B13_002_s1
+  name: 修改编辑保存bashrc_保存成功
+  description: '覆盖原始用例：1934897（P3，bug转用例）'
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: bashrc_save.txt
+    wait: 3.0
+  - step_type: action
+    action: keyboard_hot_key
+    key: End
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type_text
+    text: ' save ok'
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_bugedit_B13_003_s1
+  name: 替换_右键菜单
+  description: '覆盖原始用例：1875739（P2，bug转用例）'
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: 'hello world hello test hello'
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.5
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 替换
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type_text
+    text: hello
+    wait: 0.3
+  - step_type: action
+    action: keyboard_press
+    key: tab
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type_text
+    text: hi
+    wait: 0.3
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceNext
+      role: push button
+    do: click
+    wait: 0.5
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceRest
+      role: push button
+    do: click
+    wait: 0.5
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 0.3
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type_text
+    text: 'hello world hello test hello'
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.3
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 替换
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type_text
+    text: hello
+    wait: 0.3
+  - step_type: action
+    action: keyboard_press
+    key: tab
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type_text
+    text: hi
+    wait: 0.3
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceAll
+      role: push button
+    do: click
+    wait: 0.5
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 0.3
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type_text
+    text: 'hello world hello test hello'
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.3
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 替换
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type_text
+    text: hello
+    wait: 0.3
+  - step_type: action
+    action: keyboard_press
+    key: tab
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type_text
+    text: hi
+    wait: 0.3
+  - step_type: action
+    action: element_action
+    selector:
+      name: ReplaceSkip
+      role: push button
+    do: click
+    wait: 0.5
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop
