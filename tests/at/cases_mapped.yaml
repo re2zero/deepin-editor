@@ -2411,3 +2411,110 @@ cases:
     selector:
       name: TextEditor
       role: text
+- id: suite_书签折叠_B04_001_s1
+  name: 添加书签_标记行
+  module: 书签折叠
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'line one
+
+      line two
+
+      line three
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Home
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 添加书签
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_书签折叠_B04_002_s1
+  name: 上一个书签_下一个书签_跳转
+  module: 书签折叠
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'bookmark line one
+
+      bookmark line two
+
+      bookmark line three
+
+      bookmark line four
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Home
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F2
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Down
+  - step_type: action
+    action: keyboard_hot_key
+    key: Down
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F2
+    wait: 0.5
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 下一个书签
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 上一个书签
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_书签折叠_B04_003_s1
+  name: 展开所有层次_代码折叠
+  module: 书签折叠
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: '{\n  inner line one\n  inner line two\n  inner line three\n}\n'
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 展开所有层次
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text

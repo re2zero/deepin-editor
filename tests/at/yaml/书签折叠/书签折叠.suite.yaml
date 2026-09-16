@@ -1,0 +1,128 @@
+name: 书签折叠_suite
+app: deepin-editor
+module: 书签折叠
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_书签折叠_B04_001_s1
+  name: 添加书签_标记行
+  description: '覆盖原始用例：1592699（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'line one
+
+      line two
+
+      line three
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Home
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 添加书签
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_书签折叠_B04_002_s1
+  name: 上一个书签_下一个书签_跳转
+  description: '覆盖原始用例：1592693（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: 'bookmark line one
+
+      bookmark line two
+
+      bookmark line three
+
+      bookmark line four
+
+      '
+  - step_type: action
+    action: keyboard_hot_key
+    key: Home
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F2
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Down
+  - step_type: action
+    action: keyboard_hot_key
+    key: Down
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+F2
+    wait: 0.5
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 下一个书签
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 上一个书签
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_书签折叠_B04_003_s1
+  name: 展开所有层次_代码折叠
+  description: '覆盖原始用例：1592701（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+  - step_type: action
+    action: keyboard_type_text
+    text: '{\n  inner line one\n  inner line two\n  inner line three\n}\n'
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 展开所有层次
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop
