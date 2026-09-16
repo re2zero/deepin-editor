@@ -1,0 +1,223 @@
+name: settings_b11_suite
+app: deepin-editor
+description: '设置-外观/字体/行号 (B11)'
+module: settings_b11
+tags: []
+fast_fail: false
+env_check: []
+setup:
+- action: session_start
+  command: deepin-editor
+  wait: 3.0
+suites:
+- id: case_1593051_s1
+  name: 字体类型设置_应用
+  description: '选择字体类型并应用'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 基础设置
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 字体
+      role: combo box
+    do: click
+  - action: keyboard_type
+    text: Noto Sans
+  - action: keyboard_press
+    key: enter
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+- id: case_1593075_s1
+  name: 字号大小设置_应用
+  description: '调整字号大小并应用'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 基础设置
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 字号
+      role: spin button
+    do: click
+  - action: keyboard_hot_key
+    key: ctrl+a
+  - action: keyboard_type
+    text: '16'
+  - action: keyboard_press
+    key: enter
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+- id: case_1593063_s1
+  name: 显示行号_开关
+  description: '勾选显示行号选项'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 基础设置
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 显示行号
+      role: check box
+    do: click
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+- id: case_1593061_s1
+  name: Tab字符宽度_调整
+  description: '调整Tab字符宽度并应用'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 高级设置
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: Tab字符宽度
+      role: spin button
+    do: click
+  - action: keyboard_hot_key
+    key: ctrl+a
+  - action: keyboard_type
+    text: '8'
+  - action: keyboard_press
+    key: enter
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+- id: case_1593069_s1
+  name: 自动换行_开关
+  description: '开启自动换行选项'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 基础设置
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 自动换行
+      role: check box
+    do: click
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+- id: case_1593067_s1
+  name: 恢复默认_重置设置
+  description: '点击恢复默认按钮重置设置'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 恢复默认
+      role: push button
+    do: click
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+teardown:
+- action: session_stop

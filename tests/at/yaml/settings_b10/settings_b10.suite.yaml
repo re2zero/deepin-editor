@@ -1,0 +1,147 @@
+name: settings_b10_suite
+app: deepin-editor
+description: '设置-快捷键/键盘映射 (B10)'
+module: settings_b10
+tags: []
+fast_fail: false
+env_check: []
+setup:
+- action: session_start
+  command: deepin-editor
+  wait: 3.0
+suites:
+- id: case_1593045_s1
+  name: 快捷键编辑_修改快捷键
+  description: '修改快捷键为自定义组合'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 快捷键
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 窗口
+      role: panel
+    do: click
+  - action: keyboard_press
+    key: tab
+  - action: keyboard_hot_key
+    key: ctrl+shift+n
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: 快捷键
+      role: list item
+- id: case_1593049_s1
+  name: 快捷键编辑
+  description: '编辑快捷键功能'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 快捷键
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 编辑
+      role: panel
+    do: click
+  - action: keyboard_press
+    key: tab
+  - action: keyboard_hot_key
+    key: ctrl+alt+d
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: 快捷键
+      role: list item
+- id: case_1593047_s1
+  name: 快捷键编辑_小键盘
+  description: '为功能绑定小键盘按键'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 快捷键
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 窗口
+      role: panel
+    do: click
+  - action: keyboard_press
+    key: tab
+  - action: keyboard_press
+    key: kp_5
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: 快捷键
+      role: list item
+- id: case_1593073_s1
+  name: 键盘映射_自定义
+  description: '修改键盘映射并应用'
+  tags: []
+  steps:
+  - action: element_action
+    selector:
+      accessible_id: Menu_2
+    do: click
+  - action: element_action
+    selector:
+      accessible_id: Settings
+    do: click
+  - action: element_action
+    selector:
+      name: 快捷键
+      role: list item
+    do: click
+  - action: element_action
+    selector:
+      name: 快捷键映射
+      role: combo box
+    do: click
+  - action: keyboard_press
+    key: down
+  - action: keyboard_press
+    key: enter
+  - action: element_action
+    selector:
+      name: 确定
+      role: push button
+    do: click
+  assert_steps:
+  - action: assert_element
+    selector:
+      name: MainWindow
+      role: frame
+teardown:
+- action: session_stop

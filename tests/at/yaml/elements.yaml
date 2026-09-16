@@ -81,6 +81,7 @@ elements:
   MainWindow:
     name: MainWindow
     role: frame
+    accessible_id: MainWindow
   ProgressLabel:
     name: ProgressLabel
   ProgressBar:
@@ -129,3 +130,80 @@ elements:
   ViewModeContextMenu:
     name: ViewModeContextMenu
     role: menu
+  Menu_2:
+    name: Menu_2
+    role: popup menu
+    accessible_id: Menu_2
+  Settings:
+    name: 设置
+    role: menu item
+    accessible_id: Settings
+  基础设置:
+    name: 基础设置
+    role: list item
+  字体样式:
+    name: 字体样式
+    role: panel
+  字体:
+    name: 字体
+    role: combo box
+  字号:
+    name: 字号
+    role: spin button
+  自动换行:
+    name: 自动换行
+    role: check box
+  显示行号:
+    name: 显示行号
+    role: check box
+  显示代码折叠标志:
+    name: 显示代码折叠标志
+    role: check box
+  当前行高亮:
+    name: 当前行高亮
+    role: check box
+  显示书签图标:
+    name: 显示书签图标
+    role: check box
+  显示空白字符:
+    name: 显示空白字符/制表符
+    role: check box
+  快捷键:
+    name: 快捷键
+    role: list item
+  快捷键映射:
+    name: 快捷键映射
+    role: combo box
+  窗口:
+    name: 窗口
+    role: panel
+  编辑:
+    name: 编辑
+    role: panel
+  高级设置:
+    name: 高级设置
+    role: list item
+  启动:
+    name: 启动
+    role: panel
+  保留关闭前的页签:
+    name: 保留关闭前的页签
+    role: check box
+  窗口状态:
+    name: 窗口状态
+    role: combo box
+  Tab字符宽度:
+    name: Tab字符宽度
+    role: spin button
+  打开保存设置:
+    name: 打开/保存设置
+    role: panel
+  恢复默认:
+    name: 恢复默认
+    role: push button
+  确定:
+    name: 确定
+    role: push button
+  取消:
+    name: 取消
+    role: push button
