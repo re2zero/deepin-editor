@@ -1,0 +1,111 @@
+name: edcomment_suite
+app: deepin-editor
+module: edcomment
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    bash -lc 'echo "readonly content line one" > /tmp/de_readonly_test.txt && echo "readonly content line two" >> /tmp/de_readonly_test.txt && chmod 444 /tmp/de_readonly_test.txt'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_edcomment_B06_001_s1
+  name: 切换注释&撤销_交互
+  description: '覆盖原始用例：1592677（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+O
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: sample_code.c
+    wait: 3.0
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.5
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 添加注释
+    wait: 1.0
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+Z
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_edcomment_B06_002_s1
+  name: 首字母大写_转换
+  description: '覆盖原始用例：1592727（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: 'hello world test content'
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.5
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: TextEditor
+      role: text
+    items:
+    - 切换大小写
+    - 首字母大写
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_edcomment_B06_003_s1
+  name: 只读模式_全选复制
+  description: '覆盖原始用例：1592645（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+O
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: /tmp/de_readonly_test.txt
+    wait: 3.0
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+A
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+C
+    wait: 0.5
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop

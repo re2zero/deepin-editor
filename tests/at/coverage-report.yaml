@@ -28,10 +28,86 @@ transient_items:
   role: menu
   ui_name: ViewModeContextMenu
   locator: name
-unreachable: 20
-denominator: 34
-covered: 34
-uncovered: 0
-coverage: 100.0
+unreachable: 0
+denominator: 54
+covered: 35
+uncovered: 19
+coverage: 64.8
 passed: true
-uncovered_elements: []
+uncovered_elements:
+- name: ActionGroup
+  role: push button
+  locator: name
+  ui_name: ActionGroup
+- name: CloseOtherTabs
+  role: push button
+  locator: name
+  ui_name: CloseOtherTabs
+- name: CloseTab
+  role: push button
+  locator: name
+  ui_name: CloseTab
+- name: CloseTabsToLeft
+  role: push button
+  locator: name
+  ui_name: CloseTabsToLeft
+- name: CloseTabsToRight
+  role: push button
+  locator: name
+  ui_name: CloseTabsToRight
+- name: CloseUnmodifiedTabs
+  role: push button
+  locator: name
+  ui_name: CloseUnmodifiedTabs
+- name: EditAnyway
+  role: push button
+  locator: name
+  ui_name: EditAnyway
+- name: GoToLineLabel
+  role: label
+  locator: name
+  ui_name: GoToLineLabel
+- name: Group
+  role: ''
+  locator: name
+  ui_name: Group
+- name: HighlightMenu
+  role: ''
+  locator: name
+  ui_name: HighlightMenu
+- name: MarkdownView
+  role: panel
+  locator: name
+  ui_name: MarkdownView
+- name: PButton
+  role: push button
+  locator: name
+  ui_name: PButton
+- name: PContentEdit
+  role: text
+  locator: name
+  ui_name: PContentEdit
+- name: ProgressBar
+  role: progress bar
+  locator: name
+  ui_name: ProgressBar
+- name: ProgressLabel
+  role: label
+  locator: name
+  ui_name: ProgressLabel
+- name: ReloadFile
+  role: push button
+  locator: name
+  ui_name: ReloadFile
+- name: UnixAction
+  role: push button
+  locator: name
+  ui_name: UnixAction
+- name: WarningSaveAs
+  role: push button
+  locator: name
+  ui_name: WarningSaveAs
+- name: WindowsAction
+  role: push button
+  locator: name
+  ui_name: WindowsAction
