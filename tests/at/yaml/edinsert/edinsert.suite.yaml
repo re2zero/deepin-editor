@@ -1,0 +1,104 @@
+name: edinsert_suite
+app: deepin-editor
+module: edinsert
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_edinsert_B08_001_s1
+  name: 切换编码_数据错误提示
+  description: '覆盖原始用例：1592811（P1）；status: unsupported — 编码切换失败时无错误弹窗'
+  status: unsupported
+  reason: >-
+    编码切换通过底部栏 DDropdownMenu 触发 reloadFileEncode（editwrapper.cpp:396），
+    内部调用 readFile(encode)（editwrapper.cpp:488），使用
+    DetectCode::ChangeFileEncodingFormat 做编码转换。转换失败时 readFile 返回
+    false，bottombar.cpp:139 仅静默恢复编码显示文本，不弹出任何错误对话框。
+    onReadAllocError（editwrapper.cpp:1808）显示的 WarningNotices
+    ("The file cannot be read...") 仅在初始文件加载时由 FileLoadThread
+    sigLoadFinished(error=true) 触发（fileloadthread.cpp:92/109），编码切换
+    路径不经过 FileLoadThread，因此无法产生期望的"数据错误提示"。
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: gb18030_test.txt
+    wait: 3.0
+  - step_type: action
+    action: dtk_dropdown_menu
+    selector:
+      accessible_id: DropdownToolButton
+    items:
+    - Unicode
+    - UTF-16BE
+    wait: 1.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_edinsert_B08_002_s1
+  name: 文件内容_Insert覆盖输入
+  description: '覆盖原始用例：1592807（P2）'
+  steps:
+  - step_type: action
+    action: keyboard_type_text
+    text: hello world
+    wait: 0.5
+  - step_type: action
+    action: keyboard_hot_key
+    key: Home
+    wait: 0.3
+  - step_type: action
+    action: keyboard_hot_key
+    key: Right
+    wait: 0.2
+  - step_type: action
+    action: keyboard_hot_key
+    key: Right
+    wait: 0.2
+  - step_type: action
+    action: keyboard_hot_key
+    key: Right
+    wait: 0.2
+  - step_type: action
+    action: keyboard_hot_key
+    key: Right
+    wait: 0.2
+  - step_type: action
+    action: keyboard_hot_key
+    key: Right
+    wait: 0.2
+  - step_type: action
+    action: keyboard_hot_key
+    key: Insert
+    wait: 0.3
+  - step_type: action
+    action: keyboard_type
+    text: X
+    wait: 0.3
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop
