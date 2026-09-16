@@ -31,6 +31,7 @@ suites:
   - step_type: action
     action: mouse_click
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
     wait: 0.5
@@ -38,6 +39,7 @@ suites:
   - step_type: assert
     action: assert_element
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
 
@@ -62,6 +64,7 @@ suites:
   - step_type: action
     action: mouse_click
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
     wait: 0.5
@@ -69,6 +72,7 @@ suites:
   - step_type: assert
     action: assert_element
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
 

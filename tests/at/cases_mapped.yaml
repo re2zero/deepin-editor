@@ -2369,12 +2369,14 @@ cases:
   - step_type: action
     action: mouse_click
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
     wait: 0.5
   - step_type: assert
     action: assert_element
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
 - id: suite_coledit_B05_002_s1
@@ -2396,12 +2398,14 @@ cases:
   - step_type: action
     action: mouse_click
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
     wait: 0.5
   - step_type: assert
     action: assert_element
     selector:
+      accessible_id: PTextEdit
       name: TextEditor
       role: text
 - id: suite_书签折叠_B04_001_s1

@@ -1,228 +1,282 @@
 version: '1.0'
 source: at-case-authoring:element-map.yaml
-scan_total: 51
+scan_total: 54
 elements:
   FindNext:
     role: push button
     ui_name: FindNext
     desc: 'source: controls/findbar.cpp'
+    locator: name
   FindPrevious:
     role: push button
     ui_name: FindPrevious
     desc: 'source: controls/findbar.cpp'
+    locator: name
   SwitchToReplace:
     role: push button
     ui_name: SwitchToReplace
     desc: 'source: controls/findbar.cpp'
+    locator: name
   CloseFind:
     role: ''
     ui_name: CloseFind
     desc: 'source: controls/findbar.cpp'
+    locator: name
   FindInput:
     role: ''
     ui_name: FindInput
     desc: 'source: controls/findbar.cpp'
+    locator: name
   FindLabel:
     role: label
     ui_name: FindLabel
     desc: 'source: controls/findbar.cpp'
+    locator: name
   LineNumberInput:
     role: spin box
     ui_name: LineNumberInput
     desc: 'source: controls/jumplinebar.cpp'
+    locator: name
   GoToLineLabel:
     role: label
     ui_name: GoToLineLabel
     desc: 'source: controls/jumplinebar.cpp'
+    locator: name
   CloseJumpLine:
     role: ''
     ui_name: CloseJumpLine
     desc: 'source: controls/jumplinebar.cpp'
+    locator: name
   ClearButton:
     role: ''
     ui_name: ClearButton
     desc: 'source: controls/linebar.cpp'
+    locator: name
   ReplaceAll:
     role: push button
     ui_name: ReplaceAll
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceNext:
     role: push button
     ui_name: ReplaceNext
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceRest:
     role: push button
     ui_name: ReplaceRest
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceSkip:
     role: push button
     ui_name: ReplaceSkip
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   CloseReplace:
     role: ''
     ui_name: CloseReplace
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceFindInput:
     role: ''
     ui_name: ReplaceFindInput
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceWithInput:
     role: ''
     ui_name: ReplaceWithInput
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceFindLabel:
     role: label
     ui_name: ReplaceFindLabel
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   ReplaceWithLabel:
     role: label
     ui_name: ReplaceWithLabel
     desc: 'source: controls/replacebar.cpp'
+    locator: name
   CloseOtherTabs:
     role: push button
     ui_name: CloseOtherTabs
     desc: 'source: controls/tabbar.cpp'
+    locator: name
   CloseTab:
     role: push button
     ui_name: CloseTab
     desc: 'source: controls/tabbar.cpp'
+    locator: name
   CloseTabsToLeft:
     role: push button
     ui_name: CloseTabsToLeft
     desc: 'source: controls/tabbar.cpp'
+    locator: name
   CloseTabsToRight:
     role: push button
     ui_name: CloseTabsToRight
     desc: 'source: controls/tabbar.cpp'
+    locator: name
   CloseUnmodifiedTabs:
     role: push button
     ui_name: CloseUnmodifiedTabs
     desc: 'source: controls/tabbar.cpp'
+    locator: name
   ReloadFile:
     role: push button
     ui_name: ReloadFile
     desc: 'source: controls/warningnotices.cpp'
+    locator: name
   WarningSaveAs:
     role: push button
     ui_name: WarningSaveAs
     desc: 'source: controls/warningnotices.cpp'
+    locator: name
   EditAnyway:
     role: push button
     ui_name: EditAnyway
     desc: 'source: controls/warningnotices.cpp'
-  TextEditor:
+    locator: name
+  PTextEdit:
     role: text
     ui_name: TextEditor
     desc: 'source: editor/editwrapper.cpp'
+    locator: accessible_id
   EditorBottomBar:
     role: ''
     ui_name: EditorBottomBar
     desc: 'source: editor/editwrapper.cpp'
+    locator: name
   PContentEdit:
     role: text
     ui_name: PContentEdit
     desc: 'source: editor/showflodcodewidget.cpp'
+    locator: name
   ThemeListView:
     role: list
     ui_name: ThemeListView
     desc: 'source: thememodule/themepanel.cpp'
+    locator: name
   PButton:
     role: push button
     ui_name: PButton
     desc: 'source: widgets/ColorSelectWdg.cpp'
+    locator: name
   PositionLabel:
     role: label
     ui_name: PositionLabel
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   CharCountLabel:
     role: label
     ui_name: CharCountLabel
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   ScaleLabel:
     role: label
     ui_name: ScaleLabel
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   ProgressLabel:
     role: label
     ui_name: ProgressLabel
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   ProgressBar:
     role: progress bar
     ui_name: ProgressBar
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   UnixAction:
     role: push button
     ui_name: UnixAction
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   WindowsAction:
     role: push button
     ui_name: WindowsAction
     desc: 'source: widgets/bottombar.cpp'
+    locator: name
   DropdownToolButton:
     role: push button
     ui_name: DropdownToolButton
     desc: 'source: widgets/ddropdownmenu.cpp'
+    locator: name
   ActionGroup:
     role: push button
     ui_name: ActionGroup
     desc: 'source: widgets/ddropdownmenu.cpp'
+    locator: name
   PActUtf8:
     role: push button
     ui_name: PActUtf8
     desc: 'source: widgets/ddropdownmenu.cpp'
+    locator: name
   SamePathAsCurrentFile:
     role: check box
     ui_name: SamePathAsCurrentFile
     desc: 'source: widgets/pathsettintwgt.cpp'
+    locator: name
   RememberLastPath:
     role: check box
     ui_name: RememberLastPath
     desc: 'source: widgets/pathsettintwgt.cpp'
+    locator: name
   CustomizeDefaultPath:
     role: check box
     ui_name: CustomizeDefaultPath
     desc: 'source: widgets/pathsettintwgt.cpp'
+    locator: name
   CustomPathInput:
     role: text
     ui_name: CustomPathInput
     desc: 'source: widgets/pathsettintwgt.cpp'
+    locator: name
   BrowseCustomPath:
     role: ''
     ui_name: BrowseCustomPath
     desc: 'source: widgets/pathsettintwgt.cpp'
+    locator: name
   Group:
     role: ''
     ui_name: Group
     desc: 'source: widgets/pathsettintwgt.cpp'
+    locator: name
   CentralWidget:
     role: ''
     ui_name: CentralWidget
     desc: 'source: widgets/window.cpp'
+    locator: name
   EditorStack:
     role: layered pane
     ui_name: EditorStack
     desc: 'source: widgets/window.cpp'
+    locator: name
   Tabbar:
     role: page tab
     ui_name: Tabbar
     desc: 'source: widgets/window.cpp'
+    locator: name
   MatchCountLabel:
     role: label
     ui_name: MatchCountLabel
     desc: 'source: controls/linebar.cpp (V6.6)'
+    locator: name
   MarkdownView:
     role: panel
     ui_name: MarkdownView
     desc: 'source: editor/markdown/markdownview.cpp (V6.6)'
+    locator: name
   HighlightMenu:
     role: ''
     ui_name: HighlightMenu
     desc: 'source: widgets/bottombar.cpp (V6.6)'
-  ViewModeContextMenu:
-    role: menu
-    ui_name: ViewModeContextMenu
-    desc: 'source: editor/dtextedit.cpp (V6.6)'
+    locator: name
 transient_items:
+- name: ViewModeContextMenu
+  role: menu
+  ui_name: ViewModeContextMenu
+  desc: 'source: editor/dtextedit.cpp (V6.6)'
 - name: TabContextMenu
   role: menu
   ui_name: TabContextMenu

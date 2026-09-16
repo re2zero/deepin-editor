@@ -9,6 +9,7 @@ elements:
     name: CustomPathInput
     role: text
   TextEditor:
+    accessible_id: PTextEdit
     name: TextEditor
     role: text
   FindNext:
