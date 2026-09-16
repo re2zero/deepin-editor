@@ -1,0 +1,113 @@
+name: fileopen_suite
+app: deepin-editor
+module: fileopen
+vars:
+  TEST_FILES_DIR: ${PROJECT_ROOT}/tests/at/files/
+
+setup:
+- action: session_start
+  command: |
+    echo "clear tmp files in testfiles_dir: ${TEST_FILES_DIR}"
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    bash -lc 'rm -rf ${TEST_FILES_DIR}/未命名文档*; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_fileopen_B03_001_s1
+  name: 打开BIG5编码文件_正常打开
+  description: '覆盖原始用例：1593087（P2，冒烟）'
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: big5_test.txt
+    wait: 3.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_fileopen_B03_002_s1
+  name: 打开md文件_正常打开
+  description: '覆盖原始用例：1593089（P2，冒烟）'
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: markdown_test.md
+    wait: 3.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_fileopen_B03_003_s1
+  name: 打开crt格式文件_正常打开
+  description: '覆盖原始用例：1593091（P2，冒烟）'
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: test_cert.crt
+    wait: 3.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_fileopen_B03_004_s1
+  name: 打开GB18030编码文件_正确识别
+  description: '覆盖原始用例：1593093（P1）'
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/
+    name: gb18030_test.txt
+    wait: 3.0
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop

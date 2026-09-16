@@ -1,0 +1,2 @@
+這是一個BIG5編碼的測試文件
+BIG5 encoding test file

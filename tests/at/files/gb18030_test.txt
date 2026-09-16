@@ -1,0 +1,2 @@
+这是一个GB18030编码的测试文件
+GB18030 encoding test file

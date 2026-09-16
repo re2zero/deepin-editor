@@ -2268,3 +2268,87 @@ cases:
     selector:
       name: TextEditor
       role: text
+- id: suite_fileopen_B03_001_s1
+  name: 打开BIG5编码文件_正常打开
+  module: fileopen
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/big5_test.txt
+    wait: 3.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_fileopen_B03_002_s1
+  name: 打开md文件_正常打开
+  module: fileopen
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/markdown_test.md
+    wait: 3.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_fileopen_B03_003_s1
+  name: 打开crt格式文件_正常打开
+  module: fileopen
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/test_cert.crt
+    wait: 3.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_fileopen_B03_004_s1
+  name: 打开GB18030编码文件_正确识别
+  module: fileopen
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_select
+    path: ${TEST_FILES_DIR}/gb18030_test.txt
+    wait: 3.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
