@@ -1,0 +1,76 @@
+name: coledit_suite
+app: deepin-editor
+module: coledit
+
+setup:
+- action: session_start
+  command: |
+    bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
+    deepin-editor
+  wait: 3.0
+suites:
+- id: suite_coledit_B05_001_s1
+  name: 列编辑操作_块选择
+  description: '覆盖原始用例：1592681（P2）；status: unsupported — youqu 执行器未注册 keyboard_press_down/keyboard_press_up handler，无法在鼠标拖拽时持续按住 Alt 修饰键，列块选择无法自动化执行'
+  status: unsupported
+  reason: >-
+    列块选择需要按住 Alt 键的同时进行鼠标拖拽（dtextedit.cpp:7651
+    mousePressEvent 检测 Qt::AltModifier）。youqu 执行器的 HANDLERS
+    字典未注册 press_key_down/press_key_up（mouse_key.py 中方法存在但未被
+    注册），无法实现"按住 Alt + mouse_drag"的组合操作，待框架补齐
+    keyboard_press_down/keyboard_press_up handler 后可自动化执行
+  steps:
+  - step_type: action
+    action: keyboard_type
+    text: 'line one
+
+      line two
+
+      line three'
+    wait: 0.5
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: TextEditor
+      role: text
+    wait: 0.5
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+- id: suite_coledit_B05_002_s1
+  name: 列编辑_Delete键删除
+  description: '覆盖原始用例：1592669（P2）；status: unsupported — 依赖列块选择（case 001），Alt+drag 无法自动化，故 Delete 删除列选文本亦无法自动化'
+  status: unsupported
+  reason: >-
+    列编辑 Delete 删除依赖列块选择处于激活状态（dtextedit.cpp:3210
+    deleteSelection 检查 m_bIsAltMod && !m_altModSelections.isEmpty()）。
+    列块选择本身因 youqu 缺少 keyboard_press_down/keyboard_press_up
+    handler 而无法自动化（见 case 001），故本用例同样无法自动化执行
+  steps:
+  - step_type: action
+    action: keyboard_type
+    text: 'line one
+
+      line two
+
+      line three'
+    wait: 0.5
+  - step_type: action
+    action: mouse_click
+    selector:
+      name: TextEditor
+      role: text
+    wait: 0.5
+  assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+
+teardown:
+- action: session_stop
