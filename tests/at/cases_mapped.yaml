@@ -2053,3 +2053,218 @@ cases:
     selector:
       name: TextEditor
       role: text
+- id: suite_路径与保存设置_B02_001_s1
+  name: 自定义操作路径_打开新文件
+  module: 路径与保存设置
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: CustomizeDefaultPath
+      role: check box
+    do: click
+  - step_type: action
+    action: element_set_value
+    selector:
+      name: CustomPathInput
+      role: text
+    text: /tmp
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_路径与保存设置_B02_002_s1
+  name: 与当前文件保存一致_首次保存新文件
+  module: 路径与保存设置
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: SamePathAsCurrentFile
+      role: check box
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type_text
+    text: same path save test
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_路径与保存设置_B02_003_s1
+  name: 与当前文件保存一致_首次打开新文件
+  module: 路径与保存设置
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: SamePathAsCurrentFile
+      role: check box
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_路径与保存设置_B02_004_s1
+  name: 记住最后操作路径_保存新文档
+  module: 路径与保存设置
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: RememberLastPath
+      role: check box
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: action
+    action: keyboard_type_text
+    text: remember last path save test
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+S
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_路径与保存设置_B02_005_s1
+  name: 记住最后操作路径_打开新文件
+  module: 路径与保存设置
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: RememberLastPath
+      role: check box
+    do: click
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 打开文件
+    wait: 1.0
+  - step_type: action
+    action: file_dialog_cancel
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_路径与保存设置_B02_006_s1
+  name: 取消勾选允许鼠标中键粘贴
+  module: 路径与保存设置
+  status: unsupported
+  reason: >-
+    设置对话框中"允许鼠标中键粘贴"复选框为 DSettings 通用控件
+    (dsettingswidgetfactory.cpp)，accessibleName="OptionCheckbox" 且
+    objectName="OptionCheckbox"，无法通过 AT-SPI 唯一定位，需开发补名后可自动化执行
+  steps:
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 设置
+    wait: 1.0
+  - step_type: action
+    action: keyboard_press
+    key: escape
+    wait: 1.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
