@@ -2246,10 +2246,8 @@ cases:
   name: 取消勾选允许鼠标中键粘贴
   module: 路径与保存设置
   status: unsupported
-  reason: >-
-    设置对话框中"允许鼠标中键粘贴"复选框为 DSettings 通用控件
-    (dsettingswidgetfactory.cpp)，accessibleName="OptionCheckbox" 且
-    objectName="OptionCheckbox"，无法通过 AT-SPI 唯一定位，需开发补名后可自动化执行
+  reason: 设置对话框中"允许鼠标中键粘贴"复选框为 DSettings 通用控件 (dsettingswidgetfactory.cpp)，accessibleName="OptionCheckbox"
+    且 objectName="OptionCheckbox"，无法通过 AT-SPI 唯一定位，需开发补名后可自动化执行
   steps:
   - step_type: action
     action: dtk_main_menu
@@ -2356,12 +2354,9 @@ cases:
   name: 列编辑操作_块选择
   module: coledit
   status: unsupported
-  reason: >-
-    列块选择需要按住 Alt 键的同时进行鼠标拖拽（dtextedit.cpp:7651
-    mousePressEvent 检测 Qt::AltModifier）。youqu 执行器的 HANDLERS
-    字典未注册 press_key_down/press_key_up（mouse_key.py 中方法存在但未被
-    注册），无法实现"按住 Alt + mouse_drag"的组合操作，待框架补齐
-    keyboard_press_down/keyboard_press_up handler 后可自动化执行
+  reason: 列块选择需要按住 Alt 键的同时进行鼠标拖拽（dtextedit.cpp:7651 mousePressEvent 检测 Qt::AltModifier）。youqu
+    执行器的 HANDLERS 字典未注册 press_key_down/press_key_up（mouse_key.py 中方法存在但未被 注册），无法实现"按住
+    Alt + mouse_drag"的组合操作，待框架补齐 keyboard_press_down/keyboard_press_up handler 后可自动化执行
   steps:
   - step_type: action
     action: keyboard_type
@@ -2386,10 +2381,8 @@ cases:
   name: 列编辑_Delete键删除
   module: coledit
   status: unsupported
-  reason: >-
-    列编辑 Delete 删除依赖列块选择处于激活状态（dtextedit.cpp:3210
-    deleteSelection 检查 m_bIsAltMod && !m_altModSelections.isEmpty()）。
-    列块选择本身因 youqu 缺少 keyboard_press_down/keyboard_press_up
+  reason: 列编辑 Delete 删除依赖列块选择处于激活状态（dtextedit.cpp:3210 deleteSelection 检查 m_bIsAltMod
+    && !m_altModSelections.isEmpty()）。 列块选择本身因 youqu 缺少 keyboard_press_down/keyboard_press_up
     handler 而无法自动化（见 case 001），故本用例同样无法自动化执行
   steps:
   - step_type: action
@@ -2562,7 +2555,7 @@ cases:
     wait: 0.5
   - step_type: action
     action: keyboard_type_text
-    text: 'hello world test content'
+    text: hello world test content
     wait: 0.5
   - step_type: action
     action: keyboard_hot_key
@@ -2687,6 +2680,101 @@ cases:
     action: keyboard_type
     text: X
     wait: 0.3
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_tabmgr_B07_001_s1
+  name: 标签栏右键菜单_关闭标签
+  module: tabmgr
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: tab one content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: tab two content
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Tabbar
+      role: page tab
+    items:
+    - 关闭标签页
+    wait: 1.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_tabmgr_B07_002_s1
+  name: 更多关闭方式_关闭左侧标签
+  module: tabmgr
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: left tab content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: middle tab content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: right tab content
+  - step_type: action
+    action: dtk_context_menu
+    selector:
+      name: Tabbar
+      role: page tab
+    items:
+    - 更多关闭方式
+    - 关闭左侧所有标签页
+    wait: 1.0
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+- id: suite_tabmgr_B07_003_s1
+  name: 未保存时关闭标签_弹出提示
+  module: tabmgr
+  status: unsupported
+  reason: 按 Ctrl+W 关闭已修改未保存的标签页时，window.cpp:961/1054 调用 createDialog() 弹出 DDialog
+    确认对话框。该 DDialog 及其按钮（Cancel/Discard/Save）均未调用 setObjectName 或 setAccessibleName，AT-SPI
+    树中无稳定可定位的 accessible-name 或 accessible-id，youqu 执行器无法通过 selector 定位并断言该对话框，故标记为
+    unsupported。待开发为 DDialog 及按钮补全 setAccessibleName 后可自动化执行。
+  steps:
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: unsaved content
+  - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+W
+    wait: 1.0
   - step_type: assert
     action: assert_element
     selector:
