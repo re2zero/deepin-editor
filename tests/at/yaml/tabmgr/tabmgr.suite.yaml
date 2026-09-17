@@ -9,12 +9,22 @@ setup:
   command: |
     bash -lc 'rm -r ~/.local/share/deepin/deepin-editor/blank-files/; sleep 1.0;'
     bash -lc 'rm -rf ${TEST_FILES_DIR}/未命名文档*; sleep 1.0;'
+    # 清除会话恢复记录（startmanager.cpp:83 从该配置节恢复标签），
+    # 保证每次运行初始状态确定：仅 1 个默认空白标签"未命名文档1"
+    bash -lc 'awk "/^\[advance\.editor\.browsing_history_temfile\]$/{skip=1;next} /^\[/{skip=0} !skip" ~/.config/deepin/deepin-editor/config.conf > ~/.config/deepin/deepin-editor/config.conf.tmp && mv ~/.config/deepin/deepin-editor/config.conf.tmp ~/.config/deepin/deepin-editor/config.conf; sleep 0.5;'
     deepin-editor
   wait: 3.0
 suites:
 - id: suite_tabmgr_B07_001_s1
   name: 标签栏右键菜单_关闭标签
-  description: '覆盖原始用例：1592725（P2）'
+  description: >-
+    覆盖原始用例：1592725（P2）。创建 3 个已修改的草稿标签，使标签栏
+    总宽 >= 4 个 160px 标签，Tabbar 元素中心点 (1201,283) 恒定落在
+    第 4 个标签（已修改草稿）上，右键菜单"关闭标签页"关闭该标签。
+    已修改草稿关闭时 window.cpp:961 经 createDialog() 弹出 DDialog
+    保存确认对话框；三按钮无 objectName，但 AT-SPI name 即按钮文本
+    （zh_CN：取消/不保存/保存，实测可定位）。用例等待"不保存"按钮
+    出现后点击该按钮确认关闭，清除模态对话框，避免其阻塞后续用例。
   steps:
   - step_type: action
     action: keyboard_hot_key
@@ -31,12 +41,31 @@ suites:
     action: keyboard_type_text
     text: tab two content
   - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
+    action: keyboard_type_text
+    text: tab three content
+  - step_type: action
     action: dtk_context_menu
     selector:
       name: Tabbar
       role: page tab
     items:
     - 关闭标签页
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    do: click
+    selector:
+      name: 不保存
+      role: button
+    wait_for:
+      selector:
+        name: 不保存
+      timeout: 5000
+      interval: 200
     wait: 1.0
   assert_steps:
   - step_type: assert
@@ -47,7 +76,13 @@ suites:
 
 - id: suite_tabmgr_B07_002_s1
   name: 更多关闭方式_关闭左侧标签
-  description: '覆盖原始用例：1592721（P2）'
+  description: >-
+    覆盖原始用例：1592721（P2）。承接 B07_001 残留的 2 个已修改草稿
+    标签，再创建 3 个标签，Tabbar 中心点落在第 4 个标签（left tab
+    content），其左侧恰好含 2 个已修改草稿标签（未修改的文件/空白
+    标签静默关闭）。handleTabsClosed 逐标签 closeTab，每个已修改
+    草稿各弹一次保存确认对话框（window.cpp:961），共 2 次；用例依次
+    等待"不保存"按钮出现并点击该按钮确认关闭，清除模态对话框。
   steps:
   - step_type: action
     action: keyboard_hot_key
@@ -79,6 +114,30 @@ suites:
     - 更多关闭方式
     - 关闭左侧所有标签页
     wait: 1.0
+  - step_type: action
+    action: element_action
+    do: click
+    selector:
+      name: 不保存
+      role: button
+    wait_for:
+      selector:
+        name: 不保存
+      timeout: 5000
+      interval: 200
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    do: click
+    selector:
+      name: 不保存
+      role: button
+    wait_for:
+      selector:
+        name: 不保存
+      timeout: 5000
+      interval: 200
+    wait: 1.0
   assert_steps:
   - step_type: assert
     action: assert_element
@@ -88,15 +147,13 @@ suites:
 
 - id: suite_tabmgr_B07_003_s1
   name: 未保存时关闭标签_弹出提示
-  description: '覆盖原始用例：1592791（P2）'
-  status: unsupported
-  reason: >-
-    按 Ctrl+W 关闭已修改未保存的标签页时，window.cpp:961/1054 调用
-    createDialog() 弹出 DDialog 确认对话框。该 DDialog 及其按钮（Cancel/
-    Discard/Save）均未调用 setObjectName 或 setAccessibleName，AT-SPI 树中
-    无稳定可定位的 accessible-name 或 accessible-id，youqu 执行器无法通过
-    selector 定位并断言该对话框，故标记为 unsupported。待开发为 DDialog
-    及按钮补全 setAccessibleName 后可自动化执行。
+  description: >-
+    覆盖原始用例：1592791（P2）。按 Ctrl+W 关闭已修改未保存的草稿
+    标签时，window.cpp:961 经 createDialog() 弹出 DDialog 保存确认
+    对话框（zh_CN 标题"您是否要保存此文件？"，按钮 取消/不保存/保存，
+    保存为推荐按钮）。按钮虽无 setObjectName/setAccessibleName，
+    但 AT-SPI name 即按钮文本，实测可定位；"不保存"为该对话框特有
+    文案，以其出现作为弹窗断言（主菜单等常驻节点无此名称）。
   steps:
   - step_type: action
     action: keyboard_hot_key
@@ -110,6 +167,16 @@ suites:
     key: Ctrl+W
     wait: 1.0
   assert_steps:
+  - step_type: assert
+    action: assert_element
+    selector:
+      name: 不保存
+      role: button
+    wait_for:
+      selector:
+        name: 不保存
+      timeout: 5000
+      interval: 200
   - step_type: assert
     action: assert_element
     selector:

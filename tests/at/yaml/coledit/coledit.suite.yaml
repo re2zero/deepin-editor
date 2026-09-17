@@ -21,6 +21,10 @@ suites:
     keyboard_press_down/keyboard_press_up handler 后可自动化执行
   steps:
   - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
     action: keyboard_type
     text: 'line one
 
@@ -35,6 +39,10 @@ suites:
       name: TextEditor
       role: text
     wait: 0.5
+  - step_type: action
+    action: session_start
+    command: |
+      bash -lc 'xdotool mousemove 860 540 mousedown 1; sleep 0.1; xdotool mousemove 20 20 mouseup 1; sleep 1.0'
   assert_steps:
   - step_type: assert
     action: assert_element
@@ -54,20 +62,9 @@ suites:
     handler 而无法自动化（见 case 001），故本用例同样无法自动化执行
   steps:
   - step_type: action
-    action: keyboard_type
-    text: 'line one
-
-      line two
-
-      line three'
-    wait: 0.5
-  - step_type: action
-    action: mouse_click
-    selector:
-      accessible_id: PTextEdit
-      name: TextEditor
-      role: text
-    wait: 0.5
+    action: keyboard_press
+    key: delete
+    wait: 0.3
   assert_steps:
   - step_type: assert
     action: assert_element

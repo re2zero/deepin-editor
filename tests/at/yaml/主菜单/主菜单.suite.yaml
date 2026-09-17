@@ -405,16 +405,11 @@ suites:
     items:
     - 帮助
     wait: 3.0
-  - step_type: action
-    action: keyboard_press
-    key: escape
-    wait: 1.0
   assert_steps:
   - step_type: assert
-    action: assert_element
+    action: assert_window
     selector:
-      name: TextEditor
-      role: text
+      name_pattern: "帮助手册.*"
 
 - id: suite_主菜单_B01_002_s1
   name: 切换主题_应用主题
@@ -428,13 +423,27 @@ suites:
       name: OptionMenu
       role: menu
     items:
-    - 切换主题
+    - 主题
+    - 深色
     wait: 1.0
   - step_type: action
-    action: element_action
+    action: dtk_main_menu
     selector:
-      name: ThemeListView
-    do: click
+      name: OptionMenu
+      role: menu
+    items:
+    - 主题
+    - 浅色
+    wait: 1.0
+  - step_type: action
+    action: dtk_main_menu
+    selector:
+      name: OptionMenu
+      role: menu
+    items:
+    - 主题
+    - 跟随系统
+    wait: 1.0
   assert_steps:
   - step_type: assert
     action: assert_element
@@ -456,7 +465,7 @@ suites:
       role: menu
     items:
     - 打印
-    wait: 3.0
+    wait: 5.0
   - step_type: action
     action: keyboard_press
     key: escape

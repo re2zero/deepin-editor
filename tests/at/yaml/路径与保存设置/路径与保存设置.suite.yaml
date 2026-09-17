@@ -28,15 +28,26 @@ suites:
   - step_type: action
     action: element_action
     selector:
+      name: 打开/保存设置
+      role: list item
+    do: click
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
       name: CustomizeDefaultPath
       role: check box
     do: click
   - step_type: action
-    action: element_set_value
+    action: element_action
     selector:
-      name: CustomPathInput
-      role: text
-    text: /tmp
+      name: BrowseCustomPath
+      role: button
+    do: click
+  - step_type: action
+    action: file_dialog_select
+    path: ~/Documents/custom
+  # 关闭设置回到编辑
   - step_type: action
     action: keyboard_press
     key: escape
@@ -69,6 +80,13 @@ suites:
       role: menu
     items:
     - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: 打开/保存设置
+      role: list item
+    do: click
     wait: 1.0
   - step_type: action
     action: element_action
@@ -107,6 +125,13 @@ suites:
       role: menu
     items:
     - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: 打开/保存设置
+      role: list item
+    do: click
     wait: 1.0
   - step_type: action
     action: element_action
@@ -150,6 +175,13 @@ suites:
   - step_type: action
     action: element_action
     selector:
+      name: 打开/保存设置
+      role: list item
+    do: click
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
       name: RememberLastPath
       role: check box
     do: click
@@ -184,6 +216,13 @@ suites:
       role: menu
     items:
     - 设置
+    wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: 打开/保存设置
+      role: list item
+    do: click
     wait: 1.0
   - step_type: action
     action: element_action
@@ -229,6 +268,20 @@ suites:
     items:
     - 设置
     wait: 1.0
+  - step_type: action
+    action: element_action
+    selector:
+      name: 高级设置
+      role: list item
+    do: click
+    wait: 1.0
+    #TODO： DSetting 的objectname设置
+  # - step_type: action
+  #   action: element_action
+  #   selector:
+  #     accessible_id: allow_midbutton_paste
+  #     role: check box
+  #   do: click
   - step_type: action
     action: keyboard_press
     key: escape

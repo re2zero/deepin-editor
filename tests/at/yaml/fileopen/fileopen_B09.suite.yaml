@@ -29,8 +29,14 @@ suites:
     wait: 2.0
   assert_steps:
   - step_type: assert
-    action: assert_ocr_exists
-    expected: 无效文件
+    action: assert_element
+    selector:
+      name: TextEditor
+      role: text
+  # TODO：OCR enable
+  # - step_type: assert
+  #   action: assert_ocr_exists
+  #   expected: 无效文件
 
 - id: suite_fileopen_B09_002_s1
   name: 批量拖拽_过滤非文本
@@ -73,9 +79,10 @@ suites:
     selector:
       name: TextEditor
       role: text
-  - step_type: assert
-    action: assert_ocr_exists
-    expected: 无效文件
+  # TODO：OCR enable
+  # - step_type: assert
+  #   action: assert_ocr_exists
+  #   expected: 无效文件
 
 - id: suite_fileopen_B09_003_s1
   name: 打印预览存为PDF

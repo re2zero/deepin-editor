@@ -13,17 +13,10 @@ setup:
 suites:
 - id: suite_edinsert_B08_001_s1
   name: 切换编码_数据错误提示
-  description: '覆盖原始用例：1592811（P1）；status: unsupported — 编码切换失败时无错误弹窗'
+  description: '覆盖原始用例：1592811（P1）；
   status: unsupported
-  reason: >-
-    编码切换通过底部栏 DDropdownMenu 触发 reloadFileEncode（editwrapper.cpp:396），
-    内部调用 readFile(encode)（editwrapper.cpp:488），使用
-    DetectCode::ChangeFileEncodingFormat 做编码转换。转换失败时 readFile 返回
-    false，bottombar.cpp:139 仅静默恢复编码显示文本，不弹出任何错误对话框。
-    onReadAllocError（editwrapper.cpp:1808）显示的 WarningNotices
-    ("The file cannot be read...") 仅在初始文件加载时由 FileLoadThread
-    sigLoadFinished(error=true) 触发（fileloadthread.cpp:92/109），编码切换
-    路径不经过 FileLoadThread，因此无法产生期望的"数据错误提示"。
+  reason: >-执行编码切换操作（打开 gb18030_test.txt 后切换 GB18030→UTF-16BE），后续用例依赖该文件打开状态。
+    原期望的"数据错误提示"弹窗在应用中不存在（切换后静默显示乱码，无对话框；源码 bottombar.cpp:139 与视觉实测 2026-09-17 均确认），故执行操作但不断言弹窗'
   steps:
   - step_type: action
     action: dtk_main_menu
@@ -39,12 +32,32 @@ suites:
     name: gb18030_test.txt
     wait: 3.0
   - step_type: action
-    action: dtk_dropdown_menu
+    action: element_action
+    do: click
     selector:
-      accessible_id: DropdownToolButton
-    items:
-    - Unicode
-    - UTF-16BE
+      accessible_id: PToolButton
+      index: 2
+    note: 底栏 4 个 DDropdownMenu 按钮 accessible-id 均为 ...DDropdownMenu.PToolButton（setObjectName，ddropdownmenu.cpp:60），accessible-name 均为 DropdownToolButton（setAccessibleName，:59）；index=2 为树序第 3 个=编码按钮（2026-09-17 实测 AT-SPI click 打开编码菜单）。不用 dtk_dropdown_menu：其导航只按 Down 遍历顶层分组，无法打开 Unicode 子菜单选到 UTF-16BE
+    wait: 0.5
+  - step_type: action
+    action: keyboard_press
+    key: Down
+    note: 高亮首个分组 Unicode
+    wait: 0.3
+  - step_type: action
+    action: keyboard_press
+    key: Right
+    note: 展开 Unicode 子菜单（首项 UTF-8 高亮）
+    wait: 0.5
+  - step_type: action
+    action: keyboard_press
+    key: Down
+    note: 高亮 UTF-16BE（encodes.ini 顺序：UTF-8,UTF-16BE,UTF-16LE,UTF-32BE,UTF-32LE）
+    wait: 0.3
+  - step_type: action
+    action: keyboard_press
+    key: Return
+    note: 选中 UTF-16BE；应用无错误弹窗，静默切换并显示乱码（原用例期望的"数据错误提示"不存在，故不断言）
     wait: 1.0
   assert_steps:
   - step_type: assert

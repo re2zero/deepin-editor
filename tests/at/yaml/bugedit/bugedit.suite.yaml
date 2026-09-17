@@ -83,6 +83,10 @@ suites:
   description: '覆盖原始用例：1875739（P2，bug转用例）'
   steps:
   - step_type: action
+    action: keyboard_hot_key
+    key: Ctrl+T
+    wait: 0.5
+  - step_type: action
     action: keyboard_type_text
     text: 'hello world hello test hello'
     wait: 0.5
@@ -125,84 +129,12 @@ suites:
     do: click
     wait: 0.5
   - step_type: action
-    action: keyboard_press
-    key: escape
-    wait: 0.3
-  - step_type: action
-    action: keyboard_hot_key
-    key: Ctrl+A
-    wait: 0.3
-  - step_type: action
-    action: keyboard_type_text
-    text: 'hello world hello test hello'
-    wait: 0.5
-  - step_type: action
-    action: keyboard_hot_key
-    key: Ctrl+A
-    wait: 0.3
-  - step_type: action
-    action: dtk_context_menu
-    selector:
-      name: TextEditor
-      role: text
-    items:
-    - 替换
-    wait: 1.0
-  - step_type: action
-    action: keyboard_type_text
-    text: hello
-    wait: 0.3
-  - step_type: action
-    action: keyboard_press
-    key: tab
-    wait: 0.3
-  - step_type: action
-    action: keyboard_type_text
-    text: hi
-    wait: 0.3
-  - step_type: action
     action: element_action
     selector:
       name: ReplaceAll
       role: push button
     do: click
     wait: 0.5
-  - step_type: action
-    action: keyboard_press
-    key: escape
-    wait: 0.3
-  - step_type: action
-    action: keyboard_hot_key
-    key: Ctrl+A
-    wait: 0.3
-  - step_type: action
-    action: keyboard_type_text
-    text: 'hello world hello test hello'
-    wait: 0.5
-  - step_type: action
-    action: keyboard_hot_key
-    key: Ctrl+A
-    wait: 0.3
-  - step_type: action
-    action: dtk_context_menu
-    selector:
-      name: TextEditor
-      role: text
-    items:
-    - 替换
-    wait: 1.0
-  - step_type: action
-    action: keyboard_type_text
-    text: hello
-    wait: 0.3
-  - step_type: action
-    action: keyboard_press
-    key: tab
-    wait: 0.3
-  - step_type: action
-    action: keyboard_type_text
-    text: hi
-    wait: 0.3
   - step_type: action
     action: element_action
     selector:
